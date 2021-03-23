@@ -2,17 +2,19 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { message } from 'antd';
 import React, { useState } from 'react';
 import ProForm, { ProFormText } from '@ant-design/pro-form';
-import { useIntl, Link, history, FormattedMessage, SelectLang, useModel } from 'umi';
+import { useIntl, Link, history, SelectLang, useModel } from 'umi';
 import Footer from '@/components/Footer';
 import { login } from '@/services/ant-design-pro/api';
 import styles from './index.less';
-
 /** 此方法会跳转到 redirect 参数所在的位置 */
+
 const goto = () => {
   if (!history) return;
   setTimeout(() => {
     const { query } = history.location;
-    const { redirect } = query as { redirect: string };
+    const { redirect } = query as {
+      redirect: string;
+    };
     history.push(redirect || '/');
   }, 10);
 };
@@ -20,34 +22,35 @@ const goto = () => {
 const Login: React.FC = () => {
   const [submitting, setSubmitting] = useState(false);
   const { initialState, setInitialState } = useModel('@@initialState');
-
   const intl = useIntl();
 
   const fetchUserInfo = async () => {
     const userInfo = await initialState?.fetchUserInfo?.();
+
     if (userInfo) {
-      setInitialState({
-        ...initialState,
-        currentUser: userInfo,
-      });
+      setInitialState({ ...initialState, currentUser: userInfo });
     }
   };
 
   const handleSubmit = async (values: API.LoginParams) => {
     setSubmitting(true);
+
     try {
       // 登录
       const msg = await login({ ...values });
+
       if (msg.status === 'ok') {
         message.success('登录成功！');
         await fetchUserInfo();
         goto();
         return;
       }
+
       message.error('登陆失败，请检查您的帐户或者密码');
     } catch (error) {
       message.error('登录失败，请重试！');
     }
+
     setSubmitting(false);
   };
 
@@ -103,12 +106,7 @@ const Login: React.FC = () => {
               rules={[
                 {
                   required: true,
-                  message: (
-                    <FormattedMessage
-                      id="pages.login.username.required"
-                      defaultMessage="请输入用户名!"
-                    />
-                  ),
+                  message: '用户名是必填项！',
                 },
               ]}
             />
@@ -125,12 +123,7 @@ const Login: React.FC = () => {
               rules={[
                 {
                   required: true,
-                  message: (
-                    <FormattedMessage
-                      id="pages.login.password.required"
-                      defaultMessage="请输入密码！"
-                    />
-                  ),
+                  message: '密码是必填项！',
                 },
               ]}
             />

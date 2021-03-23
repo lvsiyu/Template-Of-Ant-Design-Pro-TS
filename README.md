@@ -58,6 +58,12 @@ yarn start
 
 项目中很多使用了 antd 默认的配置项，需要修改成自己项目的内容
 
+#### 去除国际化语言
+
+使用命令```bash npm run i18n-remove
+
+````
+
 #### 左侧菜单标题修改
 
 根目录中 config 文件夹下 defaultsetting.js 文件，修改 title 字段
@@ -92,7 +98,7 @@ yarn start
 
 ```bash
 npm run build
-```
+````
 
 ## 更多生态及帮助
 
