@@ -63,6 +63,7 @@ yarn start
 使用命令```bash npm run i18n-remove
 
 ````
+并在config.ts中设置local为false
 
 #### 左侧菜单标题修改
 
@@ -83,6 +84,10 @@ yarn start
 #### 路由添加及修改
 
 根目录中 config 文件夹下修改 routes.ts 文件
+
+#### 权限添加及修改
+
+根目录中 src 文件夹下修改 access.ts 文件
 
 #### 配置请求反向代理
 
