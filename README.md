@@ -81,6 +81,10 @@ yarn start
 
 根目录中 config 文件夹下修改 defaultSettings.ts 文件
 
+#### 页面水印去除
+
+根目录中 src 文件夹下修改 app.tsx中注释waterMarkProps对象
+
 #### 路由添加及修改
 
 根目录中 config 文件夹下修改 routes.ts 文件
@@ -95,7 +99,7 @@ yarn start
 
 #### 配置请求拦截
 
-根目录中 utils 文件夹下修改 app.tsx
+根目录中 src 文件夹下修改 app.tsx
 
 ## 项目打包及发行
 
