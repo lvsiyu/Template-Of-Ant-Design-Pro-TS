@@ -11,6 +11,7 @@ const { REACT_APP_ENV } = process.env;
 export default defineConfig({
   hash: true,
   antd: {},
+  exportStatic: {}, // 静态化部署
   dva: {
     hmr: true,
   },
@@ -30,6 +31,9 @@ export default defineConfig({
   },
   dynamicImport: {
     loading: '@ant-design/pro-layout/es/PageLoading',
+  },
+  history: {
+    type: 'hash',
   },
   targets: {
     ie: 11,
