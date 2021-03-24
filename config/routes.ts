@@ -23,6 +23,7 @@
   },
   {
     path: '/admin',
+    name: '管理页面',
     icon: 'crown',
     access: 'canAdmin',
     component: './Admin',
@@ -46,6 +47,12 @@
     icon: 'AppstoreOutlined',
     path: '/card',
     component: './Card',
+  },
+  {
+    name: '图表页面',
+    icon: 'AreaChartOutlined',
+    path: '/charts',
+    component: './Charts',
   },
   {
     path: '/',

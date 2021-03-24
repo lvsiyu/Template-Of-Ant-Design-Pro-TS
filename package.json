@@ -52,6 +52,7 @@
     "@ant-design/pro-layout": "^6.15.3",
     "@ant-design/pro-table": "^2.30.8",
     "@ant-design/pro-card": "^1.11.4",
+    "@ant-design/charts":"^1.0.21",
     "@umijs/openapi": "^1.1.14",
     "@umijs/plugin-openapi": "^1.2.0",
     "@umijs/route-utils": "^1.0.36",
@@ -103,10 +104,5 @@
   },
   "engines": {
     "node": ">=10.0.0"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   }
 }
