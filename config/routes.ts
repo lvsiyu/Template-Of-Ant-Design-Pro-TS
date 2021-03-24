@@ -56,7 +56,7 @@
   },
   {
     path: '/',
-    redirect: '/user/Login',
+    redirect: '/welcome',
   },
   {
     component: './404',
