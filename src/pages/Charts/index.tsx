@@ -1,22 +1,83 @@
 import React from 'react';
-import { Space, Button } from 'antd';
-import { PageContainer, FooterToolbar } from '@ant-design/pro-layout';
-import ProCard from '@ant-design/pro-card';
+import { Button, Row, Col } from 'antd';
+import { PageContainer } from '@ant-design/pro-layout';
+import { StatisticCard } from '@ant-design/pro-card';
 import { Lines } from './components';
 
 const Charts: React.FC = () => {
   return (
     <PageContainer>
-      <ProCard title="基础折线图">
-        <Lines.BasisLine />
-      </ProCard>
-      <FooterToolbar
-        children={
-          <Space>
-            <Button>返回</Button>
-          </Space>
-        }
-      />
+      <Row gutter={[16, 16]}>
+        <Col span={16}>
+          <StatisticCard
+            title="基础折线图"
+            tip="说明说明"
+            headerBordered
+            style={{ height: '508px' }}
+            chart={<Lines.BasisLine />}
+            extra={<Button type="primary">按钮</Button>}
+          />
+        </Col>
+        <Col span={8}>
+          <Row gutter={[16, 16]}>
+            <Col span={24}>
+              <StatisticCard
+                title="柱状图"
+                tip="说明说明"
+                headerBordered
+                style={{ height: '246px' }}
+                extra={<Button type="primary">按钮</Button>}
+              >
+                111
+              </StatisticCard>
+            </Col>
+            <Col span={24}>
+              <StatisticCard
+                title="饼图"
+                tip="说明说明"
+                headerBordered
+                style={{ height: '246px' }}
+                extra={<Button type="primary">按钮</Button>}
+              >
+                111
+              </StatisticCard>
+            </Col>
+          </Row>
+        </Col>
+        <Col span={12}>
+          <StatisticCard
+            title="条形图"
+            tip="说明说明"
+            headerBordered
+            style={{ height: '250px' }}
+            extra={<Button type="primary">按钮</Button>}
+          >
+            111
+          </StatisticCard>
+        </Col>
+        <Col span={6}>
+          <StatisticCard
+            title="雷达图"
+            tip="说明说明"
+            headerBordered
+            style={{ height: '250px' }}
+            extra={<Button type="primary">按钮</Button>}
+          >
+            111
+          </StatisticCard>
+        </Col>
+        <Col span={6}>
+          <StatisticCard
+            title="词云图"
+            tip="说明说明"
+            headerBordered
+            style={{ height: '250px' }}
+            extra={<Button type="primary">按钮</Button>}
+          >
+            111
+          </StatisticCard>
+        </Col>
+      </Row>
     </PageContainer>
   );
 };
