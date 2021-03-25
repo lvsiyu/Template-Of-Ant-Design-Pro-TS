@@ -60,10 +60,13 @@ yarn start
 
 #### 去除国际化语言
 
-使用命令```bash npm run i18n-remove
+使用命令
 
-````
-并在config.ts中设置local为false
+```bash
+npm run i18n-remove
+```
+
+并在 config.ts 中设置 local 为 false
 
 #### 左侧菜单标题修改
 
@@ -83,7 +86,7 @@ yarn start
 
 #### 页面水印去除
 
-根目录中 src 文件夹下修改 app.tsx中注释waterMarkProps对象
+根目录中 src 文件夹下修改 app.tsx 中注释 waterMarkProps 对象
 
 #### 路由添加及修改
 
@@ -107,7 +110,7 @@ yarn start
 
 ```bash
 npm run build
-````
+```
 
 ## 更多生态及帮助
 
