@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Row, Col } from 'antd';
 import { PageContainer } from '@ant-design/pro-layout';
 import { StatisticCard } from '@ant-design/pro-card';
-import { Lines, Columns, Pies } from './components';
+import { Lines, Columns, Pies, Bars } from './components';
 
 const BizCharts: React.FC = () => {
   return (
@@ -47,11 +47,10 @@ const BizCharts: React.FC = () => {
             title="条形图"
             tip="说明说明"
             headerBordered
-            style={{ height: '250px' }}
+            style={{ height: '300px' }}
+            chart={<Bars.BasisColumn />}
             extra={<Button type="primary">按钮</Button>}
-          >
-            111
-          </StatisticCard>
+          />
         </Col>
         <Col span={6}>
           <StatisticCard
