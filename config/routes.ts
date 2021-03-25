@@ -49,10 +49,21 @@
     component: './Card',
   },
   {
+    path: '/charts',
     name: '图表页面',
     icon: 'AreaChartOutlined',
-    path: '/charts',
-    component: './Charts',
+    routes: [
+      {
+        path: '/charts/antd-charts',
+        name: '使用AntdCharts',
+        component: './Charts/AntdCharts',
+      },
+      {
+        path: '/charts/biz-charts',
+        name: '使用BizCharts',
+        component: './Charts/BizCharts',
+      },
+    ],
   },
   {
     path: '/',

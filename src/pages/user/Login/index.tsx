@@ -99,10 +99,7 @@ const Login: React.FC = () => {
                 size: 'large',
                 prefix: <UserOutlined className={styles.prefixIcon} />,
               }}
-              placeholder={intl.formatMessage({
-                id: 'pages.login.username.placeholder',
-                defaultMessage: '用户名: admin or user',
-              })}
+              placeholder="用户名: admin 或者 user"
               rules={[
                 {
                   required: true,
@@ -116,10 +113,7 @@ const Login: React.FC = () => {
                 size: 'large',
                 prefix: <LockOutlined className={styles.prefixIcon} />,
               }}
-              placeholder={intl.formatMessage({
-                id: 'pages.login.password.placeholder',
-                defaultMessage: '密码: sdkfjeiklasdki',
-              })}
+              placeholder="密码:123456"
               rules={[
                 {
                   required: true,
