@@ -46,7 +46,33 @@
     name: '卡片页面',
     icon: 'AppstoreOutlined',
     path: '/card',
-    component: './Card',
+    routes: [
+      {
+        path: '/card/basis-card',
+        name: '基础卡片',
+        component: './Card/BasisCard',
+      },
+      {
+        path: '/card/inner-card',
+        name: '内部卡片',
+        component: './Card/InnerCard',
+      },
+      {
+        path: '/card/action-card',
+        name: '交互卡片',
+        component: './Card/ActionCard',
+      },
+      {
+        path: '/card/step-card',
+        name: '分步卡片',
+        component: './Card/StepCard',
+      },
+      {
+        path: '/card/pro-card',
+        name: '高级卡片',
+        component: './Card/ProCard',
+      },
+    ],
   },
   {
     path: '/charts',
