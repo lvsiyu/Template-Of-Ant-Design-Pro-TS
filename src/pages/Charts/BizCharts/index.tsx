@@ -14,7 +14,7 @@ const BizCharts: React.FC = () => {
             tip="说明说明"
             headerBordered
             style={{ height: '700' }}
-            chart={<Lines.BasisLine />}
+            chart={<Lines.BasisLine height={461} />}
             extra={<Button type="primary">按钮</Button>}
           />
         </Col>
