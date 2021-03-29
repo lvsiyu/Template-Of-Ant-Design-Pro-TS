@@ -13,12 +13,17 @@ const data = [
   { type: '家庭清洁', sales: 38 },
 ];
 
-const BasisColumn: React.FC = () => {
+export interface BizChartsProps {
+  height: number;
+}
+
+const BasisColumn: React.FC<BizChartsProps> = (props) => {
+  const { height } = props;
   return (
     <ColumnChart
       data={data}
       autoFit
-      height={180}
+      height={height}
       padding="auto"
       xField="type"
       yField="sales"

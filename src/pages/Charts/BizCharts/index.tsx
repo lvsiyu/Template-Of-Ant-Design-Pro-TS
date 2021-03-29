@@ -26,7 +26,7 @@ const BizCharts: React.FC = () => {
                 tip="说明说明"
                 headerBordered
                 style={{ height: '287px' }}
-                chart={<Columns.BasisColumn />}
+                chart={<Columns.BasisColumn height={180} />}
                 extra={<Button type="primary">按钮</Button>}
               />
             </Col>
@@ -36,7 +36,7 @@ const BizCharts: React.FC = () => {
                 tip="说明说明"
                 headerBordered
                 style={{ height: '287px' }}
-                chart={<Pies.BasisPie />}
+                chart={<Pies.BasisPie height={180} />}
                 extra={<Button type="primary">按钮</Button>}
               />
             </Col>
@@ -48,7 +48,7 @@ const BizCharts: React.FC = () => {
             tip="说明说明"
             headerBordered
             style={{ height: '300px' }}
-            chart={<Bars.BasisColumn />}
+            chart={<Bars.BasisColumn height={200} />}
             extra={<Button type="primary">按钮</Button>}
           />
         </Col>
@@ -58,7 +58,7 @@ const BizCharts: React.FC = () => {
             tip="说明说明"
             headerBordered
             style={{ height: '300px' }}
-            chart={<Radars.BasisRadar />}
+            chart={<Radars.BasisRadar height={200} />}
             extra={<Button type="primary">按钮</Button>}
           />
         </Col>
@@ -68,7 +68,7 @@ const BizCharts: React.FC = () => {
             tip="说明说明"
             headerBordered
             style={{ height: '300px' }}
-            chart={<Words.WordCloudChart />}
+            chart={<Words.WordCloudChart height={200} />}
             extra={<Button type="primary">按钮</Button>}
           />
         </Col>

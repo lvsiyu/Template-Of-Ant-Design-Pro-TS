@@ -31,6 +31,10 @@ const data = [
   { value: 4, name: 'Geo' },
 ];
 
+export interface BizChartsProps {
+  height: number;
+}
+
 const getDataList = (listData: any[]) => {
   const list: { word: string; weight: number; id: number }[] = [];
   // change data type
@@ -44,7 +48,8 @@ const getDataList = (listData: any[]) => {
   return list;
 };
 
-const BasisWordCloud: React.FC = () => {
+const BasisWordCloud: React.FC<BizChartsProps> = (props) => {
+  const { height } = props;
   return (
     <WordCloudChart
       data={getDataList(data)}
@@ -55,7 +60,7 @@ const BasisWordCloud: React.FC = () => {
           shadowBlur: 10,
         },
       }}
-      height={200}
+      height={height}
       shuffle={false}
       tooltip={{
         visible: true,

@@ -11,8 +11,13 @@ const data = [
   { 地区: '西北', 销售额: 815039.5959999998 },
 ];
 
-const BasisColumn: React.FC = () => {
-  return <BarChart data={data} autoFit xField="销售额" yField="地区" height={200} />;
+export interface BizChartsProps {
+  height: number;
+}
+
+const BasisColumn: React.FC<BizChartsProps> = (props) => {
+  const { height } = props;
+  return <BarChart data={data} autoFit xField="销售额" yField="地区" height={height} />;
 };
 
 export default BasisColumn;

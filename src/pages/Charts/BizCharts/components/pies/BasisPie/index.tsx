@@ -11,12 +11,17 @@ const data = [
   { type: '其它', value: 5 },
 ];
 
-const BasisPie: React.FC = () => {
+export interface BizChartsProps {
+  height: number;
+}
+
+const BasisPie: React.FC<BizChartsProps> = (props) => {
+  const { height } = props;
   return (
     <PieChart
       data={data}
       radius={0.8}
-      height={180}
+      height={height}
       angleField="value"
       colorField="type"
       label={{

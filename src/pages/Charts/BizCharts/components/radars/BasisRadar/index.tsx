@@ -3,29 +3,34 @@ import { RadarChart } from 'bizcharts';
 
 // 数据源
 const data = [
-  { value: 'Design', user: 'a', score: 70 },
-  { value: 'Design', user: 'b', score: 30 },
-  { value: 'Development', user: 'a', score: 60 },
-  { value: 'Development', user: 'b', score: 70 },
-  { value: 'Marketing', user: 'a', score: 60 },
-  { value: 'Marketing', user: 'b', score: 50 },
-  { value: 'Users', user: 'a', score: 40 },
-  { value: 'Users', user: 'b', score: 50 },
-  { value: 'Test', user: 'a', score: 60 },
-  { value: 'Test', user: 'b', score: 70 },
-  { value: 'Language', user: 'a', score: 70 },
-  { value: 'Language', user: 'b', score: 50 },
-  { value: 'Technology', user: 'a', score: 50 },
-  { value: 'Technology', user: 'b', score: 40 },
-  { value: 'Support', user: 'a', score: 30 },
-  { value: 'Support', user: 'b', score: 40 },
-  { value: 'Sales', user: 'a', score: 60 },
-  { value: 'Sales', user: 'b', score: 40 },
-  { value: 'UX', user: 'a', score: 50 },
-  { value: 'UX', user: 'b', score: 60 },
+  { item: 'Design', user: 'a', score: 70 },
+  { item: 'Design', user: 'b', score: 30 },
+  { item: 'Development', user: 'a', score: 60 },
+  { item: 'Development', user: 'b', score: 70 },
+  { item: 'Marketing', user: 'a', score: 60 },
+  { item: 'Marketing', user: 'b', score: 50 },
+  { item: 'Users', user: 'a', score: 40 },
+  { item: 'Users', user: 'b', score: 50 },
+  { item: 'Test', user: 'a', score: 60 },
+  { item: 'Test', user: 'b', score: 70 },
+  { item: 'Language', user: 'a', score: 70 },
+  { item: 'Language', user: 'b', score: 50 },
+  { item: 'Technology', user: 'a', score: 50 },
+  { item: 'Technology', user: 'b', score: 40 },
+  { item: 'Support', user: 'a', score: 30 },
+  { item: 'Support', user: 'b', score: 40 },
+  { item: 'Sales', user: 'a', score: 60 },
+  { item: 'Sales', user: 'b', score: 40 },
+  { item: 'UX', user: 'a', score: 50 },
+  { item: 'UX', user: 'b', score: 60 },
 ];
 
-const BasisRadar: React.FC = () => {
+export interface BizChartsProps {
+  height: number;
+}
+
+const BasisRadar: React.FC<BizChartsProps> = (props) => {
+  const { height } = props;
   return (
     <RadarChart
       data={data}
@@ -34,7 +39,7 @@ const BasisRadar: React.FC = () => {
       seriesField="user"
       xField="year"
       yField="value"
-      height={200}
+      height={height}
       radiusAxis={{
         grid: {
           line: {
