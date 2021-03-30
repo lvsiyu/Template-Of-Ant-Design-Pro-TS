@@ -14,7 +14,13 @@
 
 #### yarn 包管理器安装
 
-通过 npm 指令下载安装 yarn，进入 cmd 输入：
+通过 npm 指令下载安装 tyarn 或者 yarn，进入 cmd 输入：
+
+```bash
+npm install -g yarn
+```
+
+或者
 
 ```bash
 npm install -g yarn
@@ -37,6 +43,18 @@ git clone xxx
 当项目已经克隆成功后需要安装项目运行的依赖项（node_modules），找到项目，进入项目根目录，使用命令
 
 ```bash
+tyarn
+```
+
+或者
+
+```bash
+tyarn install
+```
+
+或者
+
+```bash
 yarn
 ```
 
@@ -51,7 +69,13 @@ yarn install
 当项目依赖项安装好后，使用命令（如下命令）启动 node 服务，运行项目,启动成功后，根据控制台提示地址，在浏览器中输入对应链接即可查看项目
 
 ```bash
-yarn start
+tyarn start
+```
+
+或者
+
+```bash
+yarn install
 ```
 
 ## 项目基本配置
