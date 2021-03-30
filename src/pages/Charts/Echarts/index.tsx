@@ -23,7 +23,7 @@ const Echarts: React.FC = () => {
               </Col>
               <Col span={8}>
                 <StatisticCard
-                  title="平滑折线图"
+                  title="面积折线图"
                   tip="说明说明"
                   headerBordered
                   bordered
@@ -33,14 +33,13 @@ const Echarts: React.FC = () => {
               </Col>
               <Col span={8}>
                 <StatisticCard
-                  title="基础折线图"
+                  title="平滑折线图"
                   tip="说明说明"
                   headerBordered
                   bordered
+                  chart={<lines.EchartsSmoothLine />}
                   extra={<Button type="primary">按钮</Button>}
-                >
-                  111
-                </StatisticCard>
+                />
               </Col>
               <Col span={8}>
                 <StatisticCard
