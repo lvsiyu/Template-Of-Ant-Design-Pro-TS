@@ -57,6 +57,16 @@ const Echarts: React.FC = () => {
                   extra={<Button type="primary">按钮</Button>}
                 />
               </Col>
+              <Col span={8}>
+                <StatisticCard
+                  title="阶梯折线图"
+                  tip="说明说明"
+                  headerBordered
+                  bordered
+                  chart={<lines.EchartsStepLine />}
+                  extra={<Button type="primary">按钮</Button>}
+                />
+              </Col>
             </Row>
           </ProCard>
         </Col>
