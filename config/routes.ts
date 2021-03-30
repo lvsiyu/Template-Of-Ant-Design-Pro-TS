@@ -89,6 +89,11 @@
         name: '使用BizCharts',
         component: './Charts/BizCharts',
       },
+      {
+        path: '/charts/echarts',
+        name: '使用Echarts',
+        component: './Charts/Echarts',
+      },
     ],
   },
   {

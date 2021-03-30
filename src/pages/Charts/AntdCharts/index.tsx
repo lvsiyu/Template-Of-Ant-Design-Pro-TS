@@ -4,7 +4,7 @@ import { PageContainer } from '@ant-design/pro-layout';
 import { StatisticCard } from '@ant-design/pro-card';
 import { Lines } from './components';
 
-const Charts: React.FC = () => {
+const AntdCharts: React.FC = () => {
   return (
     <PageContainer>
       <Row gutter={[16, 16]}>
@@ -82,4 +82,4 @@ const Charts: React.FC = () => {
   );
 };
 
-export default Charts;
+export default AntdCharts;
