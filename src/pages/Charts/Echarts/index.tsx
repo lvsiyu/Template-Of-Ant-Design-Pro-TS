@@ -67,6 +67,16 @@ const Echarts: React.FC = () => {
                   extra={<Button type="primary">按钮</Button>}
                 />
               </Col>
+              <Col span={8}>
+                <StatisticCard
+                  title="极坐标双手数值轴"
+                  tip="说明说明"
+                  headerBordered
+                  bordered
+                  chart={<lines.EchartsTwoValueAxesInPolarLine />}
+                  extra={<Button type="primary">按钮</Button>}
+                />
+              </Col>
             </Row>
           </ProCard>
         </Col>
