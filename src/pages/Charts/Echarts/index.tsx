@@ -4,12 +4,18 @@ import { PageContainer } from '@ant-design/pro-layout';
 import ProCard, { StatisticCard } from '@ant-design/pro-card';
 import { lines } from './components';
 
+const uri = (
+  <a href="https://echarts.apache.org/examples/zh/index.html" target="_blank" rel="noreferrer">
+    更多示例
+  </a>
+);
+
 const Echarts: React.FC = () => {
   return (
     <PageContainer>
       <Row gutter={[16, 16]}>
         <Col span={24}>
-          <ProCard title="折线图" headerBordered>
+          <ProCard title="折线图" headerBordered extra={uri}>
             <Row gutter={[16, 16]}>
               <Col span={8}>
                 <StatisticCard
@@ -43,20 +49,19 @@ const Echarts: React.FC = () => {
               </Col>
               <Col span={8}>
                 <StatisticCard
-                  title="基础折线图"
+                  title="堆叠区域折线图"
                   tip="说明说明"
                   headerBordered
                   bordered
+                  chart={<lines.EchartsStackedAreaLine />}
                   extra={<Button type="primary">按钮</Button>}
-                >
-                  111
-                </StatisticCard>
+                />
               </Col>
             </Row>
           </ProCard>
         </Col>
         <Col span={24}>
-          <ProCard title="饼图" headerBordered>
+          <ProCard title="饼图" headerBordered extra={uri}>
             <Row gutter={[16, 16]}>
               <Col span={8}>
                 <StatisticCard
