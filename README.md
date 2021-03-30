@@ -17,7 +17,7 @@
 通过 npm 指令下载安装 tyarn 或者 yarn，进入 cmd 输入：
 
 ```bash
-npm install -g yarn
+npm install -g tyarn
 ```
 
 或者
