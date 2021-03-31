@@ -124,6 +124,16 @@ const Echarts: React.FC = () => {
                   extra={<Button type="primary">按钮</Button>}
                 />
               </Col>
+              <Col span={8}>
+                <StatisticCard
+                  title="堆叠柱状图"
+                  tip="说明说明"
+                  headerBordered
+                  bordered
+                  chart={<bars.EchartsStackedBar />}
+                  extra={<Button type="primary">按钮</Button>}
+                />
+              </Col>
             </Row>
           </ProCard>
         </Col>
