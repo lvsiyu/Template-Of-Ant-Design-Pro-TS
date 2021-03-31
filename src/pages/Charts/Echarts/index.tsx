@@ -116,14 +116,13 @@ const Echarts: React.FC = () => {
               </Col>
               <Col span={8}>
                 <StatisticCard
-                  title="基础折线图"
+                  title="旋转标签柱状图"
                   tip="说明说明"
                   headerBordered
                   bordered
+                  chart={<bars.EchartsRotationLabelBar />}
                   extra={<Button type="primary">按钮</Button>}
-                >
-                  111
-                </StatisticCard>
+                />
               </Col>
             </Row>
           </ProCard>
