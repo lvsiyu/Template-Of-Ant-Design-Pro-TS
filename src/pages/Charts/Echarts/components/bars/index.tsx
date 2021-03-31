@@ -3,6 +3,7 @@ import EchartsBackgroundBar from './BackgroundBar';
 import EchartsInteractiveBar from './InteractiveBar';
 import EchartsRotationLabelBar from './RotationLabelBar';
 import EchartsStackedBar from './StackedBar';
+import EchartsRoundedBar from './RoundedBar';
 
 export {
   EchartsBasisBar,
@@ -10,4 +11,5 @@ export {
   EchartsInteractiveBar,
   EchartsRotationLabelBar,
   EchartsStackedBar,
+  EchartsRoundedBar,
 };
