@@ -96,14 +96,13 @@ const Echarts: React.FC = () => {
               </Col>
               <Col span={8}>
                 <StatisticCard
-                  title="基础折线图"
+                  title="带背景的柱状图"
                   tip="说明说明"
                   headerBordered
                   bordered
+                  chart={<bars.EchartsBackgroundBar />}
                   extra={<Button type="primary">按钮</Button>}
-                >
-                  111
-                </StatisticCard>
+                />
               </Col>
               <Col span={8}>
                 <StatisticCard
