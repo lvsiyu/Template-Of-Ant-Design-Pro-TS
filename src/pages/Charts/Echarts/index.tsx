@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Row, Col } from 'antd';
 import { PageContainer } from '@ant-design/pro-layout';
 import ProCard, { StatisticCard } from '@ant-design/pro-card';
-import { lines } from './components';
+import { lines, bars } from './components';
 
 const uri = (
   <a href="https://echarts.apache.org/examples/zh/index.html" target="_blank" rel="noreferrer">
@@ -80,6 +80,57 @@ const Echarts: React.FC = () => {
             </Row>
           </ProCard>
         </Col>
+
+        <Col span={24}>
+          <ProCard title="柱状图" headerBordered extra={uri}>
+            <Row gutter={[16, 16]}>
+              <Col span={8}>
+                <StatisticCard
+                  title="基础柱状图"
+                  tip="说明说明"
+                  headerBordered
+                  bordered
+                  chart={<bars.EchartsBasisBar />}
+                  extra={<Button type="primary">按钮</Button>}
+                />
+              </Col>
+              <Col span={8}>
+                <StatisticCard
+                  title="基础折线图"
+                  tip="说明说明"
+                  headerBordered
+                  bordered
+                  extra={<Button type="primary">按钮</Button>}
+                >
+                  111
+                </StatisticCard>
+              </Col>
+              <Col span={8}>
+                <StatisticCard
+                  title="基础折线图"
+                  tip="说明说明"
+                  headerBordered
+                  bordered
+                  extra={<Button type="primary">按钮</Button>}
+                >
+                  111
+                </StatisticCard>
+              </Col>
+              <Col span={8}>
+                <StatisticCard
+                  title="基础折线图"
+                  tip="说明说明"
+                  headerBordered
+                  bordered
+                  extra={<Button type="primary">按钮</Button>}
+                >
+                  111
+                </StatisticCard>
+              </Col>
+            </Row>
+          </ProCard>
+        </Col>
+
         <Col span={24}>
           <ProCard title="饼图" headerBordered extra={uri}>
             <Row gutter={[16, 16]}>
