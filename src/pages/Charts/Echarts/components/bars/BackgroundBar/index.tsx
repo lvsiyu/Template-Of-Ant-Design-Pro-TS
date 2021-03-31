@@ -3,7 +3,10 @@ import ReactEcharts from 'echarts-for-react';
 
 const EchartsBackgroundBar: React.FC = () => {
   const getOption = {
-    tooltip: {
+    title: {
+      text: '特性示例：背景拥有浅色覆盖',
+    },
+    /* tooltip: {
       trigger: 'axis',
       axisPointer: {
         // 坐标轴指示器，坐标轴触发有效
@@ -15,7 +18,7 @@ const EchartsBackgroundBar: React.FC = () => {
       right: '4%',
       bottom: '3%',
       containLabel: true,
-    },
+    }, */
     xAxis: {
       type: 'category',
       data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],

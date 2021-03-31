@@ -3,7 +3,7 @@ import ReactEcharts from 'echarts-for-react';
 
 const EchartsBasisBar: React.FC = () => {
   const getOption = {
-    tooltip: {
+    /* tooltip: {
       trigger: 'axis',
       axisPointer: {
         // 坐标轴指示器，坐标轴触发有效
@@ -15,7 +15,7 @@ const EchartsBasisBar: React.FC = () => {
       right: '4%',
       bottom: '3%',
       containLabel: true,
-    },
+    }, */
     xAxis: [
       {
         type: 'category',
