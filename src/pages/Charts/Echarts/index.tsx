@@ -106,7 +106,7 @@ const Echarts: React.FC = () => {
               </Col>
               <Col span={8}>
                 <StatisticCard
-                  title="基础折线图"
+                  title="交互柱状图"
                   tip="说明说明"
                   headerBordered
                   bordered

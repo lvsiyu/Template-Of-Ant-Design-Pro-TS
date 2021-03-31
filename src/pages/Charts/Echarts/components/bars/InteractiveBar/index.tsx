@@ -53,7 +53,7 @@ for (let i = 0; i < data.length; i += 1) {
   dataShadow.push(yMax);
 }
 
-const EchartsInteractiveBar: React.FC<ReactEcharts> = () => {
+const EchartsInteractiveBar: React.FC = () => {
   const getOption = {
     title: {
       text: '特性示例：渐变色 阴影 点击缩放',
