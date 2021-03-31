@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Skeleton } from 'antd';
 import ReactEcharts from 'echarts-for-react';
+import { queryEchartsBasisLine } from '@/pages/Charts/Echarts/services';
 
 const EchartsBasisLine: React.FC = () => {
+  const [echartsBasisLineData, setEchartsBasisLineData] = useState([]);
+
+  useEffect(() => {
+    queryEchartsBasisLine().then(({ data }) => setEchartsBasisLineData(data || []));
+  }, []);
+
   const getOption = {
     xAxis: {
       type: 'category',
@@ -12,13 +20,17 @@ const EchartsBasisLine: React.FC = () => {
     },
     series: [
       {
-        data: [150, 230, 224, 218, 135, 147, 260],
+        data: echartsBasisLineData,
         type: 'line',
       },
     ],
   };
 
-  return <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />;
+  return (
+    <Skeleton active round loading={echartsBasisLineData && echartsBasisLineData.length === 0}>
+      <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />
+    </Skeleton>
+  );
 };
 
 export default EchartsBasisLine;
