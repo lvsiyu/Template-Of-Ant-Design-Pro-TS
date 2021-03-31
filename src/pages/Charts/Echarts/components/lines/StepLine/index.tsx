@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Skeleton } from 'antd';
 import ReactEcharts from 'echarts-for-react';
+import { queryEchartsStepLine } from '@/pages/Charts/Echarts/services';
 
 const EchartsStepLine: React.FC = () => {
+  const [echartsStepLineData, setEchartsStepLineData] = useState([] as any);
+
+  useEffect(() => {
+    queryEchartsStepLine().then(({ data }) => setEchartsStepLineData(data || []));
+  }, []);
+
   const getOption = {
     legend: {
       data: ['Step Start', 'Step Middle', 'Step End'],
@@ -29,24 +37,28 @@ const EchartsStepLine: React.FC = () => {
         name: 'Step Start',
         type: 'line',
         step: 'start',
-        data: [120, 132, 101, 134, 90, 230, 210],
+        data: echartsStepLineData.data1,
       },
       {
         name: 'Step Middle',
         type: 'line',
         step: 'middle',
-        data: [220, 282, 201, 234, 290, 430, 410],
+        data: echartsStepLineData.data2,
       },
       {
         name: 'Step End',
         type: 'line',
         step: 'end',
-        data: [450, 432, 401, 454, 590, 530, 510],
+        data: echartsStepLineData.data3,
       },
     ],
   };
 
-  return <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />;
+  return (
+    <Skeleton active round loading={echartsStepLineData && echartsStepLineData.length === 0}>
+      <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />
+    </Skeleton>
+  );
 };
 
 export default EchartsStepLine;

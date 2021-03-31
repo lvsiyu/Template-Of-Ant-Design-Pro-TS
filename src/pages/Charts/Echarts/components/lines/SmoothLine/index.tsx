@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Skeleton } from 'antd';
 import ReactEcharts from 'echarts-for-react';
+import { queryEchartsSmoothLine } from '@/pages/Charts/Echarts/services';
 
 const EchartsSmoothLine: React.FC = () => {
+  const [echartsSmoothLineData, setEchartsSmoothLineData] = useState([]);
+
+  useEffect(() => {
+    queryEchartsSmoothLine().then(({ data }) => setEchartsSmoothLineData(data || []));
+  }, []);
+
   const getOption = {
     xAxis: {
       type: 'category',
@@ -12,14 +20,18 @@ const EchartsSmoothLine: React.FC = () => {
     },
     series: [
       {
-        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        data: echartsSmoothLineData,
         type: 'line',
         smooth: true,
       },
     ],
   };
 
-  return <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />;
+  return (
+    <Skeleton active round loading={echartsSmoothLineData && echartsSmoothLineData.length === 0}>
+      <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />
+    </Skeleton>
+  );
 };
 
 export default EchartsSmoothLine;

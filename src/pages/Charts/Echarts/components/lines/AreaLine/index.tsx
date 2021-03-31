@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Skeleton } from 'antd';
 import ReactEcharts from 'echarts-for-react';
+import { queryEchartsAreaLine } from '@/pages/Charts/Echarts/services';
 
 const EchartsAreaLine: React.FC = () => {
+  const [echartsAreaLineData, setEchartsAreaLineData] = useState([]);
+
+  useEffect(() => {
+    queryEchartsAreaLine().then(({ data }) => setEchartsAreaLineData(data || []));
+  }, []);
+
   const getOption = {
     xAxis: {
       type: 'category',
@@ -13,14 +21,18 @@ const EchartsAreaLine: React.FC = () => {
     },
     series: [
       {
-        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        data: echartsAreaLineData,
         type: 'line',
         areaStyle: {},
       },
     ],
   };
 
-  return <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />;
+  return (
+    <Skeleton active round loading={echartsAreaLineData && echartsAreaLineData.length === 0}>
+      <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />
+    </Skeleton>
+  );
 };
 
 export default EchartsAreaLine;

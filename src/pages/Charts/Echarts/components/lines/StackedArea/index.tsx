@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Skeleton } from 'antd';
 import ReactEcharts from 'echarts-for-react';
+import { queryEchartsStackedAreaLine } from '@/pages/Charts/Echarts/services';
 
 const EchartsStackedAreaLine: React.FC = () => {
+  const [echartsStackedAreaLineData, setEchartsStakedAreaLineData] = useState([] as any);
+
+  useEffect(() => {
+    queryEchartsStackedAreaLine().then(({ data }) => setEchartsStakedAreaLineData(data || []));
+  }, []);
+
   const getOption = {
     tooltip: {
       trigger: 'axis',
@@ -42,7 +50,7 @@ const EchartsStackedAreaLine: React.FC = () => {
         emphasis: {
           focus: 'series',
         },
-        data: [120, 132, 101, 134, 90, 230, 210],
+        data: echartsStackedAreaLineData.data1,
       },
       {
         name: '联盟广告',
@@ -52,7 +60,7 @@ const EchartsStackedAreaLine: React.FC = () => {
         emphasis: {
           focus: 'series',
         },
-        data: [220, 182, 191, 234, 290, 330, 310],
+        data: echartsStackedAreaLineData.data2,
       },
       {
         name: '视频广告',
@@ -62,7 +70,7 @@ const EchartsStackedAreaLine: React.FC = () => {
         emphasis: {
           focus: 'series',
         },
-        data: [150, 232, 201, 154, 190, 330, 410],
+        data: echartsStackedAreaLineData.data3,
       },
       {
         name: '直接访问',
@@ -72,7 +80,7 @@ const EchartsStackedAreaLine: React.FC = () => {
         emphasis: {
           focus: 'series',
         },
-        data: [320, 332, 301, 334, 390, 330, 320],
+        data: echartsStackedAreaLineData.data4,
       },
       {
         name: '搜索引擎',
@@ -86,12 +94,20 @@ const EchartsStackedAreaLine: React.FC = () => {
         emphasis: {
           focus: 'series',
         },
-        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        data: echartsStackedAreaLineData.data5,
       },
     ],
   };
 
-  return <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />;
+  return (
+    <Skeleton
+      active
+      round
+      loading={echartsStackedAreaLineData && echartsStackedAreaLineData.length === 0}
+    >
+      <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />
+    </Skeleton>
+  );
 };
 
 export default EchartsStackedAreaLine;

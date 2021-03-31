@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Skeleton } from 'antd';
 import ReactEcharts from 'echarts-for-react';
-
-const data: number[][] = [];
-
-for (let i = 0; i <= 360; i += 1) {
-  const t = (i / 180) * Math.PI;
-  const r = Math.sin(2 * t) * Math.cos(2 * t);
-  data.push([r, i]);
-}
+import { queryEchartsTwoValueAxesInPolarLine } from '@/pages/Charts/Echarts/services';
 
 const EchartsTwoValueAxesInPolarLine: React.FC = () => {
+  const [echartsTwoValueAxesInPolarLineData, setEchartsTwoValueAxesInPolarLineData] = useState([]);
+
+  useEffect(() => {
+    queryEchartsTwoValueAxesInPolarLine().then(({ data }) =>
+      setEchartsTwoValueAxesInPolarLineData(data || []),
+    );
+  }, []);
+
   const getOption = {
     polar: {
       center: ['50%', '54%'],
@@ -33,12 +35,22 @@ const EchartsTwoValueAxesInPolarLine: React.FC = () => {
         name: 'line',
         type: 'line',
         showSymbol: false,
-        data,
+        data: echartsTwoValueAxesInPolarLineData,
       },
     ],
   };
 
-  return <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />;
+  return (
+    <Skeleton
+      active
+      round
+      loading={
+        echartsTwoValueAxesInPolarLineData && echartsTwoValueAxesInPolarLineData.length === 0
+      }
+    >
+      <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />
+    </Skeleton>
+  );
 };
 
 export default EchartsTwoValueAxesInPolarLine;
