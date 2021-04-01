@@ -240,6 +240,24 @@ const getEchartsSpeicalLabelPie = async (req: Request, res: Response) => {
   });
 };
 
+const getEchartsNestedPie = async (req: Request, res: Response) => {
+  await waitTime(1000);
+  res.send({
+    code: 200,
+    data: [
+      { value: 1048, name: '百度' },
+      { value: 335, name: '直达' },
+      { value: 310, name: '邮件营销' },
+      { value: 251, name: '谷歌' },
+      { value: 234, name: '联盟广告' },
+      { value: 147, name: '必应' },
+      { value: 135, name: '视频广告' },
+      { value: 102, name: '其他' },
+    ],
+    msg: 'success',
+  });
+};
+
 export default {
   'GET /api/charts/echarts/lines/basisLine': getEchartsBasisLine,
   'GET /api/charts/echarts/lines/areaLine': getEchartsAreaLine,
@@ -258,4 +276,5 @@ export default {
   'GET /api/charts/echarts/pies/texturePie': getEchartsTexturePie,
   'GET /api/charts/echarts/pies/rosePie': getEchartsRosePie,
   'GET /api/charts/echarts/pies/speicalLabelPie': getEchartsSpeicalLabelPie,
+  'GET /api/charts/echarts/pies/nestedPie': getEchartsNestedPie,
 };
