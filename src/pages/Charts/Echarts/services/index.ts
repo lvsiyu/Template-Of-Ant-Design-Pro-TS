@@ -55,3 +55,7 @@ export async function queryEchartsBasisPie() {
 export async function queryEchartsRingPie() {
   return request('/api/charts/echarts/pies/ringPie');
 }
+
+export async function queryEchartsTexturePie() {
+  return request('/api/charts/echarts/pies/texturePie');
+}
