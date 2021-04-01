@@ -47,3 +47,7 @@ export async function queryEchartsStackedBar() {
 export async function queryEchartsRounderBar() {
   return request('/api/charts/echarts/bars/rounderBar');
 }
+
+export async function queryEchartsBasisPie() {
+  return request('/api/charts/echarts/bars/basisPie');
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Row, Col } from 'antd';
 import { PageContainer } from '@ant-design/pro-layout';
 import ProCard, { StatisticCard } from '@ant-design/pro-card';
-import { lines, bars } from './components';
+import { lines, bars, pies } from './components';
 
 const uri = (
   <a href="https://echarts.apache.org/examples/zh/index.html" target="_blank" rel="noreferrer">
@@ -153,14 +153,13 @@ const Echarts: React.FC = () => {
             <Row gutter={[16, 16]}>
               <Col span={8}>
                 <StatisticCard
-                  title="基础折线图"
+                  title="基础饼图"
                   tip="说明说明"
                   headerBordered
                   bordered
+                  chart={<pies.EchartsBasisPie />}
                   extra={<Button type="primary">按钮</Button>}
-                >
-                  111
-                </StatisticCard>
+                />
               </Col>
               <Col span={8}>
                 <StatisticCard
