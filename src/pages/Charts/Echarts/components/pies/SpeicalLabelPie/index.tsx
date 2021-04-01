@@ -128,7 +128,7 @@ const EchartsSpeicalLabelPie: React.FC = () => {
       {
         type: 'pie',
         radius: '65%',
-        center: ['50%', '50%'],
+        center: ['30%', '50%'],
         selectedMode: 'single',
         data: echartsSpeicalLabelPieData,
         emphasis: {
