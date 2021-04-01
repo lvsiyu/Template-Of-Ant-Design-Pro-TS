@@ -1,0 +1,156 @@
+import React, { useState, useEffect } from 'react';
+import { Skeleton } from 'antd';
+import ReactEcharts from 'echarts-for-react';
+import { queryEchartsSpeicalLabelPie } from '@/pages/Charts/Echarts/services';
+import cloudy from '@/asserts/img/cloudy.png';
+import showers from '@/asserts/img/showers.png';
+import sunny from '@/asserts/img/sunny.png';
+
+interface RingPieDatas {
+  value: number;
+  name: string;
+}
+
+const weatherIcons = {
+  Sunny: sunny,
+  Cloudy: cloudy,
+  Showers: showers,
+};
+
+const labelData = {
+  label: {
+    formatter: [
+      '{title|{b}}{abg|}',
+      '  {weatherHead|天气}{valueHead|天数}{rateHead|占比}',
+      '{hr|}',
+      '  {Sunny|}{value|202}{rate|55.3%}',
+      '  {Cloudy|}{value|142}{rate|38.9%}',
+      '  {Showers|}{value|21}{rate|5.8%}',
+    ].join('\n'),
+    backgroundColor: '#eee',
+    borderColor: '#777',
+    borderWidth: 1,
+    borderRadius: 4,
+    rich: {
+      title: {
+        color: '#eee',
+        align: 'center',
+      },
+      abg: {
+        backgroundColor: '#333',
+        width: '100%',
+        align: 'right',
+        height: 25,
+        borderRadius: [4, 4, 0, 0],
+      },
+      Sunny: {
+        height: 30,
+        align: 'left',
+        backgroundColor: {
+          image: weatherIcons.Sunny,
+        },
+      },
+      Cloudy: {
+        height: 30,
+        align: 'left',
+        backgroundColor: {
+          image: weatherIcons.Cloudy,
+        },
+      },
+      Showers: {
+        height: 30,
+        align: 'left',
+        backgroundColor: {
+          image: weatherIcons.Showers,
+        },
+      },
+      weatherHead: {
+        color: '#333',
+        height: 24,
+        align: 'left',
+      },
+      hr: {
+        borderColor: '#777',
+        width: '100%',
+        borderWidth: 0.5,
+        height: 0,
+      },
+      value: {
+        width: 20,
+        padding: [0, 20, 0, 30],
+        align: 'left',
+      },
+      valueHead: {
+        color: '#333',
+        width: 20,
+        padding: [0, 20, 0, 30],
+        align: 'center',
+      },
+      rate: {
+        width: 40,
+        align: 'right',
+        padding: [0, 10, 0, 0],
+      },
+      rateHead: {
+        color: '#333',
+        width: 40,
+        align: 'center',
+        padding: [0, 10, 0, 0],
+      },
+    },
+  },
+};
+
+const EchartsSpeicalLabelPie: React.FC = () => {
+  const [echartsSpeicalLabelPieData, setEchartsSpeicalLabelPieData] = useState(
+    [] as RingPieDatas[],
+  );
+
+  useEffect(() => {
+    queryEchartsSpeicalLabelPie().then(({ data }) => setEchartsSpeicalLabelPieData(data || []));
+  }, []);
+
+  if (echartsSpeicalLabelPieData.length > 0) {
+    echartsSpeicalLabelPieData[0] = Object.assign(echartsSpeicalLabelPieData[0], labelData);
+  }
+
+  const getOption = {
+    tooltip: {
+      trigger: 'item',
+      formatter: '{a} <br/>{b} : {c} ({d}%)',
+    },
+    legend: {
+      bottom: 10,
+      left: 'center',
+      data: ['西凉', '益州', '兖州', '荆州', '幽州'],
+    },
+    series: [
+      {
+        type: 'pie',
+        radius: '65%',
+        center: ['50%', '50%'],
+        selectedMode: 'single',
+        data: echartsSpeicalLabelPieData,
+        emphasis: {
+          itemStyle: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)',
+          },
+        },
+      },
+    ],
+  };
+
+  return (
+    <Skeleton
+      active
+      round
+      loading={echartsSpeicalLabelPieData && echartsSpeicalLabelPieData.length === 0}
+    >
+      <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />
+    </Skeleton>
+  );
+};
+
+export default EchartsSpeicalLabelPie;

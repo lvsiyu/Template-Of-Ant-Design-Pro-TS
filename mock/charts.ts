@@ -225,6 +225,21 @@ const getEchartsRosePie = async (req: Request, res: Response) => {
   });
 };
 
+const getEchartsSpeicalLabelPie = async (req: Request, res: Response) => {
+  await waitTime(1000);
+  res.send({
+    code: 200,
+    data: [
+      { value: 1548, name: '幽州' },
+      { value: 735, name: '荆州' },
+      { value: 510, name: '兖州' },
+      { value: 434, name: '益州' },
+      { value: 335, name: '西凉' },
+    ],
+    msg: 'success',
+  });
+};
+
 export default {
   'GET /api/charts/echarts/lines/basisLine': getEchartsBasisLine,
   'GET /api/charts/echarts/lines/areaLine': getEchartsAreaLine,
@@ -242,4 +257,5 @@ export default {
   'GET /api/charts/echarts/pies/ringPie': getEchartsRingPie,
   'GET /api/charts/echarts/pies/texturePie': getEchartsTexturePie,
   'GET /api/charts/echarts/pies/rosePie': getEchartsRosePie,
+  'GET /api/charts/echarts/pies/speicalLabelPie': getEchartsSpeicalLabelPie,
 };

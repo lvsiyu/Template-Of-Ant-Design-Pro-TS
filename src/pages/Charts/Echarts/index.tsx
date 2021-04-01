@@ -191,6 +191,16 @@ const Echarts: React.FC = () => {
                   extra={<Button type="primary">按钮</Button>}
                 />
               </Col>
+              <Col span={8}>
+                <StatisticCard
+                  title="自定义标签"
+                  tip="说明说明"
+                  headerBordered
+                  bordered
+                  chart={<pies.EchartsSpeicalLabelPie />}
+                  extra={<Button type="primary">按钮</Button>}
+                />
+              </Col>
             </Row>
           </ProCard>
         </Col>

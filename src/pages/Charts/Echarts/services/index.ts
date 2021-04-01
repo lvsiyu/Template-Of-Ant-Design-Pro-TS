@@ -63,3 +63,7 @@ export async function queryEchartsTexturePie() {
 export async function queryEchartsRosePie() {
   return request('/api/charts/echarts/pies/rosePie');
 }
+
+export async function queryEchartsSpeicalLabelPie() {
+  return request('/api/charts/echarts/pies/speicalLabelPie');
+}
