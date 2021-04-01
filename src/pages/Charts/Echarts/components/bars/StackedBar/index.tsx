@@ -1,7 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Skeleton } from 'antd';
 import ReactEcharts from 'echarts-for-react';
+import { queryEchartsStackedBar } from '@/pages/Charts/Echarts/services';
+
+interface StackedBarDatas {
+  data1: number[];
+  data2: number[];
+  data3: number[];
+  data4: number[];
+  data5: number[];
+  data6: number[];
+  data7: number[];
+  data8: number[];
+  data9: number[];
+}
 
 const EchartsStackedBar: React.FC = () => {
+  const [echartsStackedBarData, setEchartsStackedBarData] = useState({} as StackedBarDatas);
+
+  useEffect(() => {
+    queryEchartsStackedBar().then(({ data }) => setEchartsStackedBarData(data || []));
+  }, []);
+
   const getOption = {
     tooltip: {
       trigger: 'axis',
@@ -47,7 +67,7 @@ const EchartsStackedBar: React.FC = () => {
         emphasis: {
           focus: 'series',
         },
-        data: [320, 332, 301, 334, 390, 330, 320],
+        data: echartsStackedBarData.data1,
       },
       {
         name: '邮件营销',
@@ -56,7 +76,7 @@ const EchartsStackedBar: React.FC = () => {
         emphasis: {
           focus: 'series',
         },
-        data: [120, 132, 101, 134, 90, 230, 210],
+        data: echartsStackedBarData.data2,
       },
       {
         name: '联盟广告',
@@ -65,7 +85,7 @@ const EchartsStackedBar: React.FC = () => {
         emphasis: {
           focus: 'series',
         },
-        data: [220, 182, 191, 234, 290, 330, 310],
+        data: echartsStackedBarData.data3,
       },
       {
         name: '视频广告',
@@ -74,12 +94,12 @@ const EchartsStackedBar: React.FC = () => {
         emphasis: {
           focus: 'series',
         },
-        data: [150, 232, 201, 154, 190, 330, 410],
+        data: echartsStackedBarData.data4,
       },
       {
         name: '搜索引擎',
         type: 'bar',
-        data: [862, 1018, 964, 1026, 1679, 1600, 1570],
+        data: echartsStackedBarData.data5,
         emphasis: {
           focus: 'series',
         },
@@ -98,7 +118,7 @@ const EchartsStackedBar: React.FC = () => {
         emphasis: {
           focus: 'series',
         },
-        data: [620, 732, 701, 734, 1090, 1130, 1120],
+        data: echartsStackedBarData.data6,
       },
       {
         name: '谷歌',
@@ -107,7 +127,7 @@ const EchartsStackedBar: React.FC = () => {
         emphasis: {
           focus: 'series',
         },
-        data: [120, 132, 101, 134, 290, 230, 220],
+        data: echartsStackedBarData.data7,
       },
       {
         name: '必应',
@@ -116,7 +136,7 @@ const EchartsStackedBar: React.FC = () => {
         emphasis: {
           focus: 'series',
         },
-        data: [60, 72, 71, 74, 190, 130, 110],
+        data: echartsStackedBarData.data8,
       },
       {
         name: '其他',
@@ -125,12 +145,20 @@ const EchartsStackedBar: React.FC = () => {
         emphasis: {
           focus: 'series',
         },
-        data: [62, 82, 91, 84, 109, 110, 120],
+        data: echartsStackedBarData.data9,
       },
     ],
   };
 
-  return <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />;
+  return (
+    <Skeleton
+      active
+      round
+      loading={echartsStackedBarData && Object.keys(echartsStackedBarData).length === 0}
+    >
+      <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />
+    </Skeleton>
+  );
 };
 
 export default EchartsStackedBar;

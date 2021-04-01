@@ -35,3 +35,15 @@ export async function queryEchartsBackgroundBar() {
 export async function queryEchartsInteractiveBar() {
   return request('/api/charts/echarts/bars/interactiveBar');
 }
+
+export async function queryEchartsRotationLabelBar() {
+  return request('/api/charts/echarts/bars/rotationLabelBar');
+}
+
+export async function queryEchartsStackedBar() {
+  return request('/api/charts/echarts/bars/stackedBar');
+}
+
+export async function queryEchartsRounderBar() {
+  return request('/api/charts/echarts/bars/rounderBar');
+}

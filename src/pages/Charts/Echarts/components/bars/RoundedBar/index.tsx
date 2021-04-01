@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Skeleton } from 'antd';
 import ReactEcharts from 'echarts-for-react';
+import { queryEchartsRounderBar } from '@/pages/Charts/Echarts/services';
+
+interface RounderBarDatas {
+  data1: number[];
+  data2: number[];
+}
 
 const EchartsRoundedBar: React.FC = () => {
+  const [echartsRounderBarData, setEchartsRounderBarData] = useState({} as RounderBarDatas);
+
+  useEffect(() => {
+    queryEchartsRounderBar().then(({ data }) => setEchartsRounderBarData(data || []));
+  }, []);
+
   const getOption = {
     angleAxis: {
       max: 2,
@@ -19,7 +32,7 @@ const EchartsRoundedBar: React.FC = () => {
     series: [
       {
         type: 'bar',
-        data: [4, 3, 2, 1, 0],
+        data: echartsRounderBarData.data1,
         coordinateSystem: 'polar',
         name: 'Without Round Cap',
         itemStyle: {
@@ -30,7 +43,7 @@ const EchartsRoundedBar: React.FC = () => {
       },
       {
         type: 'bar',
-        data: [4, 3, 2, 1, 0],
+        data: echartsRounderBarData.data1,
         coordinateSystem: 'polar',
         name: 'With Round Cap',
         roundCap: true,
@@ -47,7 +60,15 @@ const EchartsRoundedBar: React.FC = () => {
     },
   };
 
-  return <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />;
+  return (
+    <Skeleton
+      active
+      round
+      loading={echartsRounderBarData && Object.keys(echartsRounderBarData).length === 0}
+    >
+      <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />
+    </Skeleton>
+  );
 };
 
 export default EchartsRoundedBar;

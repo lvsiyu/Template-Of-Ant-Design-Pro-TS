@@ -113,7 +113,11 @@ const EchartsInteractiveBar: React.FC = () => {
   };
 
   return (
-    <Skeleton active round loading={Object.keys(echartsInteractiveBarData).length === 0}>
+    <Skeleton
+      active
+      round
+      loading={echartsInteractiveBarData && Object.keys(echartsInteractiveBarData).length === 0}
+    >
       <ReactEcharts
         option={getOption}
         onEvents={{

@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Skeleton } from 'antd';
 import ReactEcharts from 'echarts-for-react';
+import { queryEchartsRotationLabelBar } from '@/pages/Charts/Echarts/services';
 
 const labelOption = {
   show: true,
@@ -15,7 +17,22 @@ const labelOption = {
   },
 };
 
+interface RotationLabelBarDatas {
+  data1: number[];
+  data2: number[];
+  data3: number[];
+  data4: number[];
+}
+
 const EchartsRotationLabelBar: React.FC = () => {
+  const [echartsRotationLabelBarData, setEchartsRotationLabelBarData] = useState(
+    {} as RotationLabelBarDatas,
+  );
+
+  useEffect(() => {
+    queryEchartsRotationLabelBar().then(({ data }) => setEchartsRotationLabelBarData(data || []));
+  }, []);
+
   const getOption = {
     tooltip: {
       trigger: 'axis',
@@ -60,7 +77,7 @@ const EchartsRotationLabelBar: React.FC = () => {
         emphasis: {
           focus: 'series',
         },
-        data: [320, 332, 301, 334, 390],
+        data: echartsRotationLabelBarData.data1,
       },
       {
         name: 'Steppe',
@@ -69,7 +86,7 @@ const EchartsRotationLabelBar: React.FC = () => {
         emphasis: {
           focus: 'series',
         },
-        data: [220, 182, 191, 234, 290],
+        data: echartsRotationLabelBarData.data2,
       },
       {
         name: 'Desert',
@@ -78,7 +95,7 @@ const EchartsRotationLabelBar: React.FC = () => {
         emphasis: {
           focus: 'series',
         },
-        data: [150, 232, 201, 154, 190],
+        data: echartsRotationLabelBarData.data3,
       },
       {
         name: 'Wetland',
@@ -87,12 +104,20 @@ const EchartsRotationLabelBar: React.FC = () => {
         emphasis: {
           focus: 'series',
         },
-        data: [98, 77, 101, 99, 40],
+        data: echartsRotationLabelBarData.data4,
       },
     ],
   };
 
-  return <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />;
+  return (
+    <Skeleton
+      active
+      round
+      loading={echartsRotationLabelBarData && Object.keys(echartsRotationLabelBarData).length === 0}
+    >
+      <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />
+    </Skeleton>
+  );
 };
 
 export default EchartsRotationLabelBar;
