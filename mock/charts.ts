@@ -9,7 +9,7 @@ const waitTime = (time: number = 100) => {
 };
 
 const getEchartsBasisLine = async (req: Request, res: Response) => {
-  await waitTime(2000);
+  await waitTime(1000);
   res.send({
     code: 200,
     data: [150, 230, 224, 218, 135, 147, 260],
@@ -18,7 +18,7 @@ const getEchartsBasisLine = async (req: Request, res: Response) => {
 };
 
 const getEchartsAreaLine = async (req: Request, res: Response) => {
-  await waitTime(2000);
+  await waitTime(1000);
   res.send({
     code: 200,
     data: [820, 932, 901, 934, 1290, 1330, 1320],
@@ -27,7 +27,7 @@ const getEchartsAreaLine = async (req: Request, res: Response) => {
 };
 
 const getEchartsSmoothLine = async (req: Request, res: Response) => {
-  await waitTime(2000);
+  await waitTime(1000);
   res.send({
     code: 200,
     data: [820, 932, 901, 934, 1290, 1330, 1320],
@@ -36,7 +36,7 @@ const getEchartsSmoothLine = async (req: Request, res: Response) => {
 };
 
 const getEchartsStackedAreaLine = async (req: Request, res: Response) => {
-  await waitTime(2000);
+  await waitTime(1000);
   res.send({
     code: 200,
     data: {
@@ -51,7 +51,7 @@ const getEchartsStackedAreaLine = async (req: Request, res: Response) => {
 };
 
 const getEchartsStepLine = async (req: Request, res: Response) => {
-  await waitTime(2000);
+  await waitTime(1000);
   res.send({
     code: 200,
     data: {
@@ -64,7 +64,7 @@ const getEchartsStepLine = async (req: Request, res: Response) => {
 };
 
 const getEchartsTwoValueAxesInPolarLine = async (req: Request, res: Response) => {
-  await waitTime(2000);
+  await waitTime(1000);
   const data: number[][] = [];
 
   for (let i = 0; i <= 360; i += 1) {
@@ -79,6 +79,44 @@ const getEchartsTwoValueAxesInPolarLine = async (req: Request, res: Response) =>
   });
 };
 
+const getEchartsBasisBar = async (req: Request, res: Response) => {
+  await waitTime(1000);
+  res.send({
+    code: 200,
+    data: [820, 932, 901, 934, 1290, 1330, 1320],
+    msg: 'success',
+  });
+};
+
+const getEchartsBackgroundBar = async (req: Request, res: Response) => {
+  await waitTime(1000);
+  res.send({
+    code: 200,
+    data: [120, 200, 150, 80, 70, 110, 130],
+    msg: 'success',
+  });
+};
+
+const getEchartsInteractiveBar = async (req: Request, res: Response) => {
+  await waitTime(1000);
+  const str = '点击主子或者两指在触屏上滑动能够自动缩放';
+  const textArr = [];
+  const dataArr = [];
+  for (let i of str) {
+    textArr.push(i);
+    dataArr.push(Math.floor(Math.random() * 130 + 90));
+  }
+
+  res.send({
+    code: 200,
+    data: {
+      data1: textArr,
+      data2: dataArr,
+    },
+    msg: 'success',
+  });
+};
+
 export default {
   'GET /api/charts/echarts/lines/basisLine': getEchartsBasisLine,
   'GET /api/charts/echarts/lines/areaLine': getEchartsAreaLine,
@@ -86,4 +124,7 @@ export default {
   'GET /api/charts/echarts/lines/stackedAreaLine': getEchartsStackedAreaLine,
   'GET /api/charts/echarts/lines/stepLine': getEchartsStepLine,
   'GET /api/charts/echarts/lines/twoValueAxesInPolarLine': getEchartsTwoValueAxesInPolarLine,
+  'GET /api/charts/echarts/bars/basisBar': getEchartsBasisBar,
+  'GET /api/charts/echarts/bars/backgroundBar': getEchartsBackgroundBar,
+  'GET /api/charts/echarts/bars/interactiveBar': getEchartsInteractiveBar,
 };

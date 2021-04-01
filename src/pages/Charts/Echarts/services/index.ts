@@ -23,3 +23,15 @@ export async function queryEchartsStepLine() {
 export async function queryEchartsTwoValueAxesInPolarLine() {
   return request('/api/charts/echarts/lines/twoValueAxesInPolarLine');
 }
+
+export async function queryEchartsBasisBar() {
+  return request('/api/charts/echarts/bars/basisBar');
+}
+
+export async function queryEchartsBackgroundBar() {
+  return request('/api/charts/echarts/bars/backgroundBar');
+}
+
+export async function queryEchartsInteractiveBar() {
+  return request('/api/charts/echarts/bars/interactiveBar');
+}

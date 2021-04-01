@@ -1,59 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import * as echarts from 'echarts';
+import { Skeleton } from 'antd';
 import ReactEcharts from 'echarts-for-react';
+import { queryEchartsInteractiveBar } from '@/pages/Charts/Echarts/services';
 
-const dataAxis = [
-  '点',
-  '击',
-  '柱',
-  '子',
-  '或',
-  '者',
-  '两',
-  '指',
-  '在',
-  '触',
-  '屏',
-  '上',
-  '滑',
-  '动',
-  '能',
-  '够',
-  '自',
-  '动',
-  '缩',
-  '放',
-];
-const data = [
-  220,
-  182,
-  191,
-  234,
-  290,
-  330,
-  310,
-  123,
-  442,
-  321,
-  90,
-  149,
-  210,
-  122,
-  133,
-  334,
-  198,
-  123,
-  125,
-  220,
-];
-const yMax = 500;
-const dataShadow = [];
-
-for (let i = 0; i < data.length; i += 1) {
-  dataShadow.push(yMax);
+interface InteractiveBarDatas {
+  data1: string[];
+  data2: number[];
 }
 
 const EchartsInteractiveBar: React.FC = () => {
+  const [echartsInteractiveBarData, setEchartsInteractiveBarData] = useState(
+    {} as InteractiveBarDatas,
+  );
+
+  useEffect(() => {
+    queryEchartsInteractiveBar().then(({ data }) => setEchartsInteractiveBarData(data || []));
+  }, []);
+
   const getOption = {
     title: {
       text: '特性示例：渐变色 阴影 点击缩放',
@@ -73,7 +37,7 @@ const EchartsInteractiveBar: React.FC = () => {
       containLabel: true,
     }, */
     xAxis: {
-      data: dataAxis,
+      data: echartsInteractiveBarData.data1,
       axisLabel: {
         inside: true,
         textStyle: {
@@ -126,7 +90,7 @@ const EchartsInteractiveBar: React.FC = () => {
             ]),
           },
         },
-        data,
+        data: echartsInteractiveBarData.data2,
       },
     ],
   };
@@ -140,19 +104,24 @@ const EchartsInteractiveBar: React.FC = () => {
   ) => {
     chart.dispatchAction({
       type: 'dataZoom',
-      startValue: dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)],
-      endValue: dataAxis[Math.min(params.dataIndex + zoomSize / 2, data.length - 1)],
+      startValue: echartsInteractiveBarData.data1[Math.max(params.dataIndex - zoomSize / 2, 0)],
+      endValue:
+        echartsInteractiveBarData.data1[
+          Math.min(params.dataIndex + zoomSize / 2, echartsInteractiveBarData.data2.length - 1)
+        ],
     });
   };
 
   return (
-    <ReactEcharts
-      option={getOption}
-      onEvents={{
-        click: onChartClick,
-      }}
-      style={{ width: '100%', height: '300px' }}
-    />
+    <Skeleton active round loading={Object.keys(echartsInteractiveBarData).length === 0}>
+      <ReactEcharts
+        option={getOption}
+        onEvents={{
+          click: onChartClick,
+        }}
+        style={{ width: '100%', height: '300px' }}
+      />
+    </Skeleton>
   );
 };
 

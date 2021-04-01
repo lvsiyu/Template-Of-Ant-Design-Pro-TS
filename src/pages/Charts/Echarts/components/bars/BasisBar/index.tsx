@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Skeleton } from 'antd';
 import ReactEcharts from 'echarts-for-react';
+import { queryEchartsBasisBar } from '@/pages/Charts/Echarts/services';
 
 const EchartsBasisBar: React.FC = () => {
+  const [echartsBasisBarData, setEchartsBasisBarData] = useState([]);
+
+  useEffect(() => {
+    queryEchartsBasisBar().then(({ data }) => setEchartsBasisBarData(data || []));
+  }, []);
+
   const getOption = {
     /* tooltip: {
       trigger: 'axis',
@@ -35,12 +43,16 @@ const EchartsBasisBar: React.FC = () => {
         name: '直接访问',
         type: 'bar',
         barWidth: '60%',
-        data: [10, 52, 200, 334, 390, 330, 220],
+        data: echartsBasisBarData,
       },
     ],
   };
 
-  return <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />;
+  return (
+    <Skeleton active round loading={echartsBasisBarData && echartsBasisBarData.length === 0}>
+      <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />
+    </Skeleton>
+  );
 };
 
 export default EchartsBasisBar;

@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Skeleton } from 'antd';
 import ReactEcharts from 'echarts-for-react';
+import { queryEchartsBackgroundBar } from '@/pages/Charts/Echarts/services';
 
 const EchartsBackgroundBar: React.FC = () => {
+  const [echartsBackgroundBarData, setEchartsBackgroundBarData] = useState([]);
+
+  useEffect(() => {
+    queryEchartsBackgroundBar().then(({ data }) => setEchartsBackgroundBarData(data || []));
+  }, []);
+
   const getOption = {
     title: {
       text: '特性示例：背景拥有浅色覆盖',
@@ -28,7 +36,7 @@ const EchartsBackgroundBar: React.FC = () => {
     },
     series: [
       {
-        data: [120, 200, 150, 80, 70, 110, 130],
+        data: echartsBackgroundBarData,
         type: 'bar',
         showBackground: true,
         backgroundStyle: {
@@ -38,7 +46,15 @@ const EchartsBackgroundBar: React.FC = () => {
     ],
   };
 
-  return <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />;
+  return (
+    <Skeleton
+      active
+      round
+      loading={echartsBackgroundBarData && echartsBackgroundBarData.length === 0}
+    >
+      <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />
+    </Skeleton>
+  );
 };
 
 export default EchartsBackgroundBar;
