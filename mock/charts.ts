@@ -207,6 +207,24 @@ const getEchartsTexturePie = async (req: Request, res: Response) => {
   });
 };
 
+const getEchartsRosePie = async (req: Request, res: Response) => {
+  await waitTime(1000);
+  res.send({
+    code: 200,
+    data: [
+      { value: 40, name: 'rose 1' },
+      { value: 38, name: 'rose 2' },
+      { value: 32, name: 'rose 3' },
+      { value: 30, name: 'rose 4' },
+      { value: 28, name: 'rose 5' },
+      { value: 26, name: 'rose 6' },
+      { value: 22, name: 'rose 7' },
+      { value: 18, name: 'rose 8' },
+    ],
+    msg: 'success',
+  });
+};
+
 export default {
   'GET /api/charts/echarts/lines/basisLine': getEchartsBasisLine,
   'GET /api/charts/echarts/lines/areaLine': getEchartsAreaLine,
@@ -223,4 +241,5 @@ export default {
   'GET /api/charts/echarts/pies/basisPie': getEchartsBasisPie,
   'GET /api/charts/echarts/pies/ringPie': getEchartsRingPie,
   'GET /api/charts/echarts/pies/texturePie': getEchartsTexturePie,
+  'GET /api/charts/echarts/pies/rosePie': getEchartsRosePie,
 };
