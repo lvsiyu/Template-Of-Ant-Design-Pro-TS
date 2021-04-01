@@ -177,6 +177,21 @@ const getEchartsBasisPie = async (req: Request, res: Response) => {
   });
 };
 
+const getEchartsRingPie = async (req: Request, res: Response) => {
+  await waitTime(1000);
+  res.send({
+    code: 200,
+    data: [
+      { value: 1048, name: '搜索引擎' },
+      { value: 735, name: '直接访问' },
+      { value: 580, name: '邮件营销' },
+      { value: 484, name: '联盟广告' },
+      { value: 300, name: '视频广告' },
+    ],
+    msg: 'success',
+  });
+};
+
 export default {
   'GET /api/charts/echarts/lines/basisLine': getEchartsBasisLine,
   'GET /api/charts/echarts/lines/areaLine': getEchartsAreaLine,
@@ -190,5 +205,6 @@ export default {
   'GET /api/charts/echarts/bars/rotationLabelBar': getEchartsRotationLabelBar,
   'GET /api/charts/echarts/bars/stackedBar': getEchartsStackedBar,
   'GET /api/charts/echarts/bars/rounderBar': getEchartsRounderBar,
-  'GET /api/charts/echarts/bars/basisPie': getEchartsBasisPie,
+  'GET /api/charts/echarts/pies/basisPie': getEchartsBasisPie,
+  'GET /api/charts/echarts/pies/ringPie': getEchartsRingPie,
 };

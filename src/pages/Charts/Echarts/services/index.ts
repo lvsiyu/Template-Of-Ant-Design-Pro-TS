@@ -49,5 +49,9 @@ export async function queryEchartsRounderBar() {
 }
 
 export async function queryEchartsBasisPie() {
-  return request('/api/charts/echarts/bars/basisPie');
+  return request('/api/charts/echarts/pies/basisPie');
+}
+
+export async function queryEchartsRingPie() {
+  return request('/api/charts/echarts/pies/ringPie');
 }
