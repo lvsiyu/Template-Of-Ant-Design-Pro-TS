@@ -104,8 +104,15 @@ const Echarts: React.FC = () => {
                   tip="说明说明"
                   headerBordered
                   bordered
-                  chart={<lines.EchartsStackedAreaLine />}
-                  extra={<Button type="primary">弹窗显示</Button>}
+                  chart={<lines.EchartsStackedAreaLine height="300px" />}
+                  extra={
+                    <Button
+                      onClick={() => showModal('EchartsStackedAreaLine', '堆叠区域折线图', '500px')}
+                      type="primary"
+                    >
+                      弹窗显示
+                    </Button>
+                  }
                 />
               </Col>
               <Col span={8}>
@@ -114,8 +121,15 @@ const Echarts: React.FC = () => {
                   tip="说明说明"
                   headerBordered
                   bordered
-                  chart={<lines.EchartsStepLine />}
-                  extra={<Button type="primary">弹窗显示</Button>}
+                  chart={<lines.EchartsStepLine height="300px" />}
+                  extra={
+                    <Button
+                      onClick={() => showModal('EchartsStepLine', '阶梯折线图', '500px')}
+                      type="primary"
+                    >
+                      弹窗显示
+                    </Button>
+                  }
                 />
               </Col>
               <Col span={8}>

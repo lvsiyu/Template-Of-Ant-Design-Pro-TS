@@ -3,6 +3,10 @@ import { Skeleton } from 'antd';
 import ReactEcharts from 'echarts-for-react';
 import { queryEchartsStackedAreaLine } from '@/pages/Charts/Echarts/services';
 
+interface EchartsStackedAreaLineProps {
+  height: string;
+}
+
 interface StackedAreaLineDatas {
   data1: number[];
   data2: number[];
@@ -11,7 +15,9 @@ interface StackedAreaLineDatas {
   data5: number[];
 }
 
-const EchartsStackedAreaLine: React.FC = () => {
+const EchartsStackedAreaLine: React.FC<EchartsStackedAreaLineProps> = (props) => {
+  const { height } = props;
+
   const [echartsStackedAreaLineData, setEchartsStakedAreaLineData] = useState(
     {} as StackedAreaLineDatas,
   );
@@ -115,7 +121,7 @@ const EchartsStackedAreaLine: React.FC = () => {
       round
       loading={echartsStackedAreaLineData && Object.keys(echartsStackedAreaLineData).length === 0}
     >
-      <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />
+      <ReactEcharts option={getOption} style={{ width: '100%', height: height || '300px' }} />
     </Skeleton>
   );
 };

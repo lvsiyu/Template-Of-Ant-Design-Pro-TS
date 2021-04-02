@@ -32,6 +32,12 @@ const EchartsModals: React.FC<EchartsProps> = (props) => {
       {modalType && modalType === 'EchartsSmoothLine' ? (
         <lines.EchartsSmoothLine height={modalHeight} />
       ) : null}
+      {modalType && modalType === 'EchartsStackedAreaLine' ? (
+        <lines.EchartsStackedAreaLine height={modalHeight} />
+      ) : null}
+      {modalType && modalType === 'EchartsStepLine' ? (
+        <lines.EchartsStepLine height={modalHeight} />
+      ) : null}
     </Modal>
   );
 };

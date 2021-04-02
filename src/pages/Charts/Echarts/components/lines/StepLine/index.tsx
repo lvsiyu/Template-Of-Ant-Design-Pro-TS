@@ -3,13 +3,19 @@ import { Skeleton } from 'antd';
 import ReactEcharts from 'echarts-for-react';
 import { queryEchartsStepLine } from '@/pages/Charts/Echarts/services';
 
+interface EchartsStepLineProps {
+  height: string;
+}
+
 interface StepLineDatas {
   data1: number[];
   data2: number[];
   data3: number[];
 }
 
-const EchartsStepLine: React.FC = () => {
+const EchartsStepLine: React.FC<EchartsStepLineProps> = (props) => {
+  const { height } = props;
+
   const [echartsStepLineData, setEchartsStepLineData] = useState({} as StepLineDatas);
 
   useEffect(() => {
@@ -66,7 +72,7 @@ const EchartsStepLine: React.FC = () => {
       round
       loading={echartsStepLineData && Object.keys(echartsStepLineData).length === 0}
     >
-      <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />
+      <ReactEcharts option={getOption} style={{ width: '100%', height: height || '300px' }} />
     </Skeleton>
   );
 };
