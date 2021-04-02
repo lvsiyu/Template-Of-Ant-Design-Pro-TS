@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Row, Col } from 'antd';
 import { PageContainer } from '@ant-design/pro-layout';
 import ProCard, { StatisticCard } from '@ant-design/pro-card';
 import { lines, bars, pies } from './components';
+import EchartsModals from '@/pages/Charts/Echarts/modals';
 
 const uri = (
   <a href="https://echarts.apache.org/examples/zh/index.html" target="_blank" rel="noreferrer">
@@ -11,6 +12,35 @@ const uri = (
 );
 
 const Echarts: React.FC = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [modalType, setModalType] = useState('');
+  const [modalTitle, setModalTitle] = useState('');
+  const [modalHeight, setModalHeight] = useState('300px');
+
+  const showModal = (type: string, title: string, height: string) => {
+    setModalType(type);
+    setModalTitle(title);
+    setModalHeight(height);
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
+  const ModalAction = {
+    handleOk,
+    handleCancel,
+    modalType,
+    modalTitle,
+    modalHeight,
+    visible: isModalVisible,
+  };
+
   return (
     <PageContainer>
       <Row gutter={[16, 16]}>
@@ -23,8 +53,15 @@ const Echarts: React.FC = () => {
                   tip="说明说明"
                   headerBordered
                   bordered
-                  chart={<lines.EchartsBasisLine />}
-                  extra={<Button type="primary">按钮</Button>}
+                  chart={<lines.EchartsBasisLine height="300px" />}
+                  extra={
+                    <Button
+                      onClick={() => showModal('EchartsBasisLine', '基础折线图', '500px')}
+                      type="primary"
+                    >
+                      弹框显示
+                    </Button>
+                  }
                 />
               </Col>
               <Col span={8}>
@@ -215,6 +252,8 @@ const Echarts: React.FC = () => {
           </ProCard>
         </Col>
       </Row>
+
+      <EchartsModals {...ModalAction} />
     </PageContainer>
   );
 };
