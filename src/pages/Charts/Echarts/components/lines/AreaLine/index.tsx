@@ -3,7 +3,13 @@ import { Skeleton } from 'antd';
 import ReactEcharts from 'echarts-for-react';
 import { queryEchartsAreaLine } from '@/pages/Charts/Echarts/services';
 
-const EchartsAreaLine: React.FC = () => {
+interface EchartsAreaLineProps {
+  height: string;
+}
+
+const EchartsAreaLine: React.FC<EchartsAreaLineProps> = (props) => {
+  const { height } = props;
+
   const [echartsAreaLineData, setEchartsAreaLineData] = useState([]);
 
   useEffect(() => {
@@ -30,7 +36,7 @@ const EchartsAreaLine: React.FC = () => {
 
   return (
     <Skeleton active round loading={echartsAreaLineData && echartsAreaLineData.length === 0}>
-      <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />
+      <ReactEcharts option={getOption} style={{ width: '100%', height: height || '300px' }} />
     </Skeleton>
   );
 };

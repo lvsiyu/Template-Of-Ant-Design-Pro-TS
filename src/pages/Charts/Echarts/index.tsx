@@ -70,7 +70,7 @@ const Echarts: React.FC = () => {
                   tip="说明说明"
                   headerBordered
                   bordered
-                  chart={<lines.EchartsAreaLine />}
+                  chart={<lines.EchartsAreaLine height="300px" />}
                   extra={
                     <Button
                       onClick={() => showModal('EchartsAreaLine', '面积折线图', '500px')}
@@ -87,7 +87,7 @@ const Echarts: React.FC = () => {
                   tip="说明说明"
                   headerBordered
                   bordered
-                  chart={<lines.EchartsSmoothLine />}
+                  chart={<lines.EchartsSmoothLine height="300px" />}
                   extra={
                     <Button
                       onClick={() => showModal('EchartsSmoothLine', '平滑折线图', '500px')}

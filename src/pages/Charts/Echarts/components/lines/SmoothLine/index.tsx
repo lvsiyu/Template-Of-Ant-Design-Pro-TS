@@ -3,7 +3,13 @@ import { Skeleton } from 'antd';
 import ReactEcharts from 'echarts-for-react';
 import { queryEchartsSmoothLine } from '@/pages/Charts/Echarts/services';
 
-const EchartsSmoothLine: React.FC = () => {
+interface EchartsSmoothLineProps {
+  height: string;
+}
+
+const EchartsSmoothLine: React.FC<EchartsSmoothLineProps> = (props) => {
+  const { height } = props;
+
   const [echartsSmoothLineData, setEchartsSmoothLineData] = useState([]);
 
   useEffect(() => {
@@ -29,7 +35,7 @@ const EchartsSmoothLine: React.FC = () => {
 
   return (
     <Skeleton active round loading={echartsSmoothLineData && echartsSmoothLineData.length === 0}>
-      <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />
+      <ReactEcharts option={getOption} style={{ width: '100%', height: height || '300px' }} />
     </Skeleton>
   );
 };
