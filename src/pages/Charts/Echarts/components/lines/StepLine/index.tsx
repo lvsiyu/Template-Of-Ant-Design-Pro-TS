@@ -4,7 +4,7 @@ import ReactEcharts from 'echarts-for-react';
 import { queryEchartsStepLine } from '@/pages/Charts/Echarts/services';
 
 interface EchartsStepLineProps {
-  height: string;
+  height?: string;
 }
 
 interface StepLineDatas {

@@ -4,7 +4,7 @@ import ReactEcharts from 'echarts-for-react';
 import { queryEchartsBasisLine } from '@/pages/Charts/Echarts/services';
 
 interface EchartsBasisLineProps {
-  height: string;
+  height?: string;
 }
 
 const EchartsBasisLine: React.FC<EchartsBasisLineProps> = (props) => {

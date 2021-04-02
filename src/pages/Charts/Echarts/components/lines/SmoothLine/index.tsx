@@ -4,7 +4,7 @@ import ReactEcharts from 'echarts-for-react';
 import { queryEchartsSmoothLine } from '@/pages/Charts/Echarts/services';
 
 interface EchartsSmoothLineProps {
-  height: string;
+  height?: string;
 }
 
 const EchartsSmoothLine: React.FC<EchartsSmoothLineProps> = (props) => {

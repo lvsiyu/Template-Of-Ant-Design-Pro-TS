@@ -53,7 +53,7 @@ const Echarts: React.FC = () => {
                   tip="说明说明"
                   headerBordered
                   bordered
-                  chart={<lines.EchartsBasisLine height="300px" />}
+                  chart={<lines.EchartsBasisLine />}
                   extra={
                     <Button
                       onClick={() => showModal('EchartsBasisLine', '基础折线图', '500px')}
@@ -70,7 +70,7 @@ const Echarts: React.FC = () => {
                   tip="说明说明"
                   headerBordered
                   bordered
-                  chart={<lines.EchartsAreaLine height="300px" />}
+                  chart={<lines.EchartsAreaLine />}
                   extra={
                     <Button
                       onClick={() => showModal('EchartsAreaLine', '面积折线图', '500px')}
@@ -87,7 +87,7 @@ const Echarts: React.FC = () => {
                   tip="说明说明"
                   headerBordered
                   bordered
-                  chart={<lines.EchartsSmoothLine height="300px" />}
+                  chart={<lines.EchartsSmoothLine />}
                   extra={
                     <Button
                       onClick={() => showModal('EchartsSmoothLine', '平滑折线图', '500px')}
@@ -104,7 +104,7 @@ const Echarts: React.FC = () => {
                   tip="说明说明"
                   headerBordered
                   bordered
-                  chart={<lines.EchartsStackedAreaLine height="300px" />}
+                  chart={<lines.EchartsStackedAreaLine />}
                   extra={
                     <Button
                       onClick={() => showModal('EchartsStackedAreaLine', '堆叠区域折线图', '500px')}
@@ -121,7 +121,7 @@ const Echarts: React.FC = () => {
                   tip="说明说明"
                   headerBordered
                   bordered
-                  chart={<lines.EchartsStepLine height="300px" />}
+                  chart={<lines.EchartsStepLine />}
                   extra={
                     <Button
                       onClick={() => showModal('EchartsStepLine', '阶梯折线图', '500px')}
@@ -139,7 +139,16 @@ const Echarts: React.FC = () => {
                   headerBordered
                   bordered
                   chart={<lines.EchartsTwoValueAxesInPolarLine />}
-                  extra={<Button type="primary">弹窗显示</Button>}
+                  extra={
+                    <Button
+                      onClick={() =>
+                        showModal('EchartsTwoValueAxesInPolarLine', '极坐标双手数值轴', '500px')
+                      }
+                      type="primary"
+                    >
+                      弹窗显示
+                    </Button>
+                  }
                 />
               </Col>
             </Row>

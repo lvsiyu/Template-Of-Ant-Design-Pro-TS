@@ -4,7 +4,7 @@ import ReactEcharts from 'echarts-for-react';
 import { queryEchartsAreaLine } from '@/pages/Charts/Echarts/services';
 
 interface EchartsAreaLineProps {
-  height: string;
+  height?: string;
 }
 
 const EchartsAreaLine: React.FC<EchartsAreaLineProps> = (props) => {

@@ -4,7 +4,7 @@ import ReactEcharts from 'echarts-for-react';
 import { queryEchartsStackedAreaLine } from '@/pages/Charts/Echarts/services';
 
 interface EchartsStackedAreaLineProps {
-  height: string;
+  height?: string;
 }
 
 interface StackedAreaLineDatas {

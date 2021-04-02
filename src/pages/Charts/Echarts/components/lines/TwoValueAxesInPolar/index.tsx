@@ -3,7 +3,13 @@ import { Skeleton } from 'antd';
 import ReactEcharts from 'echarts-for-react';
 import { queryEchartsTwoValueAxesInPolarLine } from '@/pages/Charts/Echarts/services';
 
-const EchartsTwoValueAxesInPolarLine: React.FC = () => {
+interface EchartsTwoValueAxesInPolarLineProps {
+  height?: string;
+}
+
+const EchartsTwoValueAxesInPolarLine: React.FC<EchartsTwoValueAxesInPolarLineProps> = (props) => {
+  const { height } = props;
+
   const [echartsTwoValueAxesInPolarLineData, setEchartsTwoValueAxesInPolarLineData] = useState([]);
 
   useEffect(() => {
@@ -48,7 +54,7 @@ const EchartsTwoValueAxesInPolarLine: React.FC = () => {
         echartsTwoValueAxesInPolarLineData && echartsTwoValueAxesInPolarLineData.length === 0
       }
     >
-      <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />
+      <ReactEcharts option={getOption} style={{ width: '100%', height: height || '300px' }} />
     </Skeleton>
   );
 };

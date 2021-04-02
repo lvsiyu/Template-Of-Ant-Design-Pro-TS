@@ -38,6 +38,9 @@ const EchartsModals: React.FC<EchartsProps> = (props) => {
       {modalType && modalType === 'EchartsStepLine' ? (
         <lines.EchartsStepLine height={modalHeight} />
       ) : null}
+      {modalType && modalType === 'EchartsTwoValueAxesInPolarLine' ? (
+        <lines.EchartsTwoValueAxesInPolarLine height={modalHeight} />
+      ) : null}
     </Modal>
   );
 };
