@@ -88,7 +88,14 @@ const Echarts: React.FC = () => {
                   headerBordered
                   bordered
                   chart={<lines.EchartsSmoothLine />}
-                  extra={<Button type="primary">弹窗显示</Button>}
+                  extra={
+                    <Button
+                      onClick={() => showModal('EchartsSmoothLine', '平滑折线图', '500px')}
+                      type="primary"
+                    >
+                      弹窗显示
+                    </Button>
+                  }
                 />
               </Col>
               <Col span={8}>
