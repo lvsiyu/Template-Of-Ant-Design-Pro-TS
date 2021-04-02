@@ -71,7 +71,14 @@ const Echarts: React.FC = () => {
                   headerBordered
                   bordered
                   chart={<lines.EchartsAreaLine />}
-                  extra={<Button type="primary">按钮</Button>}
+                  extra={
+                    <Button
+                      onClick={() => showModal('EchartsAreaLine', '面积折线图', '500px')}
+                      type="primary"
+                    >
+                      弹窗显示
+                    </Button>
+                  }
                 />
               </Col>
               <Col span={8}>
@@ -81,7 +88,7 @@ const Echarts: React.FC = () => {
                   headerBordered
                   bordered
                   chart={<lines.EchartsSmoothLine />}
-                  extra={<Button type="primary">按钮</Button>}
+                  extra={<Button type="primary">弹窗显示</Button>}
                 />
               </Col>
               <Col span={8}>
@@ -91,7 +98,7 @@ const Echarts: React.FC = () => {
                   headerBordered
                   bordered
                   chart={<lines.EchartsStackedAreaLine />}
-                  extra={<Button type="primary">按钮</Button>}
+                  extra={<Button type="primary">弹窗显示</Button>}
                 />
               </Col>
               <Col span={8}>
@@ -101,7 +108,7 @@ const Echarts: React.FC = () => {
                   headerBordered
                   bordered
                   chart={<lines.EchartsStepLine />}
-                  extra={<Button type="primary">按钮</Button>}
+                  extra={<Button type="primary">弹窗显示</Button>}
                 />
               </Col>
               <Col span={8}>
@@ -111,7 +118,7 @@ const Echarts: React.FC = () => {
                   headerBordered
                   bordered
                   chart={<lines.EchartsTwoValueAxesInPolarLine />}
-                  extra={<Button type="primary">按钮</Button>}
+                  extra={<Button type="primary">弹窗显示</Button>}
                 />
               </Col>
             </Row>
@@ -128,7 +135,7 @@ const Echarts: React.FC = () => {
                   headerBordered
                   bordered
                   chart={<bars.EchartsBasisBar />}
-                  extra={<Button type="primary">按钮</Button>}
+                  extra={<Button type="primary">弹窗显示</Button>}
                 />
               </Col>
               <Col span={8}>
@@ -138,7 +145,7 @@ const Echarts: React.FC = () => {
                   headerBordered
                   bordered
                   chart={<bars.EchartsBackgroundBar />}
-                  extra={<Button type="primary">按钮</Button>}
+                  extra={<Button type="primary">弹窗显示</Button>}
                 />
               </Col>
               <Col span={8}>
@@ -148,7 +155,7 @@ const Echarts: React.FC = () => {
                   headerBordered
                   bordered
                   chart={<bars.EchartsInteractiveBar />}
-                  extra={<Button type="primary">按钮</Button>}
+                  extra={<Button type="primary">弹窗显示</Button>}
                 />
               </Col>
               <Col span={8}>
@@ -158,7 +165,7 @@ const Echarts: React.FC = () => {
                   headerBordered
                   bordered
                   chart={<bars.EchartsRotationLabelBar />}
-                  extra={<Button type="primary">按钮</Button>}
+                  extra={<Button type="primary">弹窗显示</Button>}
                 />
               </Col>
               <Col span={8}>
@@ -168,7 +175,7 @@ const Echarts: React.FC = () => {
                   headerBordered
                   bordered
                   chart={<bars.EchartsStackedBar />}
-                  extra={<Button type="primary">按钮</Button>}
+                  extra={<Button type="primary">弹窗显示</Button>}
                 />
               </Col>
               <Col span={8}>
@@ -178,7 +185,7 @@ const Echarts: React.FC = () => {
                   headerBordered
                   bordered
                   chart={<bars.EchartsRoundedBar />}
-                  extra={<Button type="primary">按钮</Button>}
+                  extra={<Button type="primary">弹窗显示</Button>}
                 />
               </Col>
             </Row>
@@ -195,7 +202,7 @@ const Echarts: React.FC = () => {
                   headerBordered
                   bordered
                   chart={<pies.EchartsBasisPie />}
-                  extra={<Button type="primary">按钮</Button>}
+                  extra={<Button type="primary">弹窗显示</Button>}
                 />
               </Col>
               <Col span={8}>
@@ -205,7 +212,7 @@ const Echarts: React.FC = () => {
                   headerBordered
                   bordered
                   chart={<pies.EchartsRingPie />}
-                  extra={<Button type="primary">按钮</Button>}
+                  extra={<Button type="primary">弹窗显示</Button>}
                 />
               </Col>
               <Col span={8}>
@@ -215,7 +222,7 @@ const Echarts: React.FC = () => {
                   headerBordered
                   bordered
                   chart={<pies.EchartsTexturePie />}
-                  extra={<Button type="primary">按钮</Button>}
+                  extra={<Button type="primary">弹窗显示</Button>}
                 />
               </Col>
               <Col span={8}>
@@ -225,7 +232,7 @@ const Echarts: React.FC = () => {
                   headerBordered
                   bordered
                   chart={<pies.EchartsRosePie />}
-                  extra={<Button type="primary">按钮</Button>}
+                  extra={<Button type="primary">弹窗显示</Button>}
                 />
               </Col>
               <Col span={8}>
@@ -235,7 +242,7 @@ const Echarts: React.FC = () => {
                   headerBordered
                   bordered
                   chart={<pies.EchartsSpeicalLabelPie />}
-                  extra={<Button type="primary">按钮</Button>}
+                  extra={<Button type="primary">弹窗显示</Button>}
                 />
               </Col>
               <Col span={8}>
@@ -245,7 +252,7 @@ const Echarts: React.FC = () => {
                   headerBordered
                   bordered
                   chart={<pies.EchartsNestedPie />}
-                  extra={<Button type="primary">按钮</Button>}
+                  extra={<Button type="primary">弹窗显示</Button>}
                 />
               </Col>
             </Row>

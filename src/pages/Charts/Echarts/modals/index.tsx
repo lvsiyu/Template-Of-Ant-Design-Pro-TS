@@ -26,6 +26,9 @@ const EchartsModals: React.FC<EchartsProps> = (props) => {
       {modalType && modalType === 'EchartsBasisLine' ? (
         <lines.EchartsBasisLine height={modalHeight} />
       ) : null}
+      {modalType && modalType === 'EchartsAreaLine' ? (
+        <lines.EchartsBasisLine height={modalHeight} />
+      ) : null}
     </Modal>
   );
 };
