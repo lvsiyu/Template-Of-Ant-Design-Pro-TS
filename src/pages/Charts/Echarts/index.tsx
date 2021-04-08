@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Row, Col } from 'antd';
 import { PageContainer } from '@ant-design/pro-layout';
 import ProCard, { StatisticCard } from '@ant-design/pro-card';
-import { lines, bars, pies } from './components';
+import { lines, bars, pies, scatters } from './components';
 import EchartsModals from '@/pages/Charts/Echarts/modals';
 
 const uri = (
@@ -282,6 +282,23 @@ const Echarts: React.FC = () => {
                   headerBordered
                   bordered
                   chart={<pies.EchartsNestedPie />}
+                  extra={<Button type="primary">弹窗显示</Button>}
+                />
+              </Col>
+            </Row>
+          </ProCard>
+        </Col>
+
+        <Col span={24}>
+          <ProCard title="散点图" headerBordered extra={uri}>
+            <Row gutter={[16, 16]}>
+              <Col span={8}>
+                <StatisticCard
+                  title="基础散点图"
+                  tip="说明说明"
+                  headerBordered
+                  bordered
+                  chart={<scatters.EchartsBasisScatter />}
                   extra={<Button type="primary">弹窗显示</Button>}
                 />
               </Col>
