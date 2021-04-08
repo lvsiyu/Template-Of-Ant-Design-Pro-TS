@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal } from 'antd';
-import { lines } from '@/pages/Charts/Echarts/components';
+import { lines, bars } from '@/pages/Charts/Echarts/components';
 
 interface EchartsProps {
   handleOk: () => void;
@@ -40,6 +40,9 @@ const EchartsModals: React.FC<EchartsProps> = (props) => {
       ) : null}
       {modalType && modalType === 'EchartsTwoValueAxesInPolarLine' ? (
         <lines.EchartsTwoValueAxesInPolarLine height={modalHeight} />
+      ) : null}
+      {modalType && modalType === 'EchartsBasisBar' ? (
+        <bars.EchartsBasisBar height={modalHeight} />
       ) : null}
     </Modal>
   );

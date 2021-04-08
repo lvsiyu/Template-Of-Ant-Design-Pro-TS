@@ -3,7 +3,13 @@ import { Skeleton } from 'antd';
 import ReactEcharts from 'echarts-for-react';
 import { queryEchartsBasisBar } from '@/pages/Charts/Echarts/services';
 
-const EchartsBasisBar: React.FC = () => {
+interface EchartsBasisBarProps {
+  height?: string;
+}
+
+const EchartsBasisBar: React.FC<EchartsBasisBarProps> = (props) => {
+  const { height } = props;
+
   const [echartsBasisBarData, setEchartsBasisBarData] = useState([]);
 
   useEffect(() => {
@@ -50,7 +56,7 @@ const EchartsBasisBar: React.FC = () => {
 
   return (
     <Skeleton active round loading={echartsBasisBarData && echartsBasisBarData.length === 0}>
-      <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />
+      <ReactEcharts option={getOption} style={{ width: '100%', height: height || '300px' }} />
     </Skeleton>
   );
 };
