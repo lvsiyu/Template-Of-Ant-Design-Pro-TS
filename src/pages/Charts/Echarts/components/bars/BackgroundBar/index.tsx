@@ -3,11 +3,11 @@ import { Skeleton } from 'antd';
 import ReactEcharts from 'echarts-for-react';
 import { queryEchartsBackgroundBar } from '@/pages/Charts/Echarts/services';
 
-interface EchartsBasisBarProps {
+interface EchartsBackgroundBarProps {
   height?: string;
 }
 
-const EchartsBackgroundBar: React.FC<EchartsBasisBarProps> = (props) => {
+const EchartsBackgroundBar: React.FC<EchartsBackgroundBarProps> = (props) => {
   const { height } = props;
 
   const [echartsBackgroundBarData, setEchartsBackgroundBarData] = useState([]);

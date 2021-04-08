@@ -9,7 +9,13 @@ interface InteractiveBarDatas {
   data2: number[];
 }
 
-const EchartsInteractiveBar: React.FC = () => {
+interface EchartsInteractiveBarProps {
+  height?: string;
+}
+
+const EchartsInteractiveBar: React.FC<EchartsInteractiveBarProps> = (props) => {
+  const { height } = props;
+
   const [echartsInteractiveBarData, setEchartsInteractiveBarData] = useState(
     {} as InteractiveBarDatas,
   );
@@ -123,7 +129,7 @@ const EchartsInteractiveBar: React.FC = () => {
         onEvents={{
           click: onChartClick,
         }}
-        style={{ width: '100%', height: '300px' }}
+        style={{ width: '100%', height: height || '300px' }}
       />
     </Skeleton>
   );

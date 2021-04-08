@@ -199,7 +199,14 @@ const Echarts: React.FC = () => {
                   headerBordered
                   bordered
                   chart={<bars.EchartsInteractiveBar />}
-                  extra={<Button type="primary">弹窗显示</Button>}
+                  extra={
+                    <Button
+                      onClick={() => showModal('EchartsInteractiveBar', '交互柱状图', '500px')}
+                      type="primary"
+                    >
+                      弹窗显示
+                    </Button>
+                  }
                 />
               </Col>
               <Col span={8}>
