@@ -44,6 +44,9 @@ const EchartsModals: React.FC<EchartsProps> = (props) => {
       {modalType && modalType === 'EchartsBasisBar' ? (
         <bars.EchartsBasisBar height={modalHeight} />
       ) : null}
+      {modalType && modalType === 'EchartsBackgroundBar' ? (
+        <bars.EchartsBackgroundBar height={modalHeight} />
+      ) : null}
     </Modal>
   );
 };

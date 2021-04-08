@@ -3,7 +3,13 @@ import { Skeleton } from 'antd';
 import ReactEcharts from 'echarts-for-react';
 import { queryEchartsBackgroundBar } from '@/pages/Charts/Echarts/services';
 
-const EchartsBackgroundBar: React.FC = () => {
+interface EchartsBasisBarProps {
+  height?: string;
+}
+
+const EchartsBackgroundBar: React.FC<EchartsBasisBarProps> = (props) => {
+  const { height } = props;
+
   const [echartsBackgroundBarData, setEchartsBackgroundBarData] = useState([]);
 
   useEffect(() => {
@@ -52,7 +58,7 @@ const EchartsBackgroundBar: React.FC = () => {
       round
       loading={echartsBackgroundBarData && echartsBackgroundBarData.length === 0}
     >
-      <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />
+      <ReactEcharts option={getOption} style={{ width: '100%', height: height || '300px' }} />
     </Skeleton>
   );
 };
