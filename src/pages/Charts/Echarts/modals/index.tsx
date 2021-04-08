@@ -56,6 +56,9 @@ const EchartsModals: React.FC<EchartsProps> = (props) => {
       {modalType && modalType === 'EchartsStackedBar' ? (
         <bars.EchartsStackedBar height={modalHeight} />
       ) : null}
+      {modalType && modalType === 'EchartsRoundedBar' ? (
+        <bars.EchartsRoundedBar height={modalHeight} />
+      ) : null}
     </Modal>
   );
 };

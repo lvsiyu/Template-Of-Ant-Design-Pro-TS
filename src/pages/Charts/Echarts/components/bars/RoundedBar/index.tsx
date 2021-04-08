@@ -8,7 +8,13 @@ interface RounderBarDatas {
   data2: number[];
 }
 
-const EchartsRoundedBar: React.FC = () => {
+interface EchartsRoundedBarProps {
+  height?: string;
+}
+
+const EchartsRoundedBar: React.FC<EchartsRoundedBarProps> = (props) => {
+  const { height } = props;
+
   const [echartsRounderBarData, setEchartsRounderBarData] = useState({} as RounderBarDatas);
 
   useEffect(() => {
@@ -66,7 +72,7 @@ const EchartsRoundedBar: React.FC = () => {
       round
       loading={echartsRounderBarData && Object.keys(echartsRounderBarData).length === 0}
     >
-      <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />
+      <ReactEcharts option={getOption} style={{ width: '100%', height: height || '300px' }} />
     </Skeleton>
   );
 };
