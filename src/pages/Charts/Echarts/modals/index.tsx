@@ -53,6 +53,9 @@ const EchartsModals: React.FC<EchartsProps> = (props) => {
       {modalType && modalType === 'EchartsRotationLabelBar' ? (
         <bars.EchartsRotationLabelBar height={modalHeight} />
       ) : null}
+      {modalType && modalType === 'EchartsStackedBar' ? (
+        <bars.EchartsStackedBar height={modalHeight} />
+      ) : null}
     </Modal>
   );
 };

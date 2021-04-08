@@ -15,7 +15,13 @@ interface StackedBarDatas {
   data9: number[];
 }
 
-const EchartsStackedBar: React.FC = () => {
+interface EchartsStackedBarProps {
+  height?: string;
+}
+
+const EchartsStackedBar: React.FC<EchartsStackedBarProps> = (props) => {
+  const { height } = props;
+
   const [echartsStackedBarData, setEchartsStackedBarData] = useState({} as StackedBarDatas);
 
   useEffect(() => {
@@ -156,7 +162,7 @@ const EchartsStackedBar: React.FC = () => {
       round
       loading={echartsStackedBarData && Object.keys(echartsStackedBarData).length === 0}
     >
-      <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />
+      <ReactEcharts option={getOption} style={{ width: '100%', height: height || '300px' }} />
     </Skeleton>
   );
 };
