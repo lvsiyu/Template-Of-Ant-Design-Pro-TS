@@ -50,6 +50,9 @@ const EchartsModals: React.FC<EchartsProps> = (props) => {
       {modalType && modalType === 'EchartsInteractiveBar' ? (
         <bars.EchartsInteractiveBar height={modalHeight} />
       ) : null}
+      {modalType && modalType === 'EchartsRotationLabelBar' ? (
+        <bars.EchartsRotationLabelBar height={modalHeight} />
+      ) : null}
     </Modal>
   );
 };

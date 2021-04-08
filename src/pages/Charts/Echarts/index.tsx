@@ -216,7 +216,16 @@ const Echarts: React.FC = () => {
                   headerBordered
                   bordered
                   chart={<bars.EchartsRotationLabelBar />}
-                  extra={<Button type="primary">弹窗显示</Button>}
+                  extra={
+                    <Button
+                      onClick={() =>
+                        showModal('EchartsRotationLabelBar', '旋转标签柱状图', '500px')
+                      }
+                      type="primary"
+                    >
+                      弹窗显示
+                    </Button>
+                  }
                 />
               </Col>
               <Col span={8}>
