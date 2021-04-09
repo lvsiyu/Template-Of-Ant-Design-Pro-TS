@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Row, Col } from 'antd';
 import { PageContainer } from '@ant-design/pro-layout';
 import { StatisticCard } from '@ant-design/pro-card';
-import { Lines } from './components';
+import { Lines, Columns, Pies } from './components';
 
 const AntdCharts: React.FC = () => {
   return (
@@ -13,7 +13,7 @@ const AntdCharts: React.FC = () => {
             title="基础折线图"
             tip="说明说明"
             headerBordered
-            style={{ height: '508px' }}
+            style={{ height: '600px' }}
             chart={<Lines.BasisLine />}
             extra={<Button type="primary">按钮</Button>}
           />
@@ -25,22 +25,20 @@ const AntdCharts: React.FC = () => {
                 title="柱状图"
                 tip="说明说明"
                 headerBordered
-                style={{ height: '246px' }}
+                style={{ height: '292px' }}
+                chart={<Columns.BasisColumn />}
                 extra={<Button type="primary">按钮</Button>}
-              >
-                111
-              </StatisticCard>
+              />
             </Col>
             <Col span={24}>
               <StatisticCard
                 title="饼图"
                 tip="说明说明"
                 headerBordered
-                style={{ height: '246px' }}
+                style={{ height: '292px' }}
+                chart={<Pies.BasisPie />}
                 extra={<Button type="primary">按钮</Button>}
-              >
-                111
-              </StatisticCard>
+              />
             </Col>
           </Row>
         </Col>

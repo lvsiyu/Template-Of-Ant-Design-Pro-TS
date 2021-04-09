@@ -45,6 +45,7 @@ const BasisLine: React.FC = () => {
     xField: 'year',
     yField: 'value',
     label: {},
+    height: 461,
     point: {
       size: 5,
       shape: 'diamond',
