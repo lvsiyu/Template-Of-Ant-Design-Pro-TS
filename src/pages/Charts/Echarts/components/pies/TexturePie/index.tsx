@@ -10,6 +10,10 @@ interface BasisPieDatas {
   name: string;
 }
 
+interface EchartsTexturePieProps {
+  height?: string;
+}
+
 const piePatternSrc = pieImg;
 const bgPatternSrc = bgImg;
 
@@ -29,7 +33,9 @@ const itemStyle = {
     borderColor: '#235894',
   },
 };
-const EchartsTexturePie: React.FC = () => {
+const EchartsTexturePie: React.FC<EchartsTexturePieProps> = (props) => {
+  const { height } = props;
+
   const [echartsTexturePieData, setEchartsTexturePieData] = useState([] as BasisPieDatas[]);
 
   useEffect(() => {
@@ -65,7 +71,7 @@ const EchartsTexturePie: React.FC = () => {
 
   return (
     <Skeleton active round loading={echartsTexturePieData && echartsTexturePieData.length === 0}>
-      <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />
+      <ReactEcharts option={getOption} style={{ width: '100%', height: height || '300px' }} />
     </Skeleton>
   );
 };
