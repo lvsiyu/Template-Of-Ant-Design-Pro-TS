@@ -414,7 +414,14 @@ const Echarts: React.FC = () => {
                   headerBordered
                   bordered
                   chart={<scatters.EchartsBasisScatter />}
-                  extra={<Button type="primary">弹窗显示</Button>}
+                  extra={
+                    <Button
+                      onClick={() => showModal('EchartsBasisScatter', '基础散点图', '500px')}
+                      type="primary"
+                    >
+                      弹窗显示
+                    </Button>
+                  }
                 />
               </Col>
             </Row>

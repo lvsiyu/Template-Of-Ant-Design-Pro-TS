@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal } from 'antd';
-import { lines, bars, pies } from '@/pages/Charts/Echarts/components';
+import { lines, bars, pies, scatters } from '@/pages/Charts/Echarts/components';
 
 interface EchartsProps {
   handleOk: () => void;
@@ -91,6 +91,9 @@ const EchartsModals: React.FC<EchartsProps> = (props) => {
       ) : null}
       {modalType && modalType === 'EchartsNestedPie' ? (
         <pies.EchartsNestedPie height={modalHeight} />
+      ) : null}
+      {modalType && modalType === 'EchartsBasisScatter' ? (
+        <scatters.EchartsBasisScatter height={modalHeight} />
       ) : null}
     </Modal>
   );
