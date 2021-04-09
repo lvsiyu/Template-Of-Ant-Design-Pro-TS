@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Row, Col } from 'antd';
 import { PageContainer } from '@ant-design/pro-layout';
 import { StatisticCard } from '@ant-design/pro-card';
-import { Lines, Columns, Pies } from './components';
+import { Lines, Columns, Pies, Bars } from './components';
 
 const AntdCharts: React.FC = () => {
   return (
@@ -47,18 +47,17 @@ const AntdCharts: React.FC = () => {
             title="条形图"
             tip="说明说明"
             headerBordered
-            style={{ height: '250px' }}
+            style={{ height: '300px' }}
+            chart={<Bars.BasisBar />}
             extra={<Button type="primary">按钮</Button>}
-          >
-            111
-          </StatisticCard>
+          />
         </Col>
         <Col span={6}>
           <StatisticCard
             title="雷达图"
             tip="说明说明"
             headerBordered
-            style={{ height: '250px' }}
+            style={{ height: '300px' }}
             extra={<Button type="primary">按钮</Button>}
           >
             111
@@ -69,7 +68,7 @@ const AntdCharts: React.FC = () => {
             title="词云图"
             tip="说明说明"
             headerBordered
-            style={{ height: '250px' }}
+            style={{ height: '300px' }}
             extra={<Button type="primary">按钮</Button>}
           >
             111
