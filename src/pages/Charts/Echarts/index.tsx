@@ -368,7 +368,19 @@ const Echarts: React.FC = () => {
                   headerBordered
                   bordered
                   chart={<pies.EchartsSpeicalLabelPie />}
-                  extra={<Button type="primary">弹窗显示</Button>}
+                  extra={
+                    <Button
+                      onClick={() =>
+                        showModal('EchartsSpeicalLabelPie', '自定义标签', '500px', undefined, [
+                          '50%',
+                          '50%',
+                        ])
+                      }
+                      type="primary"
+                    >
+                      弹窗显示
+                    </Button>
+                  }
                 />
               </Col>
               <Col span={8}>

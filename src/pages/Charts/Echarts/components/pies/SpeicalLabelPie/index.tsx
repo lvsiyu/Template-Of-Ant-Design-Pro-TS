@@ -11,6 +11,11 @@ interface RingPieDatas {
   name: string;
 }
 
+interface EchartsSpeicalLabelPieProps {
+  height?: string;
+  position?: string[];
+}
+
 const weatherIcons = {
   Sunny: sunny,
   Cloudy: cloudy,
@@ -101,7 +106,9 @@ const labelData = {
   },
 };
 
-const EchartsSpeicalLabelPie: React.FC = () => {
+const EchartsSpeicalLabelPie: React.FC<EchartsSpeicalLabelPieProps> = (props) => {
+  const { height, position } = props;
+
   const [echartsSpeicalLabelPieData, setEchartsSpeicalLabelPieData] = useState(
     [] as RingPieDatas[],
   );
@@ -128,7 +135,7 @@ const EchartsSpeicalLabelPie: React.FC = () => {
       {
         type: 'pie',
         radius: '65%',
-        center: ['30%', '50%'],
+        center: position || ['30%', '50%'],
         selectedMode: 'single',
         data: echartsSpeicalLabelPieData,
         emphasis: {
@@ -148,7 +155,7 @@ const EchartsSpeicalLabelPie: React.FC = () => {
       round
       loading={echartsSpeicalLabelPieData && echartsSpeicalLabelPieData.length === 0}
     >
-      <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />
+      <ReactEcharts option={getOption} style={{ width: '100%', height: height || '300px' }} />
     </Skeleton>
   );
 };
