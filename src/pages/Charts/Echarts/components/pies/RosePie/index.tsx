@@ -8,7 +8,15 @@ interface RingPieDatas {
   name: string;
 }
 
-const EchartsRosePie: React.FC = () => {
+interface EchartsRosePieProps {
+  height?: string;
+  radiusData?: number[];
+  position?: string[];
+}
+
+const EchartsRosePie: React.FC<EchartsRosePieProps> = (props) => {
+  const { height, radiusData, position } = props;
+
   const [echartsRosePieData, setEchartsRosePieData] = useState([] as RingPieDatas[]);
 
   useEffect(() => {
@@ -27,8 +35,8 @@ const EchartsRosePie: React.FC = () => {
       {
         name: '面积模式',
         type: 'pie',
-        radius: [20, 100],
-        center: ['35%', '50%'],
+        radius: radiusData || [20, 100],
+        center: position || ['35%', '50%'],
         roseType: 'area',
         itemStyle: {
           borderRadius: 8,
@@ -40,7 +48,7 @@ const EchartsRosePie: React.FC = () => {
 
   return (
     <Skeleton active round loading={echartsRosePieData && echartsRosePieData.length === 0}>
-      <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />
+      <ReactEcharts option={getOption} style={{ width: '100%', height: height || '300px' }} />
     </Skeleton>
   );
 };

@@ -9,10 +9,21 @@ interface EchartsProps {
   modalType: string;
   modalTitle: string;
   modalHeight: string;
+  modalRediusData: number[];
+  modalPosition: string[];
 }
 
 const EchartsModals: React.FC<EchartsProps> = (props) => {
-  const { handleOk, handleCancel, visible, modalType, modalTitle, modalHeight } = props;
+  const {
+    handleOk,
+    handleCancel,
+    visible,
+    modalType,
+    modalTitle,
+    modalHeight,
+    modalRediusData,
+    modalPosition,
+  } = props;
   return (
     <Modal
       title={modalTitle}
@@ -67,6 +78,13 @@ const EchartsModals: React.FC<EchartsProps> = (props) => {
       ) : null}
       {modalType && modalType === 'EchartsTexturePie' ? (
         <pies.EchartsTexturePie height={modalHeight} />
+      ) : null}
+      {modalType && modalType === 'EchartsRosePie' ? (
+        <pies.EchartsRosePie
+          height={modalHeight}
+          radiusData={modalRediusData}
+          position={modalPosition}
+        />
       ) : null}
     </Modal>
   );

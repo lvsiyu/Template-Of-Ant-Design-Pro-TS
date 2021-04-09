@@ -16,12 +16,26 @@ const Echarts: React.FC = () => {
   const [modalType, setModalType] = useState('');
   const [modalTitle, setModalTitle] = useState('');
   const [modalHeight, setModalHeight] = useState('300px');
+  const [modalRediusData, setModalRediusData] = useState([20, 100]);
+  const [modalPosition, setModalPosition] = useState(['35%', '50%']);
 
-  const showModal = (type: string, title: string, height: string) => {
+  const showModal = (
+    type: string,
+    title: string,
+    height: string,
+    rediusData?: number[],
+    position?: string[],
+  ) => {
     setModalType(type);
     setModalTitle(title);
     setModalHeight(height);
     setIsModalVisible(true);
+    if (rediusData) {
+      setModalRediusData(rediusData);
+    }
+    if (position) {
+      setModalPosition(position);
+    }
   };
 
   const handleOk = () => {
@@ -38,6 +52,8 @@ const Echarts: React.FC = () => {
     modalType,
     modalTitle,
     modalHeight,
+    modalRediusData,
+    modalPosition,
     visible: isModalVisible,
   };
 
@@ -327,7 +343,22 @@ const Echarts: React.FC = () => {
                   headerBordered
                   bordered
                   chart={<pies.EchartsRosePie />}
-                  extra={<Button type="primary">弹窗显示</Button>}
+                  extra={
+                    <Button
+                      onClick={() =>
+                        showModal(
+                          'EchartsRosePie',
+                          '南丁格尔玫瑰图',
+                          '500px',
+                          [50, 200],
+                          ['45%', '50%'],
+                        )
+                      }
+                      type="primary"
+                    >
+                      弹窗显示
+                    </Button>
+                  }
                 />
               </Col>
               <Col span={8}>
