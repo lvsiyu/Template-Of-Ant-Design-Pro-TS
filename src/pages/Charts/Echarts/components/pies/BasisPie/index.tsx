@@ -8,7 +8,13 @@ interface BasisPieDatas {
   name: string;
 }
 
-const EchartsBasisPie: React.FC = () => {
+interface EchartsBasisPieProps {
+  height?: string;
+}
+
+const EchartsBasisPie: React.FC<EchartsBasisPieProps> = (props) => {
+  const { height } = props;
+
   const [echartsBasisPieData, setEchartsBasisPieData] = useState([] as BasisPieDatas[]);
 
   useEffect(() => {
@@ -47,7 +53,7 @@ const EchartsBasisPie: React.FC = () => {
 
   return (
     <Skeleton active round loading={echartsBasisPieData && echartsBasisPieData.length === 0}>
-      <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />
+      <ReactEcharts option={getOption} style={{ width: '100%', height: height || '300px' }} />
     </Skeleton>
   );
 };
