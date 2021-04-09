@@ -62,6 +62,9 @@ const EchartsModals: React.FC<EchartsProps> = (props) => {
       {modalType && modalType === 'EchartsBasisPie' ? (
         <pies.EchartsBasisPie height={modalHeight} />
       ) : null}
+      {modalType && modalType === 'EchartsRingPie' ? (
+        <pies.EchartsRingPie height={modalHeight} />
+      ) : null}
     </Modal>
   );
 };

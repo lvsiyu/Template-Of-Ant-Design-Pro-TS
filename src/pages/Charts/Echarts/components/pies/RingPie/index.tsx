@@ -8,7 +8,13 @@ interface RingPieDatas {
   name: string;
 }
 
-const EchartsRingPie: React.FC = () => {
+interface EchartsRingPieProps {
+  height?: string;
+}
+
+const EchartsRingPie: React.FC<EchartsRingPieProps> = (props) => {
+  const { height } = props;
+
   const [echartsRingPieData, setEchartsRingPieData] = useState([] as RingPieDatas[]);
 
   useEffect(() => {
@@ -55,7 +61,7 @@ const EchartsRingPie: React.FC = () => {
 
   return (
     <Skeleton active round loading={echartsRingPieData && echartsRingPieData.length === 0}>
-      <ReactEcharts option={getOption} style={{ width: '100%', height: '300px' }} />
+      <ReactEcharts option={getOption} style={{ width: '100%', height: height || '300px' }} />
     </Skeleton>
   );
 };

@@ -293,7 +293,14 @@ const Echarts: React.FC = () => {
                   headerBordered
                   bordered
                   chart={<pies.EchartsRingPie />}
-                  extra={<Button type="primary">弹窗显示</Button>}
+                  extra={
+                    <Button
+                      onClick={() => showModal('EchartsRingPie', '圆环图', '500px')}
+                      type="primary"
+                    >
+                      弹窗显示
+                    </Button>
+                  }
                 />
               </Col>
               <Col span={8}>
