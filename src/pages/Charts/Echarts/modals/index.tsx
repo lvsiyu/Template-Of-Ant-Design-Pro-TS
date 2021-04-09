@@ -89,6 +89,9 @@ const EchartsModals: React.FC<EchartsProps> = (props) => {
       {modalType && modalType === 'EchartsSpeicalLabelPie' ? (
         <pies.EchartsSpeicalLabelPie height={modalHeight} position={modalPosition} />
       ) : null}
+      {modalType && modalType === 'EchartsNestedPie' ? (
+        <pies.EchartsNestedPie height={modalHeight} />
+      ) : null}
     </Modal>
   );
 };

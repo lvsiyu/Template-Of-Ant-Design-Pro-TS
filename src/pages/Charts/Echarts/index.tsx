@@ -390,7 +390,14 @@ const Echarts: React.FC = () => {
                   headerBordered
                   bordered
                   chart={<pies.EchartsNestedPie />}
-                  extra={<Button type="primary">弹窗显示</Button>}
+                  extra={
+                    <Button
+                      onClick={() => showModal('EchartsNestedPie', '嵌套饼图', '500px')}
+                      type="primary"
+                    >
+                      弹窗显示
+                    </Button>
+                  }
                 />
               </Col>
             </Row>
