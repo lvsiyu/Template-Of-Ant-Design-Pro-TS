@@ -22,6 +22,28 @@
     component: './Welcome',
   },
   {
+    path: '/charts',
+    name: '图表页面',
+    icon: 'AreaChartOutlined',
+    routes: [
+      {
+        path: '/charts/antd-charts',
+        name: '使用AntdCharts',
+        component: './Charts/AntdCharts',
+      },
+      {
+        path: '/charts/biz-charts',
+        name: '使用BizCharts',
+        component: './Charts/BizCharts',
+      },
+      {
+        path: '/charts/echarts',
+        name: '使用Echarts',
+        component: './Charts/Echarts',
+      },
+    ],
+  },
+  {
     path: '/admin',
     name: '管理页面',
     icon: 'crown',
@@ -71,28 +93,6 @@
         path: '/card/pro-card',
         name: '高级卡片',
         component: './Card/ProCard',
-      },
-    ],
-  },
-  {
-    path: '/charts',
-    name: '图表页面',
-    icon: 'AreaChartOutlined',
-    routes: [
-      {
-        path: '/charts/antd-charts',
-        name: '使用AntdCharts',
-        component: './Charts/AntdCharts',
-      },
-      {
-        path: '/charts/biz-charts',
-        name: '使用BizCharts',
-        component: './Charts/BizCharts',
-      },
-      {
-        path: '/charts/echarts',
-        name: '使用Echarts',
-        component: './Charts/Echarts',
       },
     ],
   },

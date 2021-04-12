@@ -1,11 +1,12 @@
-import { GithubOutlined } from '@ant-design/icons';
+/* import { GithubOutlined } from '@ant-design/icons'; */
 import { DefaultFooter } from '@ant-design/pro-layout';
 
 export default () => (
   <DefaultFooter
-    copyright="2020 蚂蚁集团体验技术部出品"
-    links={[
-      {
+    copyright="2020 xxxx公司出品"
+    links={
+      [
+        /* {
         key: 'Ant Design Pro',
         title: 'Ant Design Pro',
         href: 'https://pro.ant.design',
@@ -22,7 +23,8 @@ export default () => (
         title: 'Ant Design',
         href: 'https://ant.design',
         blankTarget: true,
-      },
-    ]}
+      }, */
+      ]
+    }
   />
 );
