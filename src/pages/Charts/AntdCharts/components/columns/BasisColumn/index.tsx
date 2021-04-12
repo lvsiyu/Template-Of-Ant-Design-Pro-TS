@@ -1,47 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Column } from '@ant-design/charts';
+import { queryAntdChartsBasisColumn } from '@/pages/Charts/AntdCharts/services';
 import type { ColumnConfig } from '@ant-design/charts/es/column/index.d';
 
-const BasisColumn: React.FC = () => {
-  const data = [
-    {
-      type: '家具家电',
-      sales: 38,
-    },
-    {
-      type: '粮油副食',
-      sales: 52,
-    },
-    {
-      type: '生鲜水果',
-      sales: 61,
-    },
-    {
-      type: '美容洗护',
-      sales: 145,
-    },
-    {
-      type: '母婴用品',
-      sales: 48,
-    },
-    {
-      type: '进口食品',
-      sales: 38,
-    },
-    {
-      type: '食品饮料',
-      sales: 38,
-    },
-    {
-      type: '家庭清洁',
-      sales: 38,
-    },
-  ];
+interface BasisColumnProps {
+  height?: number;
+}
+
+const BasisColumn: React.FC<BasisColumnProps> = (props) => {
+  const { height } = props;
+
+  const [antdChartsBasisColumnData, setAntdChartsBasisColumnData] = useState([]);
+
+  useEffect(() => {
+    queryAntdChartsBasisColumn().then(({ data }) => setAntdChartsBasisColumnData(data || []));
+  }, []);
+
   const config: ColumnConfig = {
-    data,
+    data: antdChartsBasisColumnData,
     xField: 'type',
     yField: 'sales',
-    height: 180,
+    height: height || 180,
     label: {
       position: 'middle',
       style: {
@@ -54,7 +33,12 @@ const BasisColumn: React.FC = () => {
       sales: { alias: '销售额' },
     },
   };
-  return <Column {...config} />;
+  return (
+    <Column
+      {...config}
+      loading={antdChartsBasisColumnData && antdChartsBasisColumnData.length === 0}
+    />
+  );
 };
 
 export default BasisColumn;

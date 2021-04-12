@@ -26,7 +26,7 @@ const AntdCharts: React.FC = () => {
                 tip="说明说明"
                 headerBordered
                 style={{ height: '292px' }}
-                chart={<Columns.BasisColumn />}
+                chart={<Columns.BasisColumn /* height={180} */ />}
                 extra={<Button type="primary">按钮</Button>}
               />
             </Col>

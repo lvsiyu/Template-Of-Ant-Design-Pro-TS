@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { queryAntdChartsBasisLine } from '@/pages/Charts/AntdCharts/services';
 import { Line } from '@ant-design/charts';
+import { queryAntdChartsBasisLine } from '@/pages/Charts/AntdCharts/services';
 
 interface BasisLineProps {
-  height: number;
+  height?: number;
 }
 
 const BasisLine: React.FC<BasisLineProps> = (props) => {
