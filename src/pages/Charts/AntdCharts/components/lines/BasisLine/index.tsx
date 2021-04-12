@@ -2,7 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { queryAntdChartsBasisLine } from '@/pages/Charts/AntdCharts/services';
 import { Line } from '@ant-design/charts';
 
-const BasisLine: React.FC = () => {
+interface BasisLineProps {
+  height: number;
+}
+
+const BasisLine: React.FC<BasisLineProps> = (props) => {
+  const { height } = props;
+
   const [antdChartsBasisLineData, setAntdChartsBasisLineData] = useState([]);
 
   useEffect(() => {
@@ -14,7 +20,7 @@ const BasisLine: React.FC = () => {
     xField: 'year',
     yField: 'value',
     label: {},
-    height: 461,
+    height: height || 461,
     point: {
       size: 5,
       shape: 'diamond',

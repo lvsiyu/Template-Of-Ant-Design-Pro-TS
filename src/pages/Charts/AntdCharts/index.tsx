@@ -14,7 +14,7 @@ const AntdCharts: React.FC = () => {
             tip="说明说明"
             headerBordered
             style={{ height: '600px' }}
-            chart={<Lines.BasisLine />}
+            chart={<Lines.BasisLine height={461} />}
             extra={<Button type="primary">按钮</Button>}
           />
         </Col>
