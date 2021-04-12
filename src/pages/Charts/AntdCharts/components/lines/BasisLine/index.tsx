@@ -52,7 +52,9 @@ const BasisLine: React.FC = () => {
     },
     interactions: [{ type: 'marker-active' }],
   };
-  return <Line {...config} loading={antdChartsBasisLineData.length === 0} />;
+  return (
+    <Line {...config} loading={antdChartsBasisLineData && antdChartsBasisLineData.length === 0} />
+  );
 };
 
 export default BasisLine;
