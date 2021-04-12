@@ -1,47 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { queryAntdChartsBasisLine } from '@/pages/Charts/AntdCharts/services';
 import { Line } from '@ant-design/charts';
 
 const BasisLine: React.FC = () => {
-  const data = [
-    {
-      year: '1991',
-      value: 3,
-    },
-    {
-      year: '1992',
-      value: 4,
-    },
-    {
-      year: '1993',
-      value: 3.5,
-    },
-    {
-      year: '1994',
-      value: 5,
-    },
-    {
-      year: '1995',
-      value: 4.9,
-    },
-    {
-      year: '1996',
-      value: 6,
-    },
-    {
-      year: '1997',
-      value: 7,
-    },
-    {
-      year: '1998',
-      value: 9,
-    },
-    {
-      year: '1999',
-      value: 13,
-    },
-  ];
+  const [antdChartsBasisLineData, setAntdChartsBasisLineData] = useState([]);
+
+  useEffect(() => {
+    queryAntdChartsBasisLine().then(({ data }) => setAntdChartsBasisLineData(data || []));
+  }, []);
+
   const config = {
-    data,
+    data: antdChartsBasisLineData,
     xField: 'year',
     yField: 'value',
     label: {},
@@ -83,7 +52,7 @@ const BasisLine: React.FC = () => {
     },
     interactions: [{ type: 'marker-active' }],
   };
-  return <Line {...config} />;
+  return <Line {...config} loading={antdChartsBasisLineData.length === 0} />;
 };
 
 export default BasisLine;
