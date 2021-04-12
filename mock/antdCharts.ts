@@ -92,10 +92,30 @@ const getAntdChartsBasisRadar = async (req: Request, res: Response) => {
   });
 };
 
+const getAntdChartsBasisWord = async (req: Request, res: Response) => {
+  await waitTime(1000);
+  res.send({
+    code: 200,
+    data: [
+      { x: 'China', value: 10, category: 'asia' },
+      { x: 'India', value: 9, category: 'asia' },
+      { x: 'United States', value: 8, category: 'america' },
+      { x: 'Indonesia', value: 7, category: 'asia' },
+      { x: 'Brazil', value: 6, category: 'america' },
+      { x: 'Pakistan', value: 6, category: 'asia' },
+      { x: 'Nigeria', value: 5, category: 'africa' },
+      { x: 'Bangladesh', value: 4, category: 'asia' },
+      { x: 'Russia', value: 3, category: 'europe' },
+    ],
+    msg: 'success',
+  });
+};
+
 export default {
   'GET /api/charts/antdCharts/lines/basisLine': getAntdChartsBasisLine,
   'GET /api/charts/antdCharts/lines/basisColumn': getAntdChartsBasisColumn,
   'GET /api/charts/antdCharts/lines/basisPie': getAntdChartsBasisPie,
   'GET /api/charts/antdCharts/lines/basisBar': getAntdChartsBasisBar,
   'GET /api/charts/antdCharts/lines/basisRadar': getAntdChartsBasisRadar,
+  'GET /api/charts/antdCharts/lines/basisWord': getAntdChartsBasisWord,
 };

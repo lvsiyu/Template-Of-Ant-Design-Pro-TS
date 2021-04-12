@@ -19,6 +19,7 @@ const BasisRadar: React.FC<BasisRadarProps> = (props) => {
   useEffect(() => {
     queryAntdChartsBasisRadar().then(({ data }) => setAntdChartsBasisRadarData(data || []));
   }, []);
+
   const config = {
     data: antdChartsBasisRadarData.map((d) => ({ ...d, star: Math.log(d.star).toFixed(2) })),
     height: height || 190,

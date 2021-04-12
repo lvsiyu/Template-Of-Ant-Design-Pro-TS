@@ -19,3 +19,7 @@ export async function queryAntdChartsBasisBar() {
 export async function queryAntdChartsBasisRadar() {
   return request('/api/charts/antdCharts/lines/basisRadar');
 }
+
+export async function queryAntdChartsBasisWord() {
+  return request('/api/charts/antdCharts/lines/basisWord');
+}

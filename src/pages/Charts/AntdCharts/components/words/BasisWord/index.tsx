@@ -1,59 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { WordCloud } from '@ant-design/charts';
+import { queryAntdChartsBasisWord } from '@/pages/Charts/AntdCharts/services';
 import type { WordCloudConfig } from '@ant-design/charts/es/wordCloud/index.d';
 
-const BasisWord: React.FC = () => {
-  const data = [
-    {
-      x: 'China',
-      value: 10,
-      category: 'asia',
-    },
-    {
-      x: 'India',
-      value: 9,
-      category: 'asia',
-    },
-    {
-      x: 'United States',
-      value: 8,
-      category: 'america',
-    },
-    {
-      x: 'Indonesia',
-      value: 7,
-      category: 'asia',
-    },
-    {
-      x: 'Brazil',
-      value: 6,
-      category: 'america',
-    },
-    {
-      x: 'Pakistan',
-      value: 6,
-      category: 'asia',
-    },
-    {
-      x: 'Nigeria',
-      value: 5,
-      category: 'africa',
-    },
-    {
-      x: 'Bangladesh',
-      value: 4,
-      category: 'asia',
-    },
-    {
-      x: 'Russia',
-      value: 3,
-      category: 'europe',
-    },
-  ];
+interface BasisWordProps {
+  height?: number;
+}
+
+const BasisWord: React.FC<BasisWordProps> = (props) => {
+  const { height } = props;
+
+  const [antdChartsBasisWordData, setAntdChartsBasisWordData] = useState([]);
+
+  useEffect(() => {
+    queryAntdChartsBasisWord().then(({ data }) => setAntdChartsBasisWordData(data || []));
+  }, []);
 
   const config: WordCloudConfig = {
-    data,
-    height: 190,
+    data: antdChartsBasisWordData,
+    height: height || 190,
     wordField: 'x',
     weightField: 'value',
     color: '#122c6a',
@@ -64,7 +29,12 @@ const BasisWord: React.FC = () => {
     interactions: [{ type: 'element-active' }],
     state: { active: { style: { lineWidth: 3 } } },
   };
-  return <WordCloud {...config} />;
+  return (
+    <WordCloud
+      {...config}
+      loading={antdChartsBasisWordData && antdChartsBasisWordData.length === 0}
+    />
+  );
 };
 
 export default BasisWord;
