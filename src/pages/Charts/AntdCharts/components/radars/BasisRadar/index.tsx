@@ -1,18 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Radar } from '@ant-design/charts';
+import { queryAntdChartsBasisRadar } from '@/pages/Charts/AntdCharts/services';
 
-const BasisRadar: React.FC = () => {
-  const data = [
-    { name: 'G2', star: 10178 },
-    { name: 'G6', star: 7077 },
-    { name: 'F2', star: 7345 },
-    { name: 'L7', star: 2029 },
-    { name: 'X6', star: 298 },
-    { name: 'AVA', star: 806 },
-  ];
+interface BasisRadarProps {
+  height?: number;
+}
+
+interface ResponseData {
+  name: string;
+  star: number;
+}
+
+const BasisRadar: React.FC<BasisRadarProps> = (props) => {
+  const { height } = props;
+
+  const [antdChartsBasisRadarData, setAntdChartsBasisRadarData] = useState([] as ResponseData[]);
+
+  useEffect(() => {
+    queryAntdChartsBasisRadar().then(({ data }) => setAntdChartsBasisRadarData(data || []));
+  }, []);
   const config = {
-    data: data.map((d) => ({ ...d, star: Math.log(d.star).toFixed(2) })),
-    height: 190,
+    data: antdChartsBasisRadarData.map((d) => ({ ...d, star: Math.log(d.star).toFixed(2) })),
+    height: height || 190,
     xField: 'name',
     yField: 'star',
     meta: {
@@ -36,7 +45,12 @@ const BasisRadar: React.FC = () => {
     point: {},
     area: {},
   };
-  return <Radar {...config} />;
+  return (
+    <Radar
+      {...config}
+      loading={antdChartsBasisRadarData && antdChartsBasisRadarData.length === 0}
+    />
+  );
 };
 
 export default BasisRadar;

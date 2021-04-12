@@ -15,3 +15,7 @@ export async function queryAntdChartsBasisPie() {
 export async function queryAntdChartsBasisBar() {
   return request('/api/charts/antdCharts/lines/basisBar');
 }
+
+export async function queryAntdChartsBasisRadar() {
+  return request('/api/charts/antdCharts/lines/basisRadar');
+}

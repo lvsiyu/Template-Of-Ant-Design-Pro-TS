@@ -76,9 +76,26 @@ const getAntdChartsBasisBar = async (req: Request, res: Response) => {
   });
 };
 
+const getAntdChartsBasisRadar = async (req: Request, res: Response) => {
+  await waitTime(1000);
+  res.send({
+    code: 200,
+    data: [
+      { name: 'G2', star: 10178 },
+      { name: 'G6', star: 7077 },
+      { name: 'F2', star: 7345 },
+      { name: 'L7', star: 2029 },
+      { name: 'X6', star: 298 },
+      { name: 'AVA', star: 806 },
+    ],
+    msg: 'success',
+  });
+};
+
 export default {
   'GET /api/charts/antdCharts/lines/basisLine': getAntdChartsBasisLine,
   'GET /api/charts/antdCharts/lines/basisColumn': getAntdChartsBasisColumn,
   'GET /api/charts/antdCharts/lines/basisPie': getAntdChartsBasisPie,
   'GET /api/charts/antdCharts/lines/basisBar': getAntdChartsBasisBar,
+  'GET /api/charts/antdCharts/lines/basisRadar': getAntdChartsBasisRadar,
 };
