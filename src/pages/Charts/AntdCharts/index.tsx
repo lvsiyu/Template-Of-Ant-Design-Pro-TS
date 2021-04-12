@@ -13,7 +13,7 @@ const AntdCharts: React.FC = () => {
             title="基础折线图"
             tip="说明说明"
             headerBordered
-            style={{ height: '600px' }}
+            style={{ height: '600px', position: 'relative', overflow: 'hidden' }}
             chart={<Lines.BasisLine height={461} />}
             extra={<Button type="primary">按钮</Button>}
           />
@@ -25,7 +25,7 @@ const AntdCharts: React.FC = () => {
                 title="柱状图"
                 tip="说明说明"
                 headerBordered
-                style={{ height: '292px' }}
+                style={{ height: '292px', position: 'relative', overflow: 'hidden' }}
                 chart={<Columns.BasisColumn /* height={180} */ />}
                 extra={<Button type="primary">按钮</Button>}
               />
@@ -35,7 +35,7 @@ const AntdCharts: React.FC = () => {
                 title="饼图"
                 tip="说明说明"
                 headerBordered
-                style={{ height: '292px' }}
+                style={{ height: '292px', position: 'relative', overflow: 'hidden' }}
                 chart={<Pies.BasisPie />}
                 extra={<Button type="primary">按钮</Button>}
               />
@@ -47,7 +47,7 @@ const AntdCharts: React.FC = () => {
             title="条形图"
             tip="说明说明"
             headerBordered
-            style={{ height: '300px' }}
+            style={{ height: '300px', position: 'relative', overflow: 'hidden' }}
             chart={<Bars.BasisBar />}
             extra={<Button type="primary">按钮</Button>}
           />
@@ -57,7 +57,7 @@ const AntdCharts: React.FC = () => {
             title="雷达图"
             tip="说明说明"
             headerBordered
-            style={{ height: '300px' }}
+            style={{ height: '300px', position: 'relative', overflow: 'hidden' }}
             chart={<Radars.BasisRadar />}
             extra={<Button type="primary">按钮</Button>}
           />
@@ -67,7 +67,7 @@ const AntdCharts: React.FC = () => {
             title="词云图"
             tip="说明说明"
             headerBordered
-            style={{ height: '300px' }}
+            style={{ height: '300px', position: 'relative', overflow: 'hidden' }}
             chart={<Words.BasisWord />}
             extra={<Button type="primary">按钮</Button>}
           />

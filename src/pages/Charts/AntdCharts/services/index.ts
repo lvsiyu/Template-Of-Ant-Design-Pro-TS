@@ -7,3 +7,7 @@ export async function queryAntdChartsBasisLine() {
 export async function queryAntdChartsBasisColumn() {
   return request('/api/charts/antdCharts/lines/basisColumn');
 }
+
+export async function queryAntdChartsBasisPie() {
+  return request('/api/charts/antdCharts/lines/basisPie');
+}

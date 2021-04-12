@@ -1,37 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Pie } from '@ant-design/charts';
+import { queryAntdChartsBasisPie } from '@/pages/Charts/AntdCharts/services';
 
-const BasisPie: React.FC = () => {
-  const data = [
-    {
-      type: '分类一',
-      value: 27,
-    },
-    {
-      type: '分类二',
-      value: 25,
-    },
-    {
-      type: '分类三',
-      value: 18,
-    },
-    {
-      type: '分类四',
-      value: 15,
-    },
-    {
-      type: '分类五',
-      value: 10,
-    },
-    {
-      type: '其他',
-      value: 5,
-    },
-  ];
+interface BasisPieProps {
+  height?: number;
+}
+
+const BasisPie: React.FC<BasisPieProps> = (props) => {
+  const { height } = props;
+
+  const [antdChartsBasisPieData, setAntdChartsBasisPieData] = useState([]);
+
+  useEffect(() => {
+    queryAntdChartsBasisPie().then(({ data }) => setAntdChartsBasisPieData(data || []));
+  }, []);
+
   const config = {
     appendPadding: 10,
-    height: 180,
-    data,
+    height: height || 180,
+    data: antdChartsBasisPieData,
     angleField: 'value',
     colorField: 'type',
     radius: 0.8,
@@ -41,7 +28,9 @@ const BasisPie: React.FC = () => {
     },
     interactions: [{ type: 'pie-legend-active' }, { type: 'element-active' }],
   };
-  return <Pie {...config} />;
+  return (
+    <Pie {...config} loading={antdChartsBasisPieData && antdChartsBasisPieData.length === 0} />
+  );
 };
 
 export default BasisPie;
