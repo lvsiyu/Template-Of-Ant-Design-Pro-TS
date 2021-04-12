@@ -61,8 +61,24 @@ const getAntdChartsBasisPie = async (req: Request, res: Response) => {
   });
 };
 
+const getAntdChartsBasisBar = async (req: Request, res: Response) => {
+  await waitTime(1000);
+  res.send({
+    code: 200,
+    data: [
+      { year: '1951 年', value: 38 },
+      { year: '1952 年', value: 52 },
+      { year: '1956 年', value: 61 },
+      { year: '1957 年', value: 145 },
+      { year: '1958 年', value: 48 },
+    ],
+    msg: 'success',
+  });
+};
+
 export default {
   'GET /api/charts/antdCharts/lines/basisLine': getAntdChartsBasisLine,
   'GET /api/charts/antdCharts/lines/basisColumn': getAntdChartsBasisColumn,
   'GET /api/charts/antdCharts/lines/basisPie': getAntdChartsBasisPie,
+  'GET /api/charts/antdCharts/lines/basisBar': getAntdChartsBasisBar,
 };

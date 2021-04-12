@@ -13,6 +13,7 @@ const AntdCharts: React.FC = () => {
             title="基础折线图"
             tip="说明说明"
             headerBordered
+            /* 由于antdcharts的loading蒙版使用的是绝对定位，所以防止loading超出范围 */
             style={{ height: '600px', position: 'relative', overflow: 'hidden' }}
             chart={<Lines.BasisLine height={461} />}
             extra={<Button type="primary">按钮</Button>}
