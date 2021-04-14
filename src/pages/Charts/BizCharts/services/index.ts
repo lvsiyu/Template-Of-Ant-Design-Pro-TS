@@ -7,3 +7,7 @@ export async function queryBizChartsBasisLine() {
 export async function queryBizChartsBasisColumn() {
   return request('/api/charts/bizCharts/columns/basisColumn');
 }
+
+export async function queryBizChartsBasisPie() {
+  return request('/api/charts/bizCharts/pies/basisPie');
+}

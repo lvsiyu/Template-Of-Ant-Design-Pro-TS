@@ -45,7 +45,24 @@ const getBizChartsBasisColumn = async (req: Request, res: Response) => {
   });
 };
 
+const getBizChartsBasisPie = async (req: Request, res: Response) => {
+  await waitTime(1000);
+  res.send({
+    code: 200,
+    data: [
+      { type: '分类一', value: 27 },
+      { type: '分类二', value: 25 },
+      { type: '分类三', value: 18 },
+      { type: '分类四', value: 15 },
+      { type: '分类五', value: 10 },
+      { type: '其它', value: 5 },
+    ],
+    msg: 'success',
+  });
+};
+
 export default {
   'GET /api/charts/bizCharts/lines/basisLine': getBizChartsBasisLine,
   'GET /api/charts/bizCharts/columns/basisColumn': getBizChartsBasisColumn,
+  'GET /api/charts/bizCharts/pies/basisPie': getBizChartsBasisPie,
 };
