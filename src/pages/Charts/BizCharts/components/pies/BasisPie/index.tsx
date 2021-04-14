@@ -3,7 +3,7 @@ import { Skeleton } from 'antd';
 import { PieChart } from 'bizcharts';
 import { queryBizChartsBasisPie } from '@/pages/Charts/BizCharts/services';
 
-export interface BizChartsProps {
+interface BizChartsProps {
   height: number;
 }
 

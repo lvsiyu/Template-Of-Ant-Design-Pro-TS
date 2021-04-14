@@ -3,7 +3,7 @@ import { Skeleton } from 'antd';
 import { WordCloudChart } from 'bizcharts';
 import { queryBizChartsBasisWord } from '@/pages/Charts/BizCharts/services';
 
-export interface BizChartsProps {
+interface BizChartsProps {
   height: number;
 }
 

@@ -3,7 +3,7 @@ import { Skeleton } from 'antd';
 import { RadarChart } from 'bizcharts';
 import { queryBizChartsBasisRadar } from '@/pages/Charts/BizCharts/services';
 
-export interface BizChartsProps {
+interface BizChartsProps {
   height: number;
 }
 
