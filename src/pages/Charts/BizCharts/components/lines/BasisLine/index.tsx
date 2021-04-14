@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Skeleton } from 'antd';
 import { LineChart } from 'bizcharts';
-import { queryAntdChartsBasisLine } from '@/pages/Charts/AntdCharts/services';
+import { queryBizChartsBasisLine } from '@/pages/Charts/BizCharts/services';
 
 export interface BizChartsProps {
   height: number;
@@ -13,7 +13,7 @@ const BasisLine: React.FC<BizChartsProps> = (props) => {
   const [bizChartsBasisLineData, setBizChartsBasisLineData] = useState([]);
 
   useEffect(() => {
-    queryAntdChartsBasisLine().then(({ data }) => setBizChartsBasisLineData(data || []));
+    queryBizChartsBasisLine().then(({ data }) => setBizChartsBasisLineData(data || []));
   }, []);
 
   return (

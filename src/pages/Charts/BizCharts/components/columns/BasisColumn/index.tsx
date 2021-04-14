@@ -1,17 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Skeleton } from 'antd';
 import { ColumnChart } from 'bizcharts';
-
-// 数据源
-const data = [
-  { type: '家具家电', sales: 38 },
-  { type: '粮油副食', sales: 52 },
-  { type: '生鲜水果', sales: 61 },
-  { type: '美容洗护', sales: 145 },
-  { type: '母婴用品', sales: 48 },
-  { type: '进口食品', sales: 38 },
-  { type: '食品饮料', sales: 38 },
-  { type: '家庭清洁', sales: 38 },
-];
+import { queryBizChartsBasisColumn } from '@/pages/Charts/BizCharts/services';
 
 export interface BizChartsProps {
   height: number;
@@ -19,23 +9,36 @@ export interface BizChartsProps {
 
 const BasisColumn: React.FC<BizChartsProps> = (props) => {
   const { height } = props;
+
+  const [bizChartsBasisColumnData, setBizChartsBasisColumnData] = useState([]);
+
+  useEffect(() => {
+    queryBizChartsBasisColumn().then(({ data }) => setBizChartsBasisColumnData(data || []));
+  }, []);
+
   return (
-    <ColumnChart
-      data={data}
-      autoFit
-      height={height}
-      padding="auto"
-      xField="type"
-      yField="sales"
-      meta={{
-        type: {
-          alias: '类别',
-        },
-        sales: {
-          alias: '销售额(万)',
-        },
-      }}
-    />
+    <Skeleton
+      active
+      round
+      loading={bizChartsBasisColumnData && bizChartsBasisColumnData.length === 0}
+    >
+      <ColumnChart
+        data={bizChartsBasisColumnData}
+        autoFit
+        height={height}
+        padding="auto"
+        xField="type"
+        yField="sales"
+        meta={{
+          type: {
+            alias: '类别',
+          },
+          sales: {
+            alias: '销售额(万)',
+          },
+        }}
+      />
+    </Skeleton>
   );
 };
 
