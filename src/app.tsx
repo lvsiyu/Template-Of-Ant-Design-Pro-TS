@@ -75,7 +75,7 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
           </Link>,
           <Link to="/~docs">
             <BookOutlined />
-            <span>业务组件文档</span>
+            <span>使用说明文档</span>
           </Link>,
         ]
       : [],
