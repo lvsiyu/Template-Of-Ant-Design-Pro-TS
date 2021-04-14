@@ -15,3 +15,7 @@ export async function queryBizChartsBasisPie() {
 export async function queryBizChartsBasisBar() {
   return request('/api/charts/bizCharts/bars/basisBar');
 }
+
+export async function queryBizChartsBasisRadar() {
+  return request('/api/charts/bizCharts/radars/basisRadar');
+}

@@ -1,29 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Skeleton } from 'antd';
 import { RadarChart } from 'bizcharts';
-
-// 数据源
-const data = [
-  { item: 'Design', user: 'a', score: 70 },
-  { item: 'Design', user: 'b', score: 30 },
-  { item: 'Development', user: 'a', score: 60 },
-  { item: 'Development', user: 'b', score: 70 },
-  { item: 'Marketing', user: 'a', score: 60 },
-  { item: 'Marketing', user: 'b', score: 50 },
-  { item: 'Users', user: 'a', score: 40 },
-  { item: 'Users', user: 'b', score: 50 },
-  { item: 'Test', user: 'a', score: 60 },
-  { item: 'Test', user: 'b', score: 70 },
-  { item: 'Language', user: 'a', score: 70 },
-  { item: 'Language', user: 'b', score: 50 },
-  { item: 'Technology', user: 'a', score: 50 },
-  { item: 'Technology', user: 'b', score: 40 },
-  { item: 'Support', user: 'a', score: 30 },
-  { item: 'Support', user: 'b', score: 40 },
-  { item: 'Sales', user: 'a', score: 60 },
-  { item: 'Sales', user: 'b', score: 40 },
-  { item: 'UX', user: 'a', score: 50 },
-  { item: 'UX', user: 'b', score: 60 },
-];
+import { queryBizChartsBasisRadar } from '@/pages/Charts/BizCharts/services';
 
 export interface BizChartsProps {
   height: number;
@@ -31,33 +9,46 @@ export interface BizChartsProps {
 
 const BasisRadar: React.FC<BizChartsProps> = (props) => {
   const { height } = props;
+
+  const [bizChartsBasisRadarData, setBizChartsBasisRadarData] = useState([]);
+
+  useEffect(() => {
+    queryBizChartsBasisRadar().then(({ data }) => setBizChartsBasisRadarData(data || []));
+  }, []);
+
   return (
-    <RadarChart
-      data={data}
-      angleField="item"
-      radiusField="score"
-      seriesField="user"
-      xField="year"
-      yField="value"
-      height={height}
-      radiusAxis={{
-        grid: {
-          line: {
-            type: 'line',
+    <Skeleton
+      active
+      round
+      loading={bizChartsBasisRadarData && bizChartsBasisRadarData.length === 0}
+    >
+      <RadarChart
+        data={bizChartsBasisRadarData}
+        angleField="item"
+        radiusField="score"
+        seriesField="user"
+        xField="year"
+        yField="value"
+        height={height}
+        radiusAxis={{
+          grid: {
+            line: {
+              type: 'line',
+            },
           },
-        },
-      }}
-      line={{
-        visible: true,
-      }}
-      point={{
-        visible: false,
-        /* shape: 'circle', */
-      }}
-      legend={{
-        visible: false,
-      }}
-    />
+        }}
+        line={{
+          visible: true,
+        }}
+        point={{
+          visible: false,
+          /* shape: 'circle', */
+        }}
+        legend={{
+          visible: false,
+        }}
+      />
+    </Skeleton>
   );
 };
 

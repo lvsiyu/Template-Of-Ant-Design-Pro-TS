@@ -77,9 +77,40 @@ const getBizChartsBasisBar = async (req: Request, res: Response) => {
   });
 };
 
+const getBizChartsBasisRadar = async (req: Request, res: Response) => {
+  await waitTime(1000);
+  res.send({
+    code: 200,
+    data: [
+      { item: 'Design', user: 'a', score: 70 },
+      { item: 'Design', user: 'b', score: 30 },
+      { item: 'Development', user: 'a', score: 60 },
+      { item: 'Development', user: 'b', score: 70 },
+      { item: 'Marketing', user: 'a', score: 60 },
+      { item: 'Marketing', user: 'b', score: 50 },
+      { item: 'Users', user: 'a', score: 40 },
+      { item: 'Users', user: 'b', score: 50 },
+      { item: 'Test', user: 'a', score: 60 },
+      { item: 'Test', user: 'b', score: 70 },
+      { item: 'Language', user: 'a', score: 70 },
+      { item: 'Language', user: 'b', score: 50 },
+      { item: 'Technology', user: 'a', score: 50 },
+      { item: 'Technology', user: 'b', score: 40 },
+      { item: 'Support', user: 'a', score: 30 },
+      { item: 'Support', user: 'b', score: 40 },
+      { item: 'Sales', user: 'a', score: 60 },
+      { item: 'Sales', user: 'b', score: 40 },
+      { item: 'UX', user: 'a', score: 50 },
+      { item: 'UX', user: 'b', score: 60 },
+    ],
+    msg: 'success',
+  });
+};
+
 export default {
   'GET /api/charts/bizCharts/lines/basisLine': getBizChartsBasisLine,
   'GET /api/charts/bizCharts/columns/basisColumn': getBizChartsBasisColumn,
   'GET /api/charts/bizCharts/pies/basisPie': getBizChartsBasisPie,
   'GET /api/charts/bizCharts/bars/basisBar': getBizChartsBasisBar,
+  'GET /api/charts/bizCharts/radars/basisRadar': getBizChartsBasisRadar,
 };
