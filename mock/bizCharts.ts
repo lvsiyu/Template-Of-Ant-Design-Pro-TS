@@ -107,10 +107,47 @@ const getBizChartsBasisRadar = async (req: Request, res: Response) => {
   });
 };
 
+const getBizChartsBasisWord = async (req: Request, res: Response) => {
+  await waitTime(1000);
+  res.send({
+    code: 200,
+    data: [
+      { value: 12, name: 'G2Plot' },
+      { value: 9, name: 'AntV' },
+      { value: 8, name: 'F2' },
+      { value: 8, name: 'G2' },
+      { value: 8, name: 'G6' },
+      { value: 8, name: 'DataSet' },
+      { value: 6, name: 'Analysis' },
+      { value: 6, name: 'Data Mining' },
+      { value: 6, name: 'Data Vis' },
+      { value: 6, name: 'Design' },
+      { value: 6, name: 'Grammar' },
+      { value: 6, name: 'Graphics' },
+      { value: 6, name: 'Graph' },
+      { value: 6, name: 'Hierarchy' },
+      { value: 6, name: 'Labeling' },
+      { value: 6, name: 'Layout' },
+      { value: 6, name: 'Quantitative' },
+      { value: 6, name: 'Relation' },
+      { value: 4, name: 'Arc Diagram' },
+      { value: 4, name: 'Bar Chart' },
+      { value: 4, name: 'Canvas' },
+      { value: 4, name: 'Chart' },
+      { value: 4, name: 'DAG' },
+      { value: 4, name: 'DG' },
+      { value: 4, name: 'Facet' },
+      { value: 4, name: 'Geo' },
+    ],
+    msg: 'success',
+  });
+};
+
 export default {
   'GET /api/charts/bizCharts/lines/basisLine': getBizChartsBasisLine,
   'GET /api/charts/bizCharts/columns/basisColumn': getBizChartsBasisColumn,
   'GET /api/charts/bizCharts/pies/basisPie': getBizChartsBasisPie,
   'GET /api/charts/bizCharts/bars/basisBar': getBizChartsBasisBar,
   'GET /api/charts/bizCharts/radars/basisRadar': getBizChartsBasisRadar,
+  'GET /api/charts/bizCharts/word/basisWord': getBizChartsBasisWord,
 };

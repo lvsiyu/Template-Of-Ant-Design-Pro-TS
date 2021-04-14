@@ -1,72 +1,59 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Skeleton } from 'antd';
 import { WordCloudChart } from 'bizcharts';
-
-// 数据源
-const data = [
-  { value: 12, name: 'G2Plot' },
-  { value: 9, name: 'AntV' },
-  { value: 8, name: 'F2' },
-  { value: 8, name: 'G2' },
-  { value: 8, name: 'G6' },
-  { value: 8, name: 'DataSet' },
-  { value: 6, name: 'Analysis' },
-  { value: 6, name: 'Data Mining' },
-  { value: 6, name: 'Data Vis' },
-  { value: 6, name: 'Design' },
-  { value: 6, name: 'Grammar' },
-  { value: 6, name: 'Graphics' },
-  { value: 6, name: 'Graph' },
-  { value: 6, name: 'Hierarchy' },
-  { value: 6, name: 'Labeling' },
-  { value: 6, name: 'Layout' },
-  { value: 6, name: 'Quantitative' },
-  { value: 6, name: 'Relation' },
-  { value: 4, name: 'Arc Diagram' },
-  { value: 4, name: 'Bar Chart' },
-  { value: 4, name: 'Canvas' },
-  { value: 4, name: 'Chart' },
-  { value: 4, name: 'DAG' },
-  { value: 4, name: 'DG' },
-  { value: 4, name: 'Facet' },
-  { value: 4, name: 'Geo' },
-];
+import { queryBizChartsBasisWord } from '@/pages/Charts/BizCharts/services';
 
 export interface BizChartsProps {
   height: number;
 }
 
-const getDataList = (listData: any[]) => {
-  const list: { word: string; weight: number; id: number }[] = [];
-  // change data type
-  listData.forEach((d: { name: any; value: any }) => {
-    list.push({
-      word: d.name,
-      weight: d.value,
-      id: list.length,
-    });
-  });
-  return list;
-};
+interface WordListDataType {
+  word: string;
+  weight: number;
+  id: number;
+}
 
 const BasisWordCloud: React.FC<BizChartsProps> = (props) => {
   const { height } = props;
+
+  const [bizChartsBasisWordData, setBizChartsBasisWordData] = useState([] as WordListDataType[]);
+
+  const getDataList = (listData: { name: string; value: number }[]) => {
+    const list: WordListDataType[] = [];
+    // change data type
+    listData.forEach((d: { name: any; value: any }) => {
+      list.push({
+        word: d.name,
+        weight: d.value,
+        id: list.length,
+      });
+    });
+    setBizChartsBasisWordData(list);
+  };
+
+  useEffect(() => {
+    queryBizChartsBasisWord().then(({ data }) => getDataList(data || []));
+  }, []);
+
   return (
-    <WordCloudChart
-      data={getDataList(data)}
-      wordStyle={{
-        fontSize: [10, 60],
-        active: {
-          shadowColor: '#333333',
-          shadowBlur: 10,
-        },
-      }}
-      height={height}
-      shuffle={false}
-      tooltip={{
-        visible: true,
-      }}
-      selected={-1}
-    />
+    <Skeleton active round loading={bizChartsBasisWordData && bizChartsBasisWordData.length === 0}>
+      <WordCloudChart
+        data={bizChartsBasisWordData}
+        wordStyle={{
+          fontSize: [10, 60],
+          active: {
+            shadowColor: '#333333',
+            shadowBlur: 10,
+          },
+        }}
+        height={height}
+        shuffle={false}
+        tooltip={{
+          visible: true,
+        }}
+        selected={-1}
+      />
+    </Skeleton>
   );
 };
 

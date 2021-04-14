@@ -19,3 +19,7 @@ export async function queryBizChartsBasisBar() {
 export async function queryBizChartsBasisRadar() {
   return request('/api/charts/bizCharts/radars/basisRadar');
 }
+
+export async function queryBizChartsBasisWord() {
+  return request('/api/charts/bizCharts/word/basisWord');
+}
