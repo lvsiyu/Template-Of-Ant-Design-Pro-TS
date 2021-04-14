@@ -17,9 +17,16 @@ const BasisLine: React.FC<BizChartsProps> = (props) => {
   }, []);
 
   return (
-    <Skeleton active round loading={bizChartsBasisLineData && bizChartsBasisLineData.length === 0}>
-      <LineChart data={bizChartsBasisLineData} height={height} xField="year" yField="value" />
-    </Skeleton>
+    /* 由于骨架屏无高度属性，需要用一个容器来撑开高度 */
+    <div style={{ height }}>
+      <Skeleton
+        active
+        round
+        loading={bizChartsBasisLineData && bizChartsBasisLineData.length === 0}
+      >
+        <LineChart data={bizChartsBasisLineData} height={height} xField="year" yField="value" />
+      </Skeleton>
+    </div>
   );
 };
 
