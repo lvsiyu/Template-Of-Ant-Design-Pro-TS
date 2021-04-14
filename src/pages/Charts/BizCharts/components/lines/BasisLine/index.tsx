@@ -1,18 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Skeleton } from 'antd';
 import { LineChart } from 'bizcharts';
-
-// 数据源
-const data = [
-  { year: '1991', value: 3 },
-  { year: '1992', value: 4 },
-  { year: '1993', value: 3.5 },
-  { year: '1994', value: 5 },
-  { year: '1995', value: 4.9 },
-  { year: '1996', value: 6 },
-  { year: '1997', value: 7 },
-  { year: '1998', value: 9 },
-  { year: '1999', value: 13 },
-];
+import { queryAntdChartsBasisLine } from '@/pages/Charts/AntdCharts/services';
 
 export interface BizChartsProps {
   height: number;
@@ -20,7 +9,18 @@ export interface BizChartsProps {
 
 const BasisLine: React.FC<BizChartsProps> = (props) => {
   const { height } = props;
-  return <LineChart data={data} height={height} xField="year" yField="value" />;
+
+  const [bizChartsBasisLineData, setBizChartsBasisLineData] = useState([]);
+
+  useEffect(() => {
+    queryAntdChartsBasisLine().then(({ data }) => setBizChartsBasisLineData(data || []));
+  }, []);
+
+  return (
+    <Skeleton active round loading={bizChartsBasisLineData && bizChartsBasisLineData.length === 0}>
+      <LineChart data={bizChartsBasisLineData} height={height} xField="year" yField="value" />
+    </Skeleton>
+  );
 };
 
 export default BasisLine;
