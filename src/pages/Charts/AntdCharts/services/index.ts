@@ -5,21 +5,21 @@ export async function queryAntdChartsBasisLine() {
 }
 
 export async function queryAntdChartsBasisColumn() {
-  return request('/api/charts/antdCharts/lines/basisColumn');
+  return request('/api/charts/antdCharts/columns/basisColumn');
 }
 
 export async function queryAntdChartsBasisPie() {
-  return request('/api/charts/antdCharts/lines/basisPie');
+  return request('/api/charts/antdCharts/pies/basisPie');
 }
 
 export async function queryAntdChartsBasisBar() {
-  return request('/api/charts/antdCharts/lines/basisBar');
+  return request('/api/charts/antdCharts/bars/basisBar');
 }
 
 export async function queryAntdChartsBasisRadar() {
-  return request('/api/charts/antdCharts/lines/basisRadar');
+  return request('/api/charts/antdCharts/radars/basisRadar');
 }
 
 export async function queryAntdChartsBasisWord() {
-  return request('/api/charts/antdCharts/lines/basisWord');
+  return request('/api/charts/antdCharts/words/basisWord');
 }

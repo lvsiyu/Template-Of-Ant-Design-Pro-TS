@@ -113,9 +113,9 @@ const getAntdChartsBasisWord = async (req: Request, res: Response) => {
 
 export default {
   'GET /api/charts/antdCharts/lines/basisLine': getAntdChartsBasisLine,
-  'GET /api/charts/antdCharts/lines/basisColumn': getAntdChartsBasisColumn,
-  'GET /api/charts/antdCharts/lines/basisPie': getAntdChartsBasisPie,
-  'GET /api/charts/antdCharts/lines/basisBar': getAntdChartsBasisBar,
-  'GET /api/charts/antdCharts/lines/basisRadar': getAntdChartsBasisRadar,
-  'GET /api/charts/antdCharts/lines/basisWord': getAntdChartsBasisWord,
+  'GET /api/charts/antdCharts/columns/basisColumn': getAntdChartsBasisColumn,
+  'GET /api/charts/antdCharts/pies/basisPie': getAntdChartsBasisPie,
+  'GET /api/charts/antdCharts/bars/basisBar': getAntdChartsBasisBar,
+  'GET /api/charts/antdCharts/radars/basisRadar': getAntdChartsBasisRadar,
+  'GET /api/charts/antdCharts/words/basisWord': getAntdChartsBasisWord,
 };
