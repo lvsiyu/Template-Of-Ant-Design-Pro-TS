@@ -1,15 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Skeleton } from 'antd';
 import { BarChart } from 'bizcharts';
-
-// 数据源
-const data = [
-  { 地区: '华东', 销售额: 4684506.442 },
-  { 地区: '中南', 销售额: 4137415.0929999948 },
-  { 地区: '东北', 销售额: 2681567.469000001 },
-  { 地区: '华北', 销售额: 2447301.017000004 },
-  { 地区: '西南', 销售额: 1303124.508000002 },
-  { 地区: '西北', 销售额: 815039.5959999998 },
-];
+import { queryBizChartsBasisBar } from '@/pages/Charts/BizCharts/services';
 
 export interface BizChartsProps {
   height: number;
@@ -17,7 +9,24 @@ export interface BizChartsProps {
 
 const BasisColumn: React.FC<BizChartsProps> = (props) => {
   const { height } = props;
-  return <BarChart data={data} autoFit xField="销售额" yField="地区" height={height} />;
+
+  const [bizChartsBasisBarData, setBizChartsBasisBarData] = useState([]);
+
+  useEffect(() => {
+    queryBizChartsBasisBar().then(({ data }) => setBizChartsBasisBarData(data || []));
+  }, []);
+
+  return (
+    <Skeleton active round loading={bizChartsBasisBarData && bizChartsBasisBarData.length === 0}>
+      <BarChart
+        data={bizChartsBasisBarData}
+        autoFit
+        xField="销售额"
+        yField="地区"
+        height={height}
+      />
+    </Skeleton>
+  );
 };
 
 export default BasisColumn;

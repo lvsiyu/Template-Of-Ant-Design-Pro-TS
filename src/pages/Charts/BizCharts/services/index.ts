@@ -11,3 +11,7 @@ export async function queryBizChartsBasisColumn() {
 export async function queryBizChartsBasisPie() {
   return request('/api/charts/bizCharts/pies/basisPie');
 }
+
+export async function queryBizChartsBasisBar() {
+  return request('/api/charts/bizCharts/bars/basisBar');
+}

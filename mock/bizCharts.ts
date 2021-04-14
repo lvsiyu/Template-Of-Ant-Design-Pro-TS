@@ -61,8 +61,25 @@ const getBizChartsBasisPie = async (req: Request, res: Response) => {
   });
 };
 
+const getBizChartsBasisBar = async (req: Request, res: Response) => {
+  await waitTime(1000);
+  res.send({
+    code: 200,
+    data: [
+      { 地区: '华东', 销售额: 4684506.442 },
+      { 地区: '中南', 销售额: 4137415.0929999948 },
+      { 地区: '东北', 销售额: 2681567.469000001 },
+      { 地区: '华北', 销售额: 2447301.017000004 },
+      { 地区: '西南', 销售额: 1303124.508000002 },
+      { 地区: '西北', 销售额: 815039.5959999998 },
+    ],
+    msg: 'success',
+  });
+};
+
 export default {
   'GET /api/charts/bizCharts/lines/basisLine': getBizChartsBasisLine,
   'GET /api/charts/bizCharts/columns/basisColumn': getBizChartsBasisColumn,
   'GET /api/charts/bizCharts/pies/basisPie': getBizChartsBasisPie,
+  'GET /api/charts/bizCharts/bars/basisBar': getBizChartsBasisBar,
 };
