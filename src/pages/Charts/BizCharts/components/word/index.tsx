@@ -1,3 +1,3 @@
-import WordCloudChart from './BasisWordCloud';
+import BasisWordCloud from './BasisWordCloud';
 
-export { WordCloudChart };
+export { BasisWordCloud };

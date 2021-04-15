@@ -47,7 +47,7 @@ const BasisWordCloud: React.FC<BizChartsProps> = (props) => {
           },
         }}
         height={height}
-        shuffle={false}
+        /* shuffle={false} */
         tooltip={{
           visible: true,
         }}

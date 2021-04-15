@@ -1,3 +1,3 @@
-import BasisColumn from './BasisBar';
+import BasisBar from './BasisBar';
 
-export { BasisColumn };
+export { BasisBar };

@@ -7,7 +7,7 @@ interface BizChartsProps {
   height: number;
 }
 
-const BasisColumn: React.FC<BizChartsProps> = (props) => {
+const BasisBar: React.FC<BizChartsProps> = (props) => {
   const { height } = props;
 
   const [bizChartsBasisBarData, setBizChartsBasisBarData] = useState([]);
@@ -29,4 +29,4 @@ const BasisColumn: React.FC<BizChartsProps> = (props) => {
   );
 };
 
-export default BasisColumn;
+export default BasisBar;
