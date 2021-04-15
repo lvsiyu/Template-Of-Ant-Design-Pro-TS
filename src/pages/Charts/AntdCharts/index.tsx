@@ -90,12 +90,16 @@ const AntdCharts: React.FC = () => {
         </Col>
         <Col span={12}>
           <StatisticCard
-            title="条形图"
+            title="基础条形图"
             tip="说明说明"
             headerBordered
             style={{ height: '300px', position: 'relative', overflow: 'hidden' }}
             chart={<Bars.BasisBar />}
-            extra={<Button type="primary">按钮</Button>}
+            extra={
+              <Button onClick={() => showModal('BasisBar', '基础条形图', 500)} type="primary">
+                弹框显示
+              </Button>
+            }
           />
         </Col>
         <Col span={6}>
