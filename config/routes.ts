@@ -41,6 +41,9 @@
         name: '使用Echarts',
         component: './Charts/Echarts',
       },
+      {
+        component: './404',
+      },
     ],
   },
   {
@@ -56,13 +59,10 @@
         icon: 'smile',
         component: './Welcome',
       },
+      {
+        component: './404',
+      },
     ],
-  },
-  {
-    name: '列表页面',
-    icon: 'table',
-    path: '/list',
-    component: './TableList',
   },
   {
     name: '卡片页面',
@@ -93,6 +93,21 @@
         path: '/card/pro-card',
         name: '高级卡片',
         component: './Card/ProCard',
+      },
+      {
+        component: './404',
+      },
+    ],
+  },
+  {
+    name: '列表页面',
+    icon: 'table',
+    path: '/Table',
+    routes: [
+      {
+        path: '/table/basis-table',
+        name: '基础列表',
+        component: './Table/basis',
       },
     ],
   },
