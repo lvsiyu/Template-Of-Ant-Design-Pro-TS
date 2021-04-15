@@ -104,12 +104,16 @@ const AntdCharts: React.FC = () => {
         </Col>
         <Col span={6}>
           <StatisticCard
-            title="雷达图"
+            title="基础雷达图"
             tip="说明说明"
             headerBordered
             style={{ height: '300px', position: 'relative', overflow: 'hidden' }}
             chart={<Radars.BasisRadar />}
-            extra={<Button type="primary">按钮</Button>}
+            extra={
+              <Button onClick={() => showModal('BasisRadar', '基础雷达图', 500)} type="primary">
+                弹框显示
+              </Button>
+            }
           />
         </Col>
         <Col span={6}>
