@@ -118,12 +118,16 @@ const AntdCharts: React.FC = () => {
         </Col>
         <Col span={6}>
           <StatisticCard
-            title="词云图"
+            title="基础词云图"
             tip="说明说明"
             headerBordered
             style={{ height: '300px', position: 'relative', overflow: 'hidden' }}
             chart={<Words.BasisWord />}
-            extra={<Button type="primary">按钮</Button>}
+            extra={
+              <Button onClick={() => showModal('BasisWord', '基础词云图', 500)} type="primary">
+                弹框显示
+              </Button>
+            }
           />
         </Col>
       </Row>

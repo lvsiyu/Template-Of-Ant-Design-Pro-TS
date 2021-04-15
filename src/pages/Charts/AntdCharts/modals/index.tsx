@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal } from 'antd';
-import { Lines, Columns, Pies, Bars, Radars } from '@/pages/Charts/AntdCharts/components';
+import { Lines, Columns, Pies, Bars, Radars, Words } from '@/pages/Charts/AntdCharts/components';
 
 interface AntdChartsProps {
   handleOk: () => void;
@@ -30,6 +30,7 @@ const AntdChartsModals: React.FC<AntdChartsProps> = (props) => {
       {modalType && modalType === 'BasisPie' ? <Pies.BasisPie height={modalHeight} /> : null}
       {modalType && modalType === 'BasisBar' ? <Bars.BasisBar height={modalHeight} /> : null}
       {modalType && modalType === 'BasisRadar' ? <Radars.BasisRadar height={modalHeight} /> : null}
+      {modalType && modalType === 'BasisWord' ? <Words.BasisWord height={modalHeight} /> : null}
     </Modal>
   );
 };
