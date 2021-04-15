@@ -1,10 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Row, Col } from 'antd';
 import { PageContainer } from '@ant-design/pro-layout';
 import { StatisticCard } from '@ant-design/pro-card';
 import { Lines, Columns, Pies, Bars, Radars, Words } from './components';
+import AntdChartsModals from '@/pages/Charts/AntdCharts/modals';
 
 const AntdCharts: React.FC = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [modalType, setModalType] = useState('');
+  const [modalTitle, setModalTitle] = useState('');
+  const [modalHeight, setModalHeight] = useState(0);
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
+  const showModal = (type: string, title: string, height: number) => {
+    setModalType(type);
+    setModalTitle(title);
+    setModalHeight(height);
+    setIsModalVisible(true);
+  };
+
+  const ModalAction = {
+    handleOk,
+    handleCancel,
+    visible: isModalVisible,
+    modalType,
+    modalTitle,
+    modalHeight,
+  };
+
   return (
     <PageContainer>
       <Row gutter={[16, 16]}>
@@ -16,7 +46,11 @@ const AntdCharts: React.FC = () => {
             /* 由于antdcharts的loading蒙版使用的是绝对定位，所以防止loading超出范围 */
             style={{ height: '600px', position: 'relative', overflow: 'hidden' }}
             chart={<Lines.BasisLine height={461} />}
-            extra={<Button type="primary">按钮</Button>}
+            extra={
+              <Button onClick={() => showModal('BasisLine', '基础折线图', 500)} type="primary">
+                弹框显示
+              </Button>
+            }
           />
         </Col>
         <Col span={8}>
@@ -74,6 +108,8 @@ const AntdCharts: React.FC = () => {
           />
         </Col>
       </Row>
+
+      <AntdChartsModals {...ModalAction} />
     </PageContainer>
   );
 };

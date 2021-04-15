@@ -1,0 +1,31 @@
+import React from 'react';
+import { Modal } from 'antd';
+import { Lines } from '@/pages/Charts/AntdCharts/components';
+
+interface AntdChartsProps {
+  handleOk: () => void;
+  handleCancel: () => void;
+  visible: boolean;
+  modalTitle: string;
+  modalType: string;
+  modalHeight: number;
+}
+
+const AntdChartsModals: React.FC<AntdChartsProps> = (props) => {
+  const { handleOk, handleCancel, visible, modalTitle, modalType, modalHeight } = props;
+  return (
+    <Modal
+      title={modalTitle}
+      destroyOnClose
+      centered
+      width={1000}
+      visible={visible}
+      onOk={handleOk}
+      onCancel={handleCancel}
+    >
+      {modalType && modalType === 'BasisLine' ? <Lines.BasisLine height={modalHeight} /> : null}
+    </Modal>
+  );
+};
+
+export default AntdChartsModals;
