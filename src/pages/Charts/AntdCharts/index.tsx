@@ -57,22 +57,33 @@ const AntdCharts: React.FC = () => {
           <Row gutter={[16, 16]}>
             <Col span={24}>
               <StatisticCard
-                title="柱状图"
+                title="基础柱状图"
                 tip="说明说明"
                 headerBordered
                 style={{ height: '292px', position: 'relative', overflow: 'hidden' }}
                 chart={<Columns.BasisColumn /* height={180} */ />}
-                extra={<Button type="primary">按钮</Button>}
+                extra={
+                  <Button
+                    onClick={() => showModal('BasisColumn', '基础柱状图', 500)}
+                    type="primary"
+                  >
+                    弹框显示
+                  </Button>
+                }
               />
             </Col>
             <Col span={24}>
               <StatisticCard
-                title="饼图"
+                title="基础饼图"
                 tip="说明说明"
                 headerBordered
                 style={{ height: '292px', position: 'relative', overflow: 'hidden' }}
                 chart={<Pies.BasisPie />}
-                extra={<Button type="primary">按钮</Button>}
+                extra={
+                  <Button onClick={() => showModal('BasisPie', '基础饼图', 500)} type="primary">
+                    弹框显示
+                  </Button>
+                }
               />
             </Col>
           </Row>
