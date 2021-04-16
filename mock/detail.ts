@@ -110,6 +110,117 @@ const basisDetailData = async (req: Request, res: Response) => {
   });
 };
 
+const proDetailTitle = async (req: Request, res: Response) => {
+  await waitTime(1000);
+  res.send({
+    code: 200,
+    data: {
+      title1: '标题1',
+      title2: '标题2',
+      time: '2021-02-06',
+      action: '操作内容',
+      rangeTime: '2020-02-01 ~ 2020-02-06',
+      description: '备注标题备注标题备注标题备注标题',
+      rightContent1: '大小内容',
+      rightContent2: '568.08',
+    },
+    msg: 'success',
+  });
+};
+
+const proDetailTab1 = async (req: Request, res: Response) => {
+  await waitTime(1000);
+  res.send({
+    code: 200,
+    data: {
+      step: {
+        current: 1,
+        percent: 60,
+        stepContent: [
+          {
+            title: '第一步骤',
+            name: '操作人1',
+            time: '2021-02-04 17:53',
+          },
+          {
+            title: '第二步骤',
+            name: '操作人2',
+            action: '简易操作',
+          },
+          {
+            title: '第三步骤',
+          },
+          {
+            title: '完成步骤',
+          },
+        ],
+      },
+      group: {
+        text1: '短内容',
+        text2: '中等内容中等内容中等内容',
+        text3:
+          '我是比较长的内容我是比较长的内容我是比较长的内容我是比较长的内容我是比较长的内容我是比较长的内容',
+        phone: '13888888888',
+        num1: '123',
+        num2: '1234567890',
+        num3: '111222333444555666777888999',
+        date: '2020-02-04',
+        description: '这段描述很长很长很长很长很长很长很长很长很长很长很长很长很长很长...',
+        tip: '这是说明',
+      },
+    },
+    msg: 'success',
+  });
+};
+
+const proDetailTab2 = async (req: Request, res: Response) => {
+  await waitTime(1000);
+  res.send({
+    code: 200,
+    data: {
+      step: {
+        current: 1,
+        status: 'default',
+        statusName: '未响应状态',
+        costTime: '2小时25分钟',
+        people: '操作人2',
+        stepContent: [
+          {
+            title: '第一步骤',
+            name: '操作人1',
+            time: '2021-02-04 17:53',
+          },
+          {
+            title: '第二步骤',
+            name: '操作人2',
+            action: '简易操作',
+          },
+          {
+            title: '第三步骤',
+          },
+          {
+            title: '完成步骤',
+          },
+        ],
+      },
+      group: {
+        text1: '短内容',
+        text2: '中等内容中等内容中等内容',
+        text3:
+          '我是比较长的内容我是比较长的内容我是比较长的内容我是比较长的内容我是比较长的内容我是比较长的内容',
+        phone: '13888888888',
+        num1: '123',
+        num2: '1234567890',
+        num3: '111222333444555666777888999',
+        date: '2020-02-04',
+        description: '这段描述很长很长很长很长很长很长很长很长很长很长很长很长很长很长...',
+        tip: '这是说明',
+      },
+    },
+    msg: 'success',
+  });
+};
+
 const detailList1 = async (req: Request, res: Response) => {
   const listArr = [];
   for (let i = 0; i < 25; i += 1) {
@@ -184,8 +295,11 @@ const detailList4 = async (req: Request, res: Response) => {
 
 export default {
   'GET  /api/details/basis': basisDetailData,
-  'GET  /api/details/list1': detailList1,
-  'GET  /api/details/list2': detailList2,
-  'GET  /api/details/list3': detailList3,
-  'GET  /api/details/list4': detailList4,
+  'GET /api/details/pro/proDetailTitle': proDetailTitle,
+  'GET /api/details/pro/proDetailTab1': proDetailTab1,
+  'GET /api/details/pro/proDetailTab2': proDetailTab2,
+  'GET  /api/details/pro/list1': detailList1,
+  'GET  /api/details/pro/list2': detailList2,
+  'GET  /api/details/pro/list3': detailList3,
+  'GET  /api/details/pro/list4': detailList4,
 };
