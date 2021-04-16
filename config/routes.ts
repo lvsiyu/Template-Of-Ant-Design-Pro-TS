@@ -17,13 +17,13 @@
   },
   {
     path: '/welcome',
-    name: '欢迎页面',
+    name: '欢迎模板',
     icon: 'smile',
     component: './Welcome',
   },
   {
     path: '/charts',
-    name: '图表页面',
+    name: '图表模板',
     icon: 'AreaChartOutlined',
     routes: [
       {
@@ -48,7 +48,7 @@
   },
   {
     path: '/admin',
-    name: '管理页面',
+    name: '管理模板',
     icon: 'crown',
     access: 'canAdmin',
     component: './Admin',
@@ -65,8 +65,8 @@
     ],
   },
   {
-    name: '卡片页面',
-    icon: 'AppstoreOutlined',
+    name: '卡片模板',
+    icon: 'CreditCardOutlined',
     path: '/card',
     routes: [
       {
@@ -100,8 +100,8 @@
     ],
   },
   {
-    name: '表格页面',
-    icon: 'table',
+    name: '表格模板',
+    icon: 'TableOutlined',
     path: '/Table',
     routes: [
       {
@@ -118,6 +118,26 @@
         path: '/table/tab-table',
         name: '分页表格',
         component: './Table/TabTable',
+      },
+      {
+        component: './404',
+      },
+    ],
+  },
+  {
+    name: '详情模板',
+    icon: 'AppstoreOutlined',
+    path: '/Detail',
+    routes: [
+      {
+        path: '/detail/basis-detail',
+        name: '基础详情',
+        component: './Detail/BasisDetail',
+      },
+      {
+        path: '/detail/pro-detail',
+        name: '复杂详情',
+        component: './Detail/ProDetail',
       },
       {
         component: './404',
