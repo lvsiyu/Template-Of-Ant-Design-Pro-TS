@@ -100,14 +100,22 @@
     ],
   },
   {
-    name: '列表页面',
+    name: '表格页面',
     icon: 'table',
     path: '/Table',
     routes: [
       {
         path: '/table/basis-table',
-        name: '基础列表',
-        component: './Table/basis',
+        name: '基础表格',
+        component: './Table/BasisTable',
+      },
+      {
+        path: '/table/modal-table',
+        name: '弹框表格',
+        component: './Table/ModalTable',
+      },
+      {
+        component: './404',
       },
     ],
   },

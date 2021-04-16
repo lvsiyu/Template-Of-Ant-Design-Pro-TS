@@ -1,20 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Space, Popconfirm, Tooltip, Card, Image, message } from 'antd';
+import React, { useRef } from 'react';
+import { Space, Tooltip } from 'antd';
 import { PageContainer } from '@ant-design/pro-layout';
 import type { ActionType, ProColumns } from '@ant-design/pro-table';
 import ProTable from '@ant-design/pro-table';
-import { queryBasisTable, queryBasisTableInner } from './services';
-import type { BasisTableDataType, BasisTableInnerDataType } from './data';
-import errorPic from '@/asserts/img/error.png';
+import { queryBasisTable } from './services';
+import type { BasisTableDataType } from './data';
 
-const EchartsBasisLine: React.FC = () => {
-  const [basisInnerTableData, setBasisInnerTableData] = useState([]);
-
+const ModalsTableList: React.FC = () => {
   const ref = useRef<ActionType>();
-
-  useEffect(() => {
-    queryBasisTableInner().then(({ data }) => setBasisInnerTableData(data || []));
-  }, []);
 
   const ProcessMap = {
     close: 'normal',
@@ -29,35 +22,11 @@ const EchartsBasisLine: React.FC = () => {
     </Tooltip>
   );
 
-  const confirm = () => {
-    message.success('点了是');
-    if (ref.current) ref.current.reload();
-  };
-
-  const cancel = () => {
-    message.error('点了否');
-  };
-
   const tableAction = () => (
     <Space>
-      <Popconfirm
-        title="确认操作此按钮？"
-        onConfirm={confirm}
-        onCancel={cancel}
-        okText="是"
-        cancelText="否"
-      >
-        <a href="#">操作</a>
-      </Popconfirm>
+      <a>弹框显示</a>
     </Space>
   );
-
-  const tableInnerImg = (text: unknown) => {
-    if (typeof text === 'string') {
-      return <Image width={80} src={text} />;
-    }
-    return <Image width={80} src="error" fallback={errorPic} />;
-  };
 
   const columns: ProColumns<BasisTableDataType>[] = [
     {
@@ -113,38 +82,10 @@ const EchartsBasisLine: React.FC = () => {
       title: '操作',
       dataIndex: 'option',
       valueType: 'option',
-      width: 70,
+      width: 75,
       render: tableAction,
     },
   ];
-
-  const innerColumns: ProColumns<BasisTableInnerDataType>[] = [
-    { title: '名称', dataIndex: 'name', width: 200 },
-    { title: '描述', dataIndex: 'description' },
-    {
-      title: '图片',
-      dataIndex: 'url',
-      width: 80,
-      render: (text) => tableInnerImg(text),
-    },
-  ];
-
-  const expandedRowRender = () => {
-    return (
-      <Card title="内嵌表格">
-        <ProTable
-          rowKey="id"
-          columns={innerColumns}
-          headerTitle={false}
-          search={false}
-          options={false}
-          dataSource={basisInnerTableData && basisInnerTableData}
-          pagination={false}
-          bordered
-        />
-      </Card>
-    );
-  };
 
   return (
     <PageContainer>
@@ -159,13 +100,12 @@ const EchartsBasisLine: React.FC = () => {
           showQuickJumper: true,
           pageSize: 10,
         }}
-        headerTitle="基础表格"
+        headerTitle="弹框表格"
         request={(params) => queryBasisTable({ ...params })}
         columns={columns}
-        expandable={basisInnerTableData && { expandedRowRender }}
       />
     </PageContainer>
   );
 };
 
-export default EchartsBasisLine;
+export default ModalsTableList;
