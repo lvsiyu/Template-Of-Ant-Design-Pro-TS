@@ -115,6 +115,11 @@
         component: './Table/ModalTable',
       },
       {
+        path: '/table/tab-table',
+        name: '分页表格',
+        component: './Table/TabTable',
+      },
+      {
         component: './404',
       },
     ],
