@@ -4,7 +4,7 @@ import { Button, Progress, Tag, Space, Popconfirm, message } from 'antd';
 import { PageContainer } from '@ant-design/pro-layout';
 import ProCard from '@ant-design/pro-card';
 import ProList from '@ant-design/pro-list';
-import { queryBasisList } from './service';
+import { queryBasisList } from './services';
 import type { BasisListDataType } from './data/index';
 
 const dataSource: BasisListDataType[] = [];

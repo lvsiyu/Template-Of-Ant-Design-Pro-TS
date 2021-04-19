@@ -155,6 +155,11 @@
         component: './List/BasisList',
       },
       {
+        path: '/list/detail-list',
+        name: '详情列表',
+        component: './List/DetailList',
+      },
+      {
         component: './404',
       },
     ],
