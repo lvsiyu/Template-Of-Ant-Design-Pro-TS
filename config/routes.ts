@@ -165,6 +165,26 @@
     ],
   },
   {
+    name: '账户模板',
+    icon: 'UserOutlined',
+    path: '/Account',
+    routes: [
+      {
+        path: '/account/center',
+        name: '个人中心',
+        component: './Account/UserCenter',
+      },
+      {
+        path: '/account/settings',
+        name: '账户设置',
+        component: './Account/UserSetting',
+      },
+      {
+        component: './404',
+      },
+    ],
+  },
+  {
     path: '/',
     redirect: '/welcome',
   },
