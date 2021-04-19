@@ -1,7 +1,7 @@
-import { Tag, Space } from 'antd';
+import { Tag, Space, message } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import React from 'react';
-import { useModel, SelectLang } from 'umi';
+import { useModel, SelectLang, Link } from 'umi';
 import Avatar from './AvatarDropdown';
 import HeaderSearch from '../HeaderSearch';
 import styles from './index.less';
@@ -32,25 +32,32 @@ const GlobalHeaderRight: React.FC = () => {
       <HeaderSearch
         className={`${styles.action} ${styles.search}`}
         placeholder="站内搜索"
-        defaultValue="umi ui"
+        defaultValue="图表模板"
         options={[
-          { label: <a href="https://umijs.org/zh/guide/umi-ui.html">umi ui</a>, value: 'umi ui' },
           {
-            label: <a href="next.ant.design">Ant Design</a>,
-            value: 'Ant Design',
+            label: <Link to="/charts/antd-charts">图表模板</Link>,
+            value: '图表模板',
           },
           {
-            label: <a href="https://protable.ant.design/">Pro Table</a>,
-            value: 'Pro Table',
+            label: <Link to="/card/basis-card">卡片模板</Link>,
+            value: '卡片模板',
           },
           {
-            label: <a href="https://prolayout.ant.design/">Pro Layout</a>,
-            value: 'Pro Layout',
+            label: <Link to="/table/basis-table">表格模板</Link>,
+            value: '表格模板',
+          },
+          {
+            label: <Link to="/detail/basis-detail">详情模板</Link>,
+            value: '详情模板',
+          },
+          {
+            label: <Link to="/list/basis-list">列表模板</Link>,
+            value: '列表模板',
           },
         ]}
-        // onSearch={value => {
-        //   console.log('input', value);
-        // }}
+        onSearch={(value) => {
+          message.success(`搜索内容为: ${value}`);
+        }}
       />
       <span
         className={styles.action}
