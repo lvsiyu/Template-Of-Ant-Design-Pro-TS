@@ -145,6 +145,21 @@
     ],
   },
   {
+    name: '列表模板',
+    icon: 'AppstoreOutlined',
+    path: '/List',
+    routes: [
+      {
+        path: '/list/basis-list',
+        name: '基础列表',
+        component: './List/BasisList',
+      },
+      {
+        component: './404',
+      },
+    ],
+  },
+  {
     path: '/',
     redirect: '/welcome',
   },
