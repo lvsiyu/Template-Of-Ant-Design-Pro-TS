@@ -10,6 +10,7 @@ export default () => (
         key: '1',
         title: companyText,
         href: 'https://github.com/lvsiyu/Template-Of-Ant-Design-Pro-TS',
+        blankTarget: true,
       },
       /* {
         key: 'Ant Design Pro',
