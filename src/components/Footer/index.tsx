@@ -1,12 +1,17 @@
 /* import { GithubOutlined } from '@ant-design/icons'; */
 import { DefaultFooter } from '@ant-design/pro-layout';
+import { companyText } from '@/utils/common';
 
 export default () => (
   <DefaultFooter
-    copyright="2020 xxxx公司出品"
-    links={
-      [
-        /* {
+    copyright={false}
+    links={[
+      {
+        key: '1',
+        title: companyText,
+        href: 'https://github.com/lvsiyu/Template-Of-Ant-Design-Pro-TS',
+      },
+      /* {
         key: 'Ant Design Pro',
         title: 'Ant Design Pro',
         href: 'https://pro.ant.design',
@@ -24,7 +29,6 @@ export default () => (
         href: 'https://ant.design',
         blankTarget: true,
       }, */
-      ]
-    }
+    ]}
   />
 );
