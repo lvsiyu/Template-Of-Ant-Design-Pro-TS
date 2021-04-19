@@ -1,7 +1,7 @@
 import { Tag, Space, message } from 'antd';
-import { QuestionCircleOutlined } from '@ant-design/icons';
+/* import { QuestionCircleOutlined } from '@ant-design/icons'; */
 import React from 'react';
-import { useModel, SelectLang, Link } from 'umi';
+import { useModel, /* SelectLang, */ Link } from 'umi';
 import Avatar from './AvatarDropdown';
 import HeaderSearch from '../HeaderSearch';
 import styles from './index.less';
@@ -59,21 +59,21 @@ const GlobalHeaderRight: React.FC = () => {
           message.success(`搜索内容为: ${value}`);
         }}
       />
-      <span
+      {/* <span
         className={styles.action}
         onClick={() => {
           window.open('https://pro.ant.design/docs/getting-started');
         }}
       >
         <QuestionCircleOutlined />
-      </span>
-      <Avatar />
+      </span> */}
+      <Avatar menu />
       {REACT_APP_ENV && (
         <span>
           <Tag color={ENVTagColor[REACT_APP_ENV]}>{REACT_APP_ENV}</Tag>
         </span>
       )}
-      <SelectLang className={styles.action} />
+      {/* <SelectLang className={styles.action} /> */}
     </Space>
   );
 };
