@@ -1,7 +1,7 @@
 import { Tag, Space, message } from 'antd';
 /* import { QuestionCircleOutlined } from '@ant-design/icons'; */
 import React from 'react';
-import { useModel, /* SelectLang, */ Link } from 'umi';
+import { useModel, /* SelectLang, */ Link, history } from 'umi';
 import Avatar from './AvatarDropdown';
 import HeaderSearch from '../HeaderSearch';
 import styles from './index.less';
@@ -56,7 +56,26 @@ const GlobalHeaderRight: React.FC = () => {
           },
         ]}
         onSearch={(value) => {
-          message.success(`搜索内容为: ${value}`);
+          switch (value) {
+            case '图表模板':
+              history.push('/charts/antd-charts');
+              break;
+            case '卡片模板':
+              history.push('/card/basis-card');
+              break;
+            case '表格模板':
+              history.push('/table/basis-table');
+              break;
+            case '详情模板':
+              history.push('/detail/basis-detail');
+              break;
+            case '列表模板':
+              history.push('/list/basis-list');
+              break;
+            default:
+              message.success(`搜索内容为: ${value}`);
+              break;
+          }
         }}
       />
       {/* <span
