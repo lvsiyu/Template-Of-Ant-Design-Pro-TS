@@ -9,7 +9,7 @@
           {
             name: '登录',
             path: '/user/login',
-            component: './user/Login',
+            component: './User/Login',
           },
         ],
       },
