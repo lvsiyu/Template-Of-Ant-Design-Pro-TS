@@ -120,6 +120,11 @@
         component: './Table/TabTable',
       },
       {
+        path: '/table/edit-table',
+        name: '编辑表格',
+        component: './Table/EditTable',
+      },
+      {
         component: './404',
       },
     ],

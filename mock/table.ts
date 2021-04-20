@@ -290,7 +290,56 @@ const BasisTableInnerData = async (req: Request, res: Response) => {
   });
 };
 
+const EditTableData = [
+  {
+    id: 624748504,
+    title: '活动名称一',
+    labels: [{ key: 'woman', label: '川妹子' }],
+    state: 'open',
+    created_at: '2020-05-26T09:42:56Z',
+  },
+  {
+    id: 624691229,
+    title: '活动名称二',
+    labels: [{ key: 'man', label: '西北汉子' }],
+    state: 'closed',
+    created_at: '2020-05-26T08:19:22Z',
+  },
+];
+
+const GetEditTableData = async (req: Request, res: Response) => {
+  await waitTime(1000);
+  res.send({
+    code: 200,
+    data: EditTableData,
+    msg: 'success',
+  });
+};
+
+const CreateEditTableData = async (req: Request, res: Response) => {
+  const { title, state, labels } = req.body;
+  const createData = {
+    id: new Date().getTime(),
+    title,
+    labels,
+    state,
+    created_at: new Date().toJSON(),
+  };
+  await waitTime(1000);
+
+  EditTableData.push(createData);
+  res.send({
+    code: 200,
+    data: EditTableData,
+    msg: 'success',
+  });
+};
+
 export default {
   'GET /api/table/BasisTableData': BasisTableData,
   'GET /api/table/BasisTableInnerData': BasisTableInnerData,
+  'GET /api/table/EditTableData': GetEditTableData,
+  'POST /api/table/EditTableData': CreateEditTableData,
+  /* 'PUT /api/table/EditTableData': UploadEditTableData,
+  'DELETE /api/table/EditTableData': DeleteEditTableData, */
 };
