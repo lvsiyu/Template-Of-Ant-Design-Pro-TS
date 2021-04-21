@@ -1,5 +1,5 @@
 export type DataSourceType = {
-  id: React.Key;
+  id: number;
   title?: string;
   labels?: {
     key: string;
