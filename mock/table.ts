@@ -371,6 +371,30 @@ const DeleteEditTableData = async (req: Request, res: Response) => {
   });
 };
 
+const TabTableData = async (req: Request, res: Response) => {
+  await waitTime(1000);
+
+  const valueEnum = ['success', 'error', 'processing', 'default'];
+
+  const ipListDataSource = [];
+
+  for (let i = 0; i < 15; i += 1) {
+    ipListDataSource.push({
+      ip: `106.14.98.1${i}4`,
+      cpu: 10,
+      mem: 20,
+      status: valueEnum[Math.floor(Math.random() * 10) % 4],
+      disk: 30,
+    });
+  }
+
+  res.send({
+    code: 200,
+    data: ipListDataSource,
+    msg: 'success',
+  });
+};
+
 export default {
   'GET /api/table/BasisTableData': BasisTableData,
   'GET /api/table/BasisTableInnerData': BasisTableInnerData,
@@ -378,4 +402,5 @@ export default {
   'POST /api/table/EditTableData': CreateEditTableData,
   'PUT /api/table/EditTableData': UploadEditTableData,
   'DELETE /api/table/EditTableData': DeleteEditTableData,
+  'GET /api/table/TabTableData': TabTableData,
 };
