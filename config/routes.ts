@@ -125,6 +125,11 @@
         component: './Table/EditTable',
       },
       {
+        path: '/table/pro-table',
+        name: '复杂表格',
+        component: './Table/ProTable',
+      },
+      {
         component: './404',
       },
     ],
