@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Card, Menu, Descriptions } from 'antd';
 import { PageContainer } from '@ant-design/pro-layout';
 import type { ProColumns } from '@ant-design/pro-table';
 import ProTable from '@ant-design/pro-table';
 import { queryBasisTable } from './services';
 import type { ProTableDataType } from './data';
+import { ProTableListMenu, ProTableListDescription } from './components';
 
 const ProcessMap = {
   default: 'normal',
@@ -54,6 +54,28 @@ const columns: ProColumns<ProTableDataType>[] = [
   },
 ];
 
+const listTitle = (key: string): string => {
+  let titleName = '暂无';
+  switch (key) {
+    case '1':
+      titleName = '第一组内容1';
+      break;
+    case '2':
+      titleName = '第一组内容2';
+      break;
+    case '3':
+      titleName = '第二组内容1';
+      break;
+    case '4':
+      titleName = '第二组内容2';
+      break;
+    default:
+      titleName = '暂无';
+      break;
+  }
+  return titleName;
+};
+
 const ProTableList: React.FC = () => {
   const [key, setKey] = useState('1');
 
@@ -66,57 +88,14 @@ const ProTableList: React.FC = () => {
         pagination={{
           showSizeChanger: true,
         }}
-        tableRender={(_, dom) => (
-          <div
-            style={{
-              display: 'flex',
-              width: '100%',
-            }}
-          >
-            <Menu
-              onSelect={(e) => setKey(e.key as string)}
-              style={{ width: 256 }}
-              defaultSelectedKeys={['1']}
-              defaultOpenKeys={['sub1']}
-              mode="inline"
-            >
-              <Menu.ItemGroup key="g1" title="Item 1">
-                <Menu.Item key="1">Option 1</Menu.Item>
-                <Menu.Item key="2">Option 2</Menu.Item>
-              </Menu.ItemGroup>
-              <Menu.ItemGroup key="g2" title="Item 2">
-                <Menu.Item key="3">Option 3</Menu.Item>
-                <Menu.Item key="4">Option 4</Menu.Item>
-              </Menu.ItemGroup>
-            </Menu>
-            <div
-              style={{
-                flex: 1,
-              }}
-            >
-              {dom}
-            </div>
-          </div>
-        )}
-        tableExtraRender={(_, data) => (
-          <Card>
-            <Descriptions size="small" column={3}>
-              <Descriptions.Item label="Row">{data.length}</Descriptions.Item>
-              <Descriptions.Item label="Created">Lili Qu</Descriptions.Item>
-              <Descriptions.Item label="Association">
-                <a>421421</a>
-              </Descriptions.Item>
-              <Descriptions.Item label="Creation Time">2017-01-10</Descriptions.Item>
-              <Descriptions.Item label="Effective Time">2017-10-10</Descriptions.Item>
-            </Descriptions>
-          </Card>
-        )}
+        tableRender={(_, dom) => <ProTableListMenu setKey={setKey} dom={dom} />}
+        tableExtraRender={(_, data) => <ProTableListDescription data={data} />}
         params={{
           key,
         }}
         request={(params) => queryBasisTable({ ...params })}
         dateFormatter="string"
-        headerTitle="复杂表格"
+        headerTitle={listTitle(key)}
       />
     </PageContainer>
   );
