@@ -1,13 +1,5 @@
 import { Request, Response } from 'express';
 
-const waitTime = (time: number = 100) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(true);
-    }, time);
-  });
-};
-
 const titles = [
   'Alipay',
   'Angular',
@@ -56,9 +48,9 @@ const user = [
   '仲尼',
 ];
 
-function fakeList(count: number) {
+const getList = async (req: Request, res: Response) => {
   const list = [];
-  for (let i = 0; i < count; i += 1) {
+  for (let i = 0; i < 10; i += 1) {
     list.push({
       id: `fake-list-${i}`,
       owner: user[i % 10],
@@ -105,19 +97,9 @@ function fakeList(count: number) {
     });
   }
 
-  return list;
-}
-
-const getList = async (req: Request, res: Response) => {
-  await waitTime(1000);
-  const params = req.query as any;
-
-  const count = params.count * 1 || 5;
-
-  const result = fakeList(count);
   res.send({
     code: 200,
-    data: res.json(result),
+    data: list,
     msg: 'success',
   });
 };
