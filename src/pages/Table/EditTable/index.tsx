@@ -130,6 +130,7 @@ const EditTableList: React.FC = () => {
     <PageContainer>
       <EditableProTable<DataSourceType>
         rowKey="id"
+        bordered
         actionRef={actionRef}
         headerTitle="可编辑表格"
         maxLength={5}

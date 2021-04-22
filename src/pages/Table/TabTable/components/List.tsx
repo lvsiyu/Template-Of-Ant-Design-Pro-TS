@@ -54,6 +54,7 @@ const TabTableList: React.FC<IPListProps> = (props) => {
   return (
     <ProTable<IpListItemDataType>
       columns={columns}
+      bordered
       request={(params) => queryTabTable({ ...params })}
       rowKey="ip"
       rowClassName={(record) => {

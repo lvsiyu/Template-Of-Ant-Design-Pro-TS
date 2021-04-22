@@ -91,6 +91,7 @@ const TabTableDetailList: React.FC<DetailListProps> = (props) => {
   return (
     <ProTable<TableListItem>
       columns={columns}
+      bordered
       dataSource={tableListDataSource}
       loading={loadingStatus}
       pagination={{ pageSize: 10 }}
