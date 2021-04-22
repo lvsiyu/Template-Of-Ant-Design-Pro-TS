@@ -3,34 +3,17 @@ import { Card, Menu, Descriptions } from 'antd';
 import { PageContainer } from '@ant-design/pro-layout';
 import type { ProColumns } from '@ant-design/pro-table';
 import ProTable from '@ant-design/pro-table';
-import { MailOutlined } from '@ant-design/icons';
+import { queryBasisTable } from './services';
+import type { ProTableDataType } from './data';
 
-const waitTime = (time: number = 100) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(true);
-    }, time);
-  });
+const ProcessMap = {
+  default: 'normal',
+  processing: 'active',
+  success: 'success',
+  error: 'exception',
 };
 
-export type TableListItem = {
-  key: number;
-  name: string;
-  createdAt: number;
-  progress: number;
-};
-const tableListDataSource: TableListItem[] = [];
-
-for (let i = 0; i < 2; i += 1) {
-  tableListDataSource.push({
-    key: i,
-    name: `TradeCode ${i}`,
-    createdAt: Date.now() - Math.floor(Math.random() * 2000),
-    progress: Math.ceil(Math.random() * 100) + 1,
-  });
-}
-
-const columns: ProColumns<TableListItem>[] = [
+const columns: ProColumns<ProTableDataType>[] = [
   {
     title: '序号',
     dataIndex: 'index',
@@ -38,15 +21,36 @@ const columns: ProColumns<TableListItem>[] = [
     width: 80,
   },
   {
-    title: '更新时间',
-    key: 'since2',
-    dataIndex: 'createdAt',
-    valueType: 'date',
+    title: '开始时间',
+    key: 'startDate',
+    dataIndex: 'startTime',
+    valueType: 'dateTime',
+  },
+  {
+    title: '结束时间',
+    key: 'endDate',
+    dataIndex: 'endTime',
+    valueType: 'dateTime',
+  },
+  {
+    title: '状态',
+    dataIndex: 'status',
+    initialValue: 'all',
+    valueEnum: {
+      default: { text: '关闭', status: 'Default' },
+      processing: { text: '运行中', status: 'Processing' },
+      success: { text: '已上线', status: 'Success' },
+      error: { text: '异常', status: 'Error' },
+    },
   },
   {
     title: '执行进度',
     dataIndex: 'progress',
-    valueType: 'progress',
+    width: 350,
+    valueType: (item) => ({
+      type: 'progress',
+      status: ProcessMap[item.status],
+    }),
   },
 ];
 
@@ -55,9 +59,10 @@ const ProTableList: React.FC = () => {
 
   return (
     <PageContainer>
-      <ProTable<TableListItem>
+      <ProTable<ProTableDataType>
         columns={columns}
         rowKey="key"
+        bordered
         pagination={{
           showSizeChanger: true,
         }}
@@ -75,24 +80,14 @@ const ProTableList: React.FC = () => {
               defaultOpenKeys={['sub1']}
               mode="inline"
             >
-              <Menu.SubMenu
-                key="sub1"
-                title={
-                  <span>
-                    <MailOutlined />
-                    <span>Navigation One</span>
-                  </span>
-                }
-              >
-                <Menu.ItemGroup key="g1" title="Item 1">
-                  <Menu.Item key="1">Option 1</Menu.Item>
-                  <Menu.Item key="2">Option 2</Menu.Item>
-                </Menu.ItemGroup>
-                <Menu.ItemGroup key="g2" title="Item 2">
-                  <Menu.Item key="3">Option 3</Menu.Item>
-                  <Menu.Item key="4">Option 4</Menu.Item>
-                </Menu.ItemGroup>
-              </Menu.SubMenu>
+              <Menu.ItemGroup key="g1" title="Item 1">
+                <Menu.Item key="1">Option 1</Menu.Item>
+                <Menu.Item key="2">Option 2</Menu.Item>
+              </Menu.ItemGroup>
+              <Menu.ItemGroup key="g2" title="Item 2">
+                <Menu.Item key="3">Option 3</Menu.Item>
+                <Menu.Item key="4">Option 4</Menu.Item>
+              </Menu.ItemGroup>
             </Menu>
             <div
               style={{
@@ -119,13 +114,7 @@ const ProTableList: React.FC = () => {
         params={{
           key,
         }}
-        request={async () => {
-          await waitTime(200);
-          return {
-            success: true,
-            data: tableListDataSource,
-          };
-        }}
+        request={(params) => queryBasisTable({ ...params })}
         dateFormatter="string"
         headerTitle="复杂表格"
       />

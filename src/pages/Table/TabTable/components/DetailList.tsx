@@ -15,18 +15,13 @@ type DetailListProps = {
 };
 
 const ProcessMap = {
-  close: 'normal',
-  running: 'active',
-  online: 'success',
+  default: 'normal',
+  processing: 'active',
+  success: 'success',
   error: 'exception',
 };
 
-const valueEnumMark = {
-  0: 'close',
-  1: 'running',
-  2: 'online',
-  3: 'error',
-};
+const valueEnum = ['success', 'error', 'processing', 'default'];
 
 const waitTime = (time: number = 100) => {
   return new Promise((resolve) => {
@@ -47,6 +42,17 @@ const TabTableDetailList: React.FC<DetailListProps> = (props) => {
       key: 'createdAt',
       dataIndex: 'createdAt',
       valueType: 'dateTime',
+    },
+    {
+      title: '状态',
+      dataIndex: 'status',
+      initialValue: 'all',
+      valueEnum: {
+        default: { text: '关闭', status: 'Default' },
+        processing: { text: '运行中', status: 'Processing' },
+        success: { text: '已上线', status: 'Success' },
+        error: { text: '异常', status: 'Error' },
+      },
     },
     {
       title: '进度展示',
@@ -71,7 +77,7 @@ const TabTableDetailList: React.FC<DetailListProps> = (props) => {
       source.push({
         createdAt: Date.now() - Math.floor(Math.random() * 10000),
         progress: Math.ceil(Math.random() * 100) + 1,
-        status: valueEnumMark[Math.floor(Math.random() * 10) % 4],
+        status: valueEnum[Math.floor(Math.random() * 10) % 4],
         key: i,
       });
     }

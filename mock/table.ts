@@ -395,6 +395,29 @@ const TabTableData = async (req: Request, res: Response) => {
   });
 };
 
+const ProTableData = async (req: Request, res: Response) => {
+  await waitTime(1000);
+  const valueEnum = ['success', 'error', 'processing', 'default'];
+
+  const porTableList = [];
+
+  for (let i = 0; i < 15; i += 1) {
+    porTableList.push({
+      key: i,
+      startTime: new Date().toJSON(),
+      endTime: new Date().toJSON(),
+      status: valueEnum[Math.floor(Math.random() * 10) % 4],
+      progress: Math.ceil(Math.random() * 100) + 1,
+    });
+  }
+
+  res.send({
+    code: 200,
+    data: porTableList,
+    msg: 'success',
+  });
+};
+
 export default {
   'GET /api/table/BasisTableData': BasisTableData,
   'GET /api/table/BasisTableInnerData': BasisTableInnerData,
@@ -403,4 +426,5 @@ export default {
   'PUT /api/table/EditTableData': UploadEditTableData,
   'DELETE /api/table/EditTableData': DeleteEditTableData,
   'GET /api/table/TabTableData': TabTableData,
+  'GET /api/table/ProTableData': ProTableData,
 };
