@@ -1,18 +1,27 @@
 /* import { GithubOutlined } from '@ant-design/icons'; */
 import { DefaultFooter } from '@ant-design/pro-layout';
-import { companyText } from '@/utils/common';
+import { companyText, removeDefaultFooterPage } from '@/utils/common';
 
-export default () => (
-  <DefaultFooter
-    copyright={false}
-    links={[
-      {
-        key: '1',
-        title: companyText,
-        href: 'https://github.com/lvsiyu/Template-Of-Ant-Design-Pro-TS',
-        blankTarget: true,
-      },
-      /* {
+export default () => {
+  const path = window.location.hash.substr(1);
+  if (path && removeDefaultFooterPage && removeDefaultFooterPage.length > 0) {
+    for (let i = 0; i < removeDefaultFooterPage.length; i += 1) {
+      if (path === removeDefaultFooterPage[i]) {
+        return false;
+      }
+    }
+  }
+  return (
+    <DefaultFooter
+      copyright={false}
+      links={[
+        {
+          key: '1',
+          title: companyText,
+          href: 'https://github.com/lvsiyu/Template-Of-Ant-Design-Pro-TS',
+          blankTarget: true,
+        },
+        /* {
         key: 'Ant Design Pro',
         title: 'Ant Design Pro',
         href: 'https://pro.ant.design',
@@ -30,6 +39,7 @@ export default () => (
         href: 'https://ant.design',
         blankTarget: true,
       }, */
-    ]}
-  />
-);
+      ]}
+    />
+  );
+};

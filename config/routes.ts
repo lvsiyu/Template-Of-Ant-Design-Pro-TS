@@ -155,6 +155,21 @@
     ],
   },
   {
+    name: '表单模板',
+    icon: 'FormOutlined',
+    path: '/Form',
+    routes: [
+      {
+        path: '/form/basis-form',
+        name: '使用models表单',
+        component: './Form/BasisForm',
+      },
+      {
+        component: './404',
+      },
+    ],
+  },
+  {
     name: '列表模板',
     icon: 'AppstoreOutlined',
     path: '/List',
