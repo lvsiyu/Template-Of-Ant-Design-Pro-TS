@@ -1,6 +1,7 @@
 import type { Dispatch, SetStateAction } from 'react';
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Form, Input, DatePicker, Select, InputNumber, Spin, message } from 'antd';
+import type { FormInstance } from 'antd';
 import { ModalForm } from '@ant-design/pro-form';
 import { createModalForm } from '../services';
 import type { modalFormDataType } from '../data';
@@ -16,6 +17,7 @@ interface ModalFormCreateProps {
 
 const ModalFormCreate: React.FC<ModalFormCreateProps> = (props) => {
   const { modalVisit, setModalVisit, refresh } = props;
+  const formRef = useRef<FormInstance>();
 
   const [loading, setLoading] = useState(false);
 
@@ -27,16 +29,19 @@ const ModalFormCreate: React.FC<ModalFormCreateProps> = (props) => {
         setLoading(false);
         setModalVisit(false);
         refresh();
+        formRef.current?.resetFields();
         return true;
       }
       message.error('提交失败，请检查内容');
       setLoading(false);
+      formRef.current?.resetFields();
       return false;
     });
   };
 
   return (
     <ModalForm<modalFormDataType>
+      formRef={formRef}
       title="弹框表单"
       visible={modalVisit}
       width={500}
