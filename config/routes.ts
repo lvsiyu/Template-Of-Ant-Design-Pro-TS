@@ -161,7 +161,7 @@
     routes: [
       {
         path: '/form/basis-form',
-        name: '使用models表单',
+        name: '基础表单',
         component: './Form/BasisForm',
       },
       {
