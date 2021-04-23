@@ -165,6 +165,11 @@
         component: './Form/BasisForm',
       },
       {
+        path: '/form/modal-form',
+        name: '弹框表单',
+        component: './Form/ModalForm',
+      },
+      {
         component: './404',
       },
     ],

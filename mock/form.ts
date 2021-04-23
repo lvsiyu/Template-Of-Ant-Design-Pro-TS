@@ -8,6 +8,13 @@ const waitTime = (time: number = 100) => {
   });
 };
 
+const valueEnumMark = {
+  0: 'close',
+  1: 'running',
+  2: 'online',
+  3: 'error',
+};
+
 const basisForm = async (req: Request, res: Response) => {
   await waitTime(1000);
   res.send({
@@ -19,7 +26,66 @@ const basisForm = async (req: Request, res: Response) => {
   });
 };
 
+const modalFormList = [
+  {
+    id: 0,
+    name: '基础名称1',
+    description: '我是简短一点的描述',
+    dateTime: '2020-10-15 20:53:24',
+    progress: Math.ceil(Math.random() * 100) + 1,
+    status: valueEnumMark[Math.floor(Math.random() * 10) % 4],
+  },
+  {
+    id: 1,
+    name: '基础名称2',
+    description: '我是很长的一段描述很长很长的一段描述很长很长的一段描述很长很长的一段描述',
+    dateTime: '2020-10-15 20:53:24',
+    progress: Math.ceil(Math.random() * 100) + 1,
+    status: valueEnumMark[Math.floor(Math.random() * 10) % 4],
+  },
+];
+
+const getModalFormData = async (req: Request, res: Response) => {
+  await waitTime(1000);
+  res.send({
+    code: 200,
+    data: modalFormList,
+    msg: 'success',
+  });
+};
+
+const createModalFormData = async (req: Request, res: Response) => {
+  await waitTime(1000);
+  const newList = req.body;
+  newList.id = modalFormList.length;
+  modalFormList.push(newList);
+  res.send({
+    code: 200,
+    data: modalFormList,
+    msg: 'success',
+  });
+};
+
+const deleteModalFormData = async (req: Request, res: Response) => {
+  await waitTime(1000);
+  const { id } = req.body;
+  for (let i = 0; i < modalFormList.length; i += 1) {
+    if (modalFormList[i].id === id) {
+      modalFormList.splice(i, 1);
+      break;
+    }
+  }
+  res.send({
+    code: 200,
+    data: modalFormList,
+    msg: 'success',
+  });
+};
+
 export default {
   'GET  /api/form/basis': basisForm,
   'POST  /api/form/basis': basisForm,
+  'GET  /api/form/modal': getModalFormData,
+  'POST  /api/form/modal': createModalFormData,
+  'DELETE  /api/form/modal': deleteModalFormData,
 };
