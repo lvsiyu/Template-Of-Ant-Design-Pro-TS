@@ -5,11 +5,12 @@ import type { ActionType, ProColumns } from '@ant-design/pro-table';
 import ProTable from '@ant-design/pro-table';
 import { queryModalForm, deleteModalForm, queryModalDetail } from './services';
 import type { modalFormDataType } from './data';
-import { CreateModalForm, EditModalForm } from './modals';
+import { CreateModalForm, EditModalForm, EditDrawerForm } from './modals';
 
 const ModalFormList: React.FC = () => {
   const [modalVisit, setModalVisit] = useState(false);
   const [modalUploadVisit, setModalUploadVisit] = useState(false);
+  const [modalDrawerVisit, setModalDrawerVisit] = useState(false);
   const [detail, setDetail] = useState({} as modalFormDataType);
   const [spin, setSpin] = useState(false);
 
@@ -35,12 +36,17 @@ const ModalFormList: React.FC = () => {
     });
   };
 
-  const getDetail = (id: number) => {
+  const getDetail = (id: number, type: string) => {
     setSpin(true);
     queryModalDetail(id).then((data) => {
       if (data.code === 200) {
         setDetail(data.data);
-        setModalUploadVisit(true);
+        if (type === 'modal') {
+          setModalUploadVisit(true);
+        } else {
+          setModalDrawerVisit(true);
+        }
+
         setSpin(false);
       } else {
         setSpin(false);
@@ -50,8 +56,8 @@ const ModalFormList: React.FC = () => {
 
   const tableAction = (id: number) => (
     <Space>
-      <a onClick={() => getDetail(id)}>弹框编辑</a>
-      <a>滑框编辑</a>
+      <a onClick={() => getDetail(id, 'modal')}>弹框编辑</a>
+      <a onClick={() => getDetail(id, 'drawer')}>滑框编辑</a>
       <Popconfirm title="是否删除此数据" onConfirm={() => confirm(id)} okText="是" cancelText="否">
         <a>删除</a>
       </Popconfirm>
@@ -148,6 +154,12 @@ const ModalFormList: React.FC = () => {
         <EditModalForm
           modalVisit={modalUploadVisit}
           setModalVisit={setModalUploadVisit}
+          refresh={refreshList}
+          detail={detail}
+        />
+        <EditDrawerForm
+          drawerVisit={modalDrawerVisit}
+          setDrawerVisit={setModalDrawerVisit}
           refresh={refreshList}
           detail={detail}
         />

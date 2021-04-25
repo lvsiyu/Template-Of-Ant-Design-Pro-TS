@@ -72,7 +72,6 @@ const uploadModalFormData = async (req: Request, res: Response) => {
   const uploadDatas = req.body;
   for (let i = 0; i < modalFormList.length; i += 1) {
     if (modalFormList[i].id === id) {
-      console.log(111111);
       modalFormList[i] = uploadDatas;
       break;
     }
