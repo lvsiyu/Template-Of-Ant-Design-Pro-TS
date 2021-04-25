@@ -170,6 +170,11 @@
         component: './Form/ModalForm',
       },
       {
+        path: '/form/step-form',
+        name: '分步表单',
+        component: './Form/StepForm',
+      },
+      {
         component: './404',
       },
     ],
