@@ -175,6 +175,11 @@
         component: './Form/StepForm',
       },
       {
+        path: '/form/step-modal-form',
+        name: '分步弹窗',
+        component: './Form/StepModalForm',
+      },
+      {
         component: './404',
       },
     ],
