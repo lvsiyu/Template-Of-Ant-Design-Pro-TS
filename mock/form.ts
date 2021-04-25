@@ -116,6 +116,14 @@ const getModalFormDetail = async (req: Request, res: Response) => {
   });
 };
 
+const stepFormData = async (req: Request, res: Response) => {
+  await waitTime(1000);
+  res.send({
+    code: 200,
+    msg: 'success',
+  });
+};
+
 export default {
   'GET  /api/form/basis': basisForm,
   'POST  /api/form/basis': basisForm,
@@ -124,4 +132,5 @@ export default {
   'PUT  /api/form/modal': uploadModalFormData,
   'DELETE  /api/form/modal': deleteModalFormData,
   'GET  /api/form/modalDetail': getModalFormDetail,
+  'POST  /api/form/step': stepFormData,
 };
