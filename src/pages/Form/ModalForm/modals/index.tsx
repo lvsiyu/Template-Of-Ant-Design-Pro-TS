@@ -1,3 +1,4 @@
-import ModalFormModal from './ModalForm';
+import CreateModalForm from './CreateModalForm';
+import EditModalForm from './EditModalForm';
 
-export { ModalFormModal };
+export { CreateModalForm, EditModalForm };

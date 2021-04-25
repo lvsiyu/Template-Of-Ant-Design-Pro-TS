@@ -15,7 +15,7 @@ interface ModalFormCreateProps {
   refresh: () => void;
 }
 
-const ModalFormCreate: React.FC<ModalFormCreateProps> = (props) => {
+const CreateModalForm: React.FC<ModalFormCreateProps> = (props) => {
   const { modalVisit, setModalVisit, refresh } = props;
   const formRef = useRef<FormInstance>();
 
@@ -93,4 +93,4 @@ const ModalFormCreate: React.FC<ModalFormCreateProps> = (props) => {
   );
 };
 
-export default ModalFormCreate;
+export default CreateModalForm;

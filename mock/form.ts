@@ -66,6 +66,24 @@ const createModalFormData = async (req: Request, res: Response) => {
   });
 };
 
+const uploadModalFormData = async (req: Request, res: Response) => {
+  await waitTime(1000);
+  const { id } = req.body;
+  const uploadDatas = req.body;
+  for (let i = 0; i < modalFormList.length; i += 1) {
+    if (modalFormList[i].id === id) {
+      console.log(111111);
+      modalFormList[i] = uploadDatas;
+      break;
+    }
+  }
+  res.send({
+    code: 200,
+    data: uploadDatas,
+    msg: 'success',
+  });
+};
+
 const deleteModalFormData = async (req: Request, res: Response) => {
   await waitTime(1000);
   const { id } = req.body;
@@ -82,10 +100,29 @@ const deleteModalFormData = async (req: Request, res: Response) => {
   });
 };
 
+const getModalFormDetail = async (req: Request, res: Response) => {
+  await waitTime(1000);
+  let { id } = req.query;
+  let modalDetail = {};
+  for (let i = 0; i < modalFormList.length; i += 1) {
+    if (modalFormList[i].id === Number(id)) {
+      modalDetail = modalFormList[i];
+      break;
+    }
+  }
+  res.send({
+    code: 200,
+    data: modalDetail,
+    msg: 'success',
+  });
+};
+
 export default {
   'GET  /api/form/basis': basisForm,
   'POST  /api/form/basis': basisForm,
   'GET  /api/form/modal': getModalFormData,
   'POST  /api/form/modal': createModalFormData,
+  'PUT  /api/form/modal': uploadModalFormData,
   'DELETE  /api/form/modal': deleteModalFormData,
+  'GET  /api/form/modalDetail': getModalFormDetail,
 };

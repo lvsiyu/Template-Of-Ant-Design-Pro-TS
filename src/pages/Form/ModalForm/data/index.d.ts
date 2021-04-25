@@ -2,8 +2,7 @@ export type modalFormDataType = {
   id: number;
   name: string;
   description: string;
-  date: string;
-  time: string;
+  dateTime: string;
   progress: number;
   status: string;
 };
@@ -12,6 +11,7 @@ export type modalFormParams = {
   pageSize?: number;
   current?: number;
   keyword?: string;
+  id?: number;
 };
 
 export type modalFormResponse = {

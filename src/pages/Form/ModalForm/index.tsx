@@ -1,14 +1,17 @@
 import React, { useState, useRef } from 'react';
-import { Space, Button, Popconfirm, message } from 'antd';
+import { Space, Button, Popconfirm, Spin, message } from 'antd';
 import { PageContainer } from '@ant-design/pro-layout';
 import type { ActionType, ProColumns } from '@ant-design/pro-table';
 import ProTable from '@ant-design/pro-table';
-import { queryModalForm, deleteModalForm } from './services';
+import { queryModalForm, deleteModalForm, queryModalDetail } from './services';
 import type { modalFormDataType } from './data';
-import { ModalFormModal } from './modals';
+import { CreateModalForm, EditModalForm } from './modals';
 
 const ModalFormList: React.FC = () => {
   const [modalVisit, setModalVisit] = useState(false);
+  const [modalUploadVisit, setModalUploadVisit] = useState(false);
+  const [detail, setDetail] = useState({} as modalFormDataType);
+  const [spin, setSpin] = useState(false);
 
   const ref = useRef<ActionType>();
 
@@ -32,9 +35,22 @@ const ModalFormList: React.FC = () => {
     });
   };
 
+  const getDetail = (id: number) => {
+    setSpin(true);
+    queryModalDetail(id).then((data) => {
+      if (data.code === 200) {
+        setDetail(data.data);
+        setModalUploadVisit(true);
+        setSpin(false);
+      } else {
+        setSpin(false);
+      }
+    });
+  };
+
   const tableAction = (id: number) => (
     <Space>
-      <a>弹框编辑</a>
+      <a onClick={() => getDetail(id)}>弹框编辑</a>
       <a>滑框编辑</a>
       <Popconfirm title="是否删除此数据" onConfirm={() => confirm(id)} okText="是" cancelText="否">
         <a>删除</a>
@@ -102,28 +118,40 @@ const ModalFormList: React.FC = () => {
 
   return (
     <PageContainer>
-      <ProTable<modalFormDataType>
-        actionRef={ref}
-        rowKey="id"
-        search={{
-          labelWidth: 120,
-        }}
-        bordered
-        pagination={{
-          showQuickJumper: true,
-          pageSize: 10,
-        }}
-        headerTitle="基础表格"
-        request={(params) => queryModalForm({ ...params })}
-        columns={columns}
-        toolBarRender={() => [
-          <Button onClick={() => setModalVisit(true)} type="primary">
-            新增内容
-          </Button>,
-        ]}
-      />
+      <Spin spinning={spin}>
+        <ProTable<modalFormDataType>
+          actionRef={ref}
+          rowKey="id"
+          search={{
+            labelWidth: 120,
+          }}
+          bordered
+          pagination={{
+            showQuickJumper: true,
+            pageSize: 10,
+          }}
+          headerTitle="基础表格"
+          request={(params) => queryModalForm({ ...params })}
+          columns={columns}
+          toolBarRender={() => [
+            <Button onClick={() => setModalVisit(true)} type="primary">
+              新增内容
+            </Button>,
+          ]}
+        />
 
-      <ModalFormModal modalVisit={modalVisit} setModalVisit={setModalVisit} refresh={refreshList} />
+        <CreateModalForm
+          modalVisit={modalVisit}
+          setModalVisit={setModalVisit}
+          refresh={refreshList}
+        />
+        <EditModalForm
+          modalVisit={modalUploadVisit}
+          setModalVisit={setModalUploadVisit}
+          refresh={refreshList}
+          detail={detail}
+        />
+      </Spin>
     </PageContainer>
   );
 };
