@@ -155,8 +155,9 @@ const queryStepModalFormList = async (req: Request, res: Response) => {
 const createStepModalFormList = async (req: Request, res: Response) => {
   const getValues = req.body;
   const { type, ...newList } = getValues;
-  newList.id = stepModalFormList.length;
+
   if (type === 'finish') {
+    newList.id = stepModalFormList.length;
     stepModalFormList.push(newList);
   }
 
@@ -213,7 +214,7 @@ const getStepModalFormDetail = async (req: Request, res: Response) => {
   }
   res.send({
     code: 200,
-    data: stepModalFormList,
+    data: modalDetail,
     msg: 'success',
   });
 };

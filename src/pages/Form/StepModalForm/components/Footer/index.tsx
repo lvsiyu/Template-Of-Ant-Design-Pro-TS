@@ -13,10 +13,11 @@ interface StepFormFooterProps {
     reset: () => void;
   };
   loadingStatus?: boolean;
+  current: (index: number) => void;
 }
 
 const StepFormFooter: React.FC<StepFormFooterProps> = (props) => {
-  const { componentsProps, loadingStatus } = props;
+  const { componentsProps, loadingStatus, current } = props;
   if (componentsProps.step === 0) {
     return (
       <Button loading={loadingStatus} type="primary" onClick={() => componentsProps.onSubmit?.()}>
@@ -28,7 +29,7 @@ const StepFormFooter: React.FC<StepFormFooterProps> = (props) => {
   if (componentsProps.step === 1) {
     return (
       <Space>
-        <Button loading={loadingStatus} key="pre" onClick={() => componentsProps.onPre?.()}>
+        <Button loading={loadingStatus} key="pre" onClick={() => current(0)}>
           返回第一步
         </Button>
 
@@ -46,7 +47,7 @@ const StepFormFooter: React.FC<StepFormFooterProps> = (props) => {
 
   return (
     <Space>
-      <Button loading={loadingStatus} key="gotoTwo" onClick={() => componentsProps.onPre?.()}>
+      <Button loading={loadingStatus} key="gotoTwo" onClick={() => current(1)}>
         {'<'} 返回第二步
       </Button>
       <Button

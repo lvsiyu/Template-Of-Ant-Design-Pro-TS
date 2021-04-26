@@ -1,14 +1,18 @@
 import React, { useRef, useState } from 'react';
-import { Space, Popconfirm, Button, message } from 'antd';
+import { Space, Popconfirm, Button, Spin, message } from 'antd';
 import { PageContainer } from '@ant-design/pro-layout';
 import type { ActionType, ProColumns } from '@ant-design/pro-table';
 import ProTable from '@ant-design/pro-table';
-import { queryStepModalFormList, deleteStepModalFormList } from './services';
-import type { getModalFormListDataType } from './data';
-import { CreateStepModal } from './modals';
+import { queryStepModalFormList, deleteStepModalFormList, queryStepModalDetail } from './services';
+import type { getModalFormListDataType, stepModalFormDataType } from './data';
+import { CreateStepModal, EditStepModal } from './modals';
 
 const StepModalList: React.FC = () => {
   const [createModalVisible, setCreateModalVisible] = useState(false);
+  const [editModalVisible, setEditModalVisible] = useState(false);
+  const [spin, setSpin] = useState(false);
+  const [editModalData, setEditModalData] = useState({} as stepModalFormDataType);
+  const [currentStep, setCurrentStep] = useState(0);
 
   const ref = useRef<ActionType>();
 
@@ -33,9 +37,23 @@ const StepModalList: React.FC = () => {
     if (ref.current) ref.current.reload();
   };
 
+  const getDetail = (id: number) => {
+    setSpin(true);
+    setCurrentStep(0);
+    queryStepModalDetail(id).then((data) => {
+      if (data.code === 200) {
+        setEditModalData(data.data);
+        setEditModalVisible(true);
+        setSpin(false);
+      } else {
+        setSpin(false);
+      }
+    });
+  };
+
   const tableAction = (id: number) => (
     <Space>
-      <a>编辑</a>
+      <a onClick={() => getDetail(id)}>编辑</a>
       <Popconfirm
         title="确认删除该列表？"
         onConfirm={() => confirm(id)}
@@ -107,32 +125,51 @@ const StepModalList: React.FC = () => {
 
   return (
     <PageContainer>
-      <ProTable<getModalFormListDataType>
-        actionRef={ref}
-        rowKey="id"
-        search={{
-          labelWidth: 120,
-        }}
-        bordered
-        pagination={{
-          showQuickJumper: true,
-          pageSize: 10,
-        }}
-        headerTitle="分步弹框表格"
-        request={(params) => queryStepModalFormList({ ...params })}
-        columns={columns}
-        toolBarRender={() => [
-          <Button onClick={() => setCreateModalVisible(true)} type="primary">
-            新增列表
-          </Button>,
-        ]}
-      />
+      <Spin spinning={spin}>
+        <ProTable<getModalFormListDataType>
+          actionRef={ref}
+          rowKey="id"
+          search={{
+            labelWidth: 120,
+          }}
+          bordered
+          pagination={{
+            showQuickJumper: true,
+            pageSize: 10,
+          }}
+          headerTitle="分步弹框表格"
+          request={(params) => queryStepModalFormList({ ...params })}
+          columns={columns}
+          toolBarRender={() => [
+            <Button
+              onClick={() => {
+                setCreateModalVisible(true);
+                setCurrentStep(0);
+              }}
+              type="primary"
+            >
+              新增列表
+            </Button>,
+          ]}
+        />
 
-      <CreateStepModal
-        visible={createModalVisible}
-        setVisible={setCreateModalVisible}
-        refresh={refreshList}
-      />
+        <CreateStepModal
+          visible={createModalVisible}
+          setVisible={setCreateModalVisible}
+          refresh={refreshList}
+          currentNum={currentStep}
+          current={setCurrentStep}
+        />
+
+        <EditStepModal
+          visible={editModalVisible}
+          setVisible={setEditModalVisible}
+          detail={editModalData}
+          refresh={refreshList}
+          currentNum={currentStep}
+          current={setCurrentStep}
+        />
+      </Spin>
     </PageContainer>
   );
 };

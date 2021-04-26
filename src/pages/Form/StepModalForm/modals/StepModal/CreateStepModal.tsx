@@ -11,44 +11,42 @@ interface CreateStepModalProps {
   visible: boolean;
   setVisible: Dispatch<SetStateAction<boolean>>;
   refresh: () => void;
+  currentNum: number;
+  current: (index: number) => void;
 }
 
 const CreateStepModal: React.FC<CreateStepModalProps> = (props) => {
-  const { visible, setVisible, refresh } = props;
+  const { visible, setVisible, refresh, currentNum, current } = props;
   const [loadingStatus, setLoadingStatus] = useState(false);
 
   const submitStep1 = async (values: stepModalFormDataType) => {
-    let status = false;
     setLoadingStatus(true);
     await createStepModalFormList({ ...values, type: 'step' }).then((data) => {
       if (data.code === 200) {
         message.success('提交成功');
-        status = true;
         setLoadingStatus(false);
+        current(1);
       } else {
         message.error('提交失败');
-        status = false;
         setLoadingStatus(false);
+        current(0);
       }
     });
-    return status;
   };
 
   const submitStep2 = async (values: stepModalFormDataType) => {
-    let status = false;
     setLoadingStatus(true);
     await createStepModalFormList({ ...values, type: 'step' }).then((data) => {
       if (data.code === 200) {
         message.success('提交成功');
-        status = true;
         setLoadingStatus(false);
+        current(2);
       } else {
         message.error('提交失败');
-        status = false;
         setLoadingStatus(false);
+        current(1);
       }
     });
-    return status;
   };
   return (
     <StepsForm
@@ -68,9 +66,14 @@ const CreateStepModal: React.FC<CreateStepModalProps> = (props) => {
       }}
       submitter={{
         render: (footerProps) => (
-          <StepFormFooter loadingStatus={loadingStatus} componentsProps={footerProps} />
+          <StepFormFooter
+            loadingStatus={loadingStatus}
+            componentsProps={footerProps}
+            current={current}
+          />
         ),
       }}
+      current={currentNum}
       stepsFormRender={(dom, submitter) => {
         return (
           <Modal
