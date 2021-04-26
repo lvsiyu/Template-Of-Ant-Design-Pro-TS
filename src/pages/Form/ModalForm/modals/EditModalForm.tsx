@@ -86,8 +86,8 @@ const EditModalForm: React.FC<ModalFormCreateProps> = (props) => {
           </Select>
         </Form.Item>
 
-        <Form.Item name="progress" label="进度" rules={[{ required: true, message: '请输入状态' }]}>
-          <InputNumber min={0} max={100} placeholder="请输入状态" style={{ width: '100%' }} />
+        <Form.Item name="progress" label="进度" rules={[{ required: true, message: '进度' }]}>
+          <InputNumber min={0} max={100} placeholder="进度" style={{ width: '100%' }} />
         </Form.Item>
 
         <Form.Item

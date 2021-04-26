@@ -12,13 +12,14 @@ interface StepFormFooterProps {
     submit: () => void;
     reset: () => void;
   };
+  loadingStatus?: boolean;
 }
 
 const StepFormFooter: React.FC<StepFormFooterProps> = (props) => {
-  const { componentsProps } = props;
+  const { componentsProps, loadingStatus } = props;
   if (componentsProps.step === 0) {
     return (
-      <Button type="primary" onClick={() => componentsProps.onSubmit?.()}>
+      <Button loading={loadingStatus} type="primary" onClick={() => componentsProps.onSubmit?.()}>
         去第二步 {'>'}
       </Button>
     );
@@ -27,11 +28,16 @@ const StepFormFooter: React.FC<StepFormFooterProps> = (props) => {
   if (componentsProps.step === 1) {
     return (
       <Space>
-        <Button key="pre" onClick={() => componentsProps.onPre?.()}>
+        <Button loading={loadingStatus} key="pre" onClick={() => componentsProps.onPre?.()}>
           返回第一步
         </Button>
 
-        <Button type="primary" key="goToTree" onClick={() => componentsProps.onSubmit?.()}>
+        <Button
+          loading={loadingStatus}
+          type="primary"
+          key="goToTree"
+          onClick={() => componentsProps.onSubmit?.()}
+        >
           去第三步 {'>'}
         </Button>
       </Space>
@@ -40,10 +46,15 @@ const StepFormFooter: React.FC<StepFormFooterProps> = (props) => {
 
   return (
     <Space>
-      <Button key="gotoTwo" onClick={() => componentsProps.onPre?.()}>
+      <Button loading={loadingStatus} key="gotoTwo" onClick={() => componentsProps.onPre?.()}>
         {'<'} 返回第二步
       </Button>
-      <Button type="primary" key="goToTree" onClick={() => componentsProps.onSubmit?.()}>
+      <Button
+        loading={loadingStatus}
+        type="primary"
+        key="goToTree"
+        onClick={() => componentsProps.onSubmit?.()}
+      >
         提交 √
       </Button>
     </Space>

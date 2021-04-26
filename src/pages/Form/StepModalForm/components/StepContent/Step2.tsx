@@ -1,24 +1,28 @@
 import React from 'react';
-import { Form, Input } from 'antd';
+import { Form, Select } from 'antd';
 import ProCard from '@ant-design/pro-card';
+
+const { Option } = Select;
 
 const Step2: React.FC = () => {
   return (
     <ProCard
       bordered
       headerBordered
-      title="第二步标题"
+      title="第二步-状态选择"
       style={{
         marginBottom: 16,
         width: 750,
       }}
     >
-      <Form.Item
-        name="name3"
-        label="基本名称3"
-        rules={[{ required: true, message: '请输入基本名称3' }]}
-      >
-        <Input placeholder="请输入基本名称3" style={{ width: '100%' }} />
+      <Form.Item name="status" label="状态" rules={[{ required: true, message: '请选择状态' }]}>
+        <Select placeholder="请选择状态">
+          <Option value="all">全部</Option>
+          <Option value="close">关闭</Option>
+          <Option value="running">运行中</Option>
+          <Option value="online">已上线</Option>
+          <Option value="error">异常</Option>
+        </Select>
       </Form.Item>
     </ProCard>
   );

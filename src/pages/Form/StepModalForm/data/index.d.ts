@@ -1,11 +1,32 @@
-export type StepFormDataType = {
-  name1?: string;
-  name2?: string;
-  name3?: string;
-  name4?: string;
+export type stepModalFormDataType = {
+  id?: number;
+  name?: string;
+  description?: string;
+  dateTime?: string;
+  progress?: number;
+  status?: string;
+  type?: string;
 };
 
-export type StepFormResponse = {
+export type getModalFormListDataType = {
+  id: number;
+  name: string;
+  description: string;
+  dateTime: string;
+  progress: number;
+  status: string;
+  type: string;
+};
+
+export type stepModalFormParams = {
+  pageSize?: number;
+  current?: number;
+  keyword?: string;
+  id?: number;
+};
+
+export type stepmModalFormResponse = {
   code: number;
+  data: modalFormDataType[];
   msg: string;
 };

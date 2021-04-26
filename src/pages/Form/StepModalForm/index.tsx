@@ -1,88 +1,140 @@
-import React, { useState } from 'react';
-import { Button, Modal, message } from 'antd';
-import { StepsForm } from '@ant-design/pro-form';
+import React, { useRef, useState } from 'react';
+import { Space, Popconfirm, Button, message } from 'antd';
 import { PageContainer } from '@ant-design/pro-layout';
-import { stepForm } from './services';
-import { Step1, Step2, Step3 } from './components/StepContent';
-import StepFormFooter from './components/Footer';
-import type { StepFormDataType } from './data';
+import type { ActionType, ProColumns } from '@ant-design/pro-table';
+import ProTable from '@ant-design/pro-table';
+import { queryStepModalFormList, deleteStepModalFormList } from './services';
+import type { getModalFormListDataType } from './data';
+import { CreateStepModal } from './modals';
 
-export default () => {
-  const [visible, setVisible] = useState(false);
-  const submitStep1 = async (values: StepFormDataType) => {
-    let status = false;
-    await stepForm(values).then((data) => {
-      if (data.code === 200) {
-        message.success('提交成功');
-        status = true;
-      } else {
-        message.error('提交失败');
-        status = false;
-      }
-    });
-    return status;
+const StepModalList: React.FC = () => {
+  const [createModalVisible, setCreateModalVisible] = useState(false);
+
+  const ref = useRef<ActionType>();
+
+  const ProcessMap = {
+    close: 'normal',
+    running: 'active',
+    online: 'success',
+    error: 'exception',
   };
 
-  const submitStep2 = async (values: StepFormDataType) => {
-    let status = false;
-    await stepForm(values).then((data) => {
+  const refreshList = () => {
+    ref?.current?.reload();
+  };
+
+  const confirm = (id: number) => {
+    deleteStepModalFormList(id).then((data) => {
       if (data.code === 200) {
-        message.success('提交成功');
-        status = true;
-      } else {
-        message.error('提交失败');
-        status = false;
+        message.success('删除成功');
+        refreshList();
       }
     });
-    return status;
+    if (ref.current) ref.current.reload();
   };
+
+  const tableAction = (id: number) => (
+    <Space>
+      <a>编辑</a>
+      <Popconfirm
+        title="确认删除该列表？"
+        onConfirm={() => confirm(id)}
+        okText="是"
+        cancelText="否"
+      >
+        <a>删除</a>
+      </Popconfirm>
+    </Space>
+  );
+
+  const columns: ProColumns<getModalFormListDataType>[] = [
+    {
+      title: '序号',
+      dataIndex: 'index',
+      valueType: 'indexBorder',
+      width: 48,
+    },
+    {
+      title: '基本名称',
+      dataIndex: 'name',
+      ellipsis: true,
+    },
+    {
+      title: '基本描述',
+      dataIndex: 'description',
+      search: false,
+      ellipsis: true,
+    },
+    {
+      title: '日期显示',
+      dataIndex: 'dateTime',
+      ellipsis: true,
+    },
+    {
+      title: '状态',
+      dataIndex: 'status',
+      initialValue: 'all',
+      valueEnum: {
+        all: { text: '全部', status: 'Default' },
+        close: { text: '关闭', status: 'Default' },
+        running: { text: '运行中', status: 'Processing' },
+        online: { text: '已上线', status: 'Success' },
+        error: { text: '异常', status: 'Error' },
+      },
+    },
+    {
+      title: '进度展示',
+      dataIndex: 'progress',
+      valueType: (item) => ({
+        type: 'progress',
+        status: item.status ? ProcessMap[item.status] : null,
+      }),
+    },
+    {
+      title: '时间选择',
+      dataIndex: 'selectTime',
+      hideInTable: true,
+      valueType: 'dateTime',
+    },
+    {
+      title: '操作',
+      dataIndex: 'option',
+      valueType: 'option',
+      width: 85,
+      render: (_, record) => tableAction(record.id),
+    },
+  ];
+
   return (
     <PageContainer>
-      <Button type="primary" onClick={() => setVisible(true)}>
-        分步表单新建
-      </Button>
-      <StepsForm
-        onFinish={async (values) => {
-          stepForm(values).then((data) => {
-            if (data.code === 200) {
-              message.success('提交成功');
-            } else {
-              message.error('提交失败');
-            }
-          });
+      <ProTable<getModalFormListDataType>
+        actionRef={ref}
+        rowKey="id"
+        search={{
+          labelWidth: 120,
         }}
-        submitter={{
-          render: (props) => <StepFormFooter componentsProps={props} />,
+        bordered
+        pagination={{
+          showQuickJumper: true,
+          pageSize: 10,
         }}
-        stepsFormRender={(dom, submitter) => {
-          return (
-            <Modal
-              title="分步表单"
-              width={800}
-              onCancel={() => setVisible(false)}
-              visible={visible}
-              footer={submitter}
-              destroyOnClose
-            >
-              {dom}
-            </Modal>
-          );
-        }}
-      >
-        <StepsForm.StepForm name="base" title="第一步骤" onFinish={(values) => submitStep1(values)}>
-          <Step1 />
-        </StepsForm.StepForm>
-        <StepsForm.StepForm
-          name="checkbox"
-          title="第二步骤"
-          onFinish={(values) => submitStep2(values)}
-        >
-          <Step2 />
-        </StepsForm.StepForm>
-        <StepsForm.StepForm name="time" title="第三步骤">
-          <Step3 />
-        </StepsForm.StepForm>
-      </StepsForm>
+        headerTitle="分步弹框表格"
+        request={(params) => queryStepModalFormList({ ...params })}
+        columns={columns}
+        toolBarRender={() => [
+          <Button onClick={() => setCreateModalVisible(true)} type="primary">
+            新增列表
+          </Button>,
+        ]}
+      />
+
+      <CreateStepModal
+        visible={createModalVisible}
+        setVisible={setCreateModalVisible}
+        refresh={refreshList}
+      />
     </PageContainer>
   );
 };
+
+export default StepModalList;
