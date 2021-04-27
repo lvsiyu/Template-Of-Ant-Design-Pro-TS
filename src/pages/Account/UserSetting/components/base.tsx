@@ -3,10 +3,10 @@ import { Button, Input, Select, Upload, Form, message } from 'antd';
 import { connect, FormattedMessage, formatMessage } from 'umi';
 import React, { Component } from 'react';
 
-import type { CurrentUser } from '../data.d';
+import type { CurrentUser } from '../data';
 import GeographicView from './GeographicView';
 import PhoneView from './PhoneView';
-import styles from './BaseView.less';
+import styles from '../styles/BaseView.less';
 
 const { Option } = Select;
 

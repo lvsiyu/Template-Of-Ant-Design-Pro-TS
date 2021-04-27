@@ -1,6 +1,6 @@
 import type { Effect, Reducer } from 'umi';
-import type { CurrentUser, GeographicItemType } from './data.d';
-import { queryCity, queryCurrent, queryProvince, query as queryUsers } from './service';
+import type { CurrentUser, GeographicItemType } from '../data';
+import { queryCity, queryCurrent, queryProvince, query as queryUsers } from '../services';
 
 export interface ModalState {
   currentUser?: Partial<CurrentUser>;

@@ -3,8 +3,8 @@ import { Select, Spin } from 'antd';
 import type { LabeledValue } from 'antd/es/select';
 import type { Dispatch } from 'umi';
 import { connect } from 'umi';
-import type { GeographicItemType } from '../data.d';
-import styles from './GeographicView.less';
+import type { GeographicItemType } from '../data';
+import styles from '../styles/GeographicView.less';
 
 const { Option } = Select;
 

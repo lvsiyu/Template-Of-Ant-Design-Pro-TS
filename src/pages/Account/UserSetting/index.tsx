@@ -6,10 +6,10 @@ import { GridContent } from '@ant-design/pro-layout';
 import { Menu } from 'antd';
 import BaseView from './components/base';
 import BindingView from './components/binding';
-import type { CurrentUser } from './data.d';
+import type { CurrentUser } from './data';
 import NotificationView from './components/notification';
 import SecurityView from './components/security';
-import styles from './style.less';
+import styles from './styles/index.less';
 
 const { Item } = Menu;
 
