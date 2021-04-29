@@ -205,6 +205,21 @@
     ],
   },
   {
+    name: '水印模板',
+    icon: 'ExceptionOutlined',
+    path: '/Water',
+    routes: [
+      {
+        path: '/water/text-water',
+        name: '文字水印',
+        component: './Water/Text',
+      },
+      {
+        component: './404',
+      },
+    ],
+  },
+  {
     name: '账户模板',
     icon: 'UserOutlined',
     path: '/Account',
