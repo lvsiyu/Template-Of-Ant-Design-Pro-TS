@@ -215,6 +215,11 @@
         component: './Water/Text',
       },
       {
+        path: '/water/pic-water',
+        name: '图片水印',
+        component: './Water/Pic',
+      },
+      {
         component: './404',
       },
     ],

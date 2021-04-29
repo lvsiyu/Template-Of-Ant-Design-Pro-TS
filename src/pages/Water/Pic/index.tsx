@@ -2,15 +2,16 @@ import React from 'react';
 import { PageContainer } from '@ant-design/pro-layout';
 import ProCard from '@ant-design/pro-card';
 import { WaterMark } from '@ant-design/pro-layout';
+import logo from '@/asserts/img/cool.png';
 
-const TextWaterWave: React.FC = () => {
+const PicWaterWave: React.FC = () => {
   return (
     <PageContainer>
-      <WaterMark content="我是文字水印">
+      <WaterMark width={50} height={50} image={logo}>
         <ProCard style={{ height: '500px' }}></ProCard>
       </WaterMark>
     </PageContainer>
   );
 };
 
-export default TextWaterWave;
+export default PicWaterWave;
