@@ -21,6 +21,7 @@ export default (): React.ReactNode => {
         <Result
           icon={<img src={logoName} />}
           title="这是只有管理员才能看到的界面，普通用户登录无法看到"
+          subTitle="使用user账号重新登陆后就无法看到该界面，具体修改请在route文件中以及access文件中修改"
           extra={
             <Space>
               <Button
