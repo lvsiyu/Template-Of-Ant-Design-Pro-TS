@@ -3,14 +3,14 @@ import { Skeleton } from 'antd';
 import ReactEcharts from 'echarts-for-react';
 import { queryEchartsBasisScatter } from '@/pages/Charts/Echarts/services';
 
-interface BasisPieDatas {
+interface BasisScatterDatas {
   height?: string;
 }
 
-const EchartsBasisScatter: React.FC<BasisPieDatas> = (props) => {
+const EchartsBasisScatter: React.FC<BasisScatterDatas> = (props) => {
   const { height } = props;
 
-  const [echartsBasisScatterData, setEchartsBasisScatterData] = useState([] as BasisPieDatas[]);
+  const [echartsBasisScatterData, setEchartsBasisScatterData] = useState([] as BasisScatterDatas[]);
 
   useEffect(() => {
     queryEchartsBasisScatter().then(({ data }) => setEchartsBasisScatterData(data || []));

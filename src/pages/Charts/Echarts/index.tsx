@@ -424,6 +424,24 @@ const Echarts: React.FC = () => {
                   }
                 />
               </Col>
+
+              <Col span={8}>
+                <StatisticCard
+                  title="动效散点图"
+                  tip="说明说明"
+                  headerBordered
+                  bordered
+                  chart={<scatters.EchartsAnimateScatter />}
+                  extra={
+                    <Button
+                      onClick={() => showModal('EchartsAnimateScatter', '动效散点图', '500px')}
+                      type="primary"
+                    >
+                      弹窗显示
+                    </Button>
+                  }
+                />
+              </Col>
             </Row>
           </ProCard>
         </Col>

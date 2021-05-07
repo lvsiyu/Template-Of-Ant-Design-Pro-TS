@@ -75,3 +75,7 @@ export async function queryEchartsNestedPie() {
 export async function queryEchartsBasisScatter() {
   return request('/api/charts/echarts/pies/basisScatter');
 }
+
+export async function queryEchartsAnimateScatter() {
+  return request('/api/charts/echarts/pies/animateScatter');
+}

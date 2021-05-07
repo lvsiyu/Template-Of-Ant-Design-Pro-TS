@@ -95,6 +95,9 @@ const EchartsModals: React.FC<EchartsProps> = (props) => {
       {modalType && modalType === 'EchartsBasisScatter' ? (
         <scatters.EchartsBasisScatter height={modalHeight} />
       ) : null}
+      {modalType && modalType === 'EchartsAnimateScatter' ? (
+        <scatters.EchartsAnimateScatter height={modalHeight} />
+      ) : null}
     </Modal>
   );
 };
