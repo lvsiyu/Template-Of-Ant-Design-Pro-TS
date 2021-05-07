@@ -79,3 +79,7 @@ export async function queryEchartsBasisScatter() {
 export async function queryEchartsAnimateScatter() {
   return request('/api/charts/echarts/pies/animateScatter');
 }
+
+export async function queryStaggeredAnimateScatter() {
+  return request('/api/charts/echarts/pies/staggeredScatter');
+}

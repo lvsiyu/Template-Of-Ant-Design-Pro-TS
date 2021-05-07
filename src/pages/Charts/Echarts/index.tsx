@@ -442,6 +442,24 @@ const Echarts: React.FC = () => {
                   }
                 />
               </Col>
+
+              <Col span={8}>
+                <StatisticCard
+                  title="交错散点图"
+                  tip="说明说明"
+                  headerBordered
+                  bordered
+                  chart={<scatters.EchartsStaggeredScatter />}
+                  extra={
+                    <Button
+                      onClick={() => showModal('EchartsStaggeredScatter', '交错散点图', '500px')}
+                      type="primary"
+                    >
+                      弹窗显示
+                    </Button>
+                  }
+                />
+              </Col>
             </Row>
           </ProCard>
         </Col>
