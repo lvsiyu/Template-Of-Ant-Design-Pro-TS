@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Skeleton } from 'antd';
 import ReactEcharts from 'echarts-for-react';
 import { queryEchartsTexturePie } from '@/pages/Charts/Echarts/services';
-import pieImg from '@/asserts/img/pie.jpg';
+import pieImg from '@/asserts/img/pie.png';
 import bgImg from '@/asserts/img/bg.png';
 
 interface BasisPieDatas {
