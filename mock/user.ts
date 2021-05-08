@@ -51,7 +51,7 @@ const getUserInfo = (req: Request, res: Response) => {
     return;
   }
   res.send({
-    name: '用户名称',
+    name: userRole === 'admin' ? '管理员账号' : '普通用户',
     avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
     userid: '00000001',
     email: 'antdesign@alipay.com',
