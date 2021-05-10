@@ -47,13 +47,7 @@ const EchartsTwoValueAxesInPolarLine: React.FC<EchartsTwoValueAxesInPolarLinePro
   };
 
   return (
-    <Skeleton
-      active
-      round
-      loading={
-        echartsTwoValueAxesInPolarLineData && echartsTwoValueAxesInPolarLineData.length === 0
-      }
-    >
+    <Skeleton active round loading={echartsTwoValueAxesInPolarLineData?.length === 0}>
       <ReactEcharts option={getOption} style={{ width: '100%', height: height || '300px' }} />
     </Skeleton>
   );
