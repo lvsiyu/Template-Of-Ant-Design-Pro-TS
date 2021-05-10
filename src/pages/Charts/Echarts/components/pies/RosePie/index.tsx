@@ -47,7 +47,7 @@ const EchartsRosePie: React.FC<EchartsRosePieProps> = (props) => {
   };
 
   return (
-    <Skeleton active round loading={echartsRosePieData && echartsRosePieData.length === 0}>
+    <Skeleton active round loading={echartsRosePieData?.length === 0}>
       <ReactEcharts option={getOption} style={{ width: '100%', height: height || '300px' }} />
     </Skeleton>
   );
