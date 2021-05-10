@@ -53,11 +53,7 @@ const EchartsBackgroundBar: React.FC<EchartsBackgroundBarProps> = (props) => {
   };
 
   return (
-    <Skeleton
-      active
-      round
-      loading={echartsBackgroundBarData && echartsBackgroundBarData.length === 0}
-    >
+    <Skeleton active round loading={echartsBackgroundBarData?.length === 0}>
       <ReactEcharts option={getOption} style={{ width: '100%', height: height || '300px' }} />
     </Skeleton>
   );
