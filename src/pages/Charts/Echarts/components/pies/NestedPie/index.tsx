@@ -105,7 +105,7 @@ const EchartsNestedPie: React.FC<EchartsNestedPieProps> = (props) => {
   };
 
   return (
-    <Skeleton active round loading={echartsNestedPieData && echartsNestedPieData.length === 0}>
+    <Skeleton active round loading={echartsNestedPieData?.length === 0}>
       <ReactEcharts option={getOption} style={{ width: '100%', height: height || '300px' }} />
     </Skeleton>
   );
