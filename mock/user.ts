@@ -55,8 +55,8 @@ const getUserInfo = (req: Request, res: Response) => {
     avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
     userid: '00000001',
     email: 'antdesign@alipay.com',
-    signature: '海纳百川，有容乃大',
-    title: '头衔(xxx专家)',
+    signature: '个性签名',
+    title: '其他简介(头衔等)',
     group: 'xxx公司－xxxxxxxx部－xxxxxx小组－xxxxxxx岗位',
     tags: [
       { key: '0', label: '标签1' },
@@ -72,15 +72,15 @@ const getUserInfo = (req: Request, res: Response) => {
     access: userRole,
     geographic: {
       province: {
-        label: '浙江省',
+        label: 'xx省',
         key: '330000',
       },
       city: {
-        label: '杭州市',
+        label: 'xx市',
         key: '330100',
       },
     },
-    address: '西湖区工专路 77 号',
+    address: 'xxxx详细地址',
     phone: '0752-268888888',
   });
 };
