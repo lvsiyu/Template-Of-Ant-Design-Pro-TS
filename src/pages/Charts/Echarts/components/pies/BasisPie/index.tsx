@@ -52,7 +52,7 @@ const EchartsBasisPie: React.FC<EchartsBasisPieProps> = (props) => {
   };
 
   return (
-    <Skeleton active round loading={echartsBasisPieData && echartsBasisPieData.length === 0}>
+    <Skeleton active round loading={echartsBasisPieData?.length === 0}>
       <ReactEcharts option={getOption} style={{ width: '100%', height: height || '300px' }} />
     </Skeleton>
   );
