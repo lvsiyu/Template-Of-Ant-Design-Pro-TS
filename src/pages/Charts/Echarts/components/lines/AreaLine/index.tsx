@@ -35,7 +35,7 @@ const EchartsAreaLine: React.FC<EchartsAreaLineProps> = (props) => {
   };
 
   return (
-    <Skeleton active round loading={echartsAreaLineData && echartsAreaLineData.length === 0}>
+    <Skeleton active round loading={echartsAreaLineData?.length === 0}>
       <ReactEcharts option={getOption} style={{ width: '100%', height: height || '300px' }} />
     </Skeleton>
   );
