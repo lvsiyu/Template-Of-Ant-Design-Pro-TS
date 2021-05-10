@@ -150,11 +150,7 @@ const EchartsSpeicalLabelPie: React.FC<EchartsSpeicalLabelPieProps> = (props) =>
   };
 
   return (
-    <Skeleton
-      active
-      round
-      loading={echartsSpeicalLabelPieData && echartsSpeicalLabelPieData.length === 0}
-    >
+    <Skeleton active round loading={echartsSpeicalLabelPieData?.length === 0}>
       <ReactEcharts option={getOption} style={{ width: '100%', height: height || '300px' }} />
     </Skeleton>
   );
