@@ -70,7 +70,7 @@ const EchartsTexturePie: React.FC<EchartsTexturePieProps> = (props) => {
   };
 
   return (
-    <Skeleton active round loading={echartsTexturePieData && echartsTexturePieData.length === 0}>
+    <Skeleton active round loading={echartsTexturePieData?.length === 0}>
       <ReactEcharts option={getOption} style={{ width: '100%', height: height || '300px' }} />
     </Skeleton>
   );
