@@ -29,11 +29,7 @@ const EchartsBasisScatter: React.FC<BasisScatterDatas> = (props) => {
   };
 
   return (
-    <Skeleton
-      active
-      round
-      loading={echartsBasisScatterData && echartsBasisScatterData.length === 0}
-    >
+    <Skeleton active round loading={echartsBasisScatterData?.length === 0}>
       <ReactEcharts option={getOption} style={{ width: '100%', height: height || '300px' }} />
     </Skeleton>
   );
