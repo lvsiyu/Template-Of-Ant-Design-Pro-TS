@@ -31,7 +31,7 @@ const BasisList: React.FC = () => {
   const detailsListTag = (text: React.ReactNode, record: DetailDataType) => {
     return (
       <Space>
-        {record.tag.length > 0 &&
+        {record?.tag?.length > 0 &&
           record.tag.map((item, index) => <Tag key={`${index + 1}`}>{item}</Tag>)}
       </Space>
     );
@@ -42,19 +42,17 @@ const BasisList: React.FC = () => {
       <Space>
         <IconText
           icon={StarOutlined}
-          text={record.action && record.action.length > 0 && fillKeyValues('star', record.action)}
+          text={record?.action?.length > 0 && fillKeyValues('star', record.action)}
           key="list-vertical-star-o"
         />
         <IconText
           icon={LikeOutlined}
-          text={record.action && record.action.length > 0 && fillKeyValues('great', record.action)}
+          text={record?.action?.length > 0 && fillKeyValues('great', record.action)}
           key="list-vertical-like-o"
         />
         <IconText
           icon={MessageOutlined}
-          text={
-            record.action && record.action.length > 0 && fillKeyValues('message', record.action)
-          }
+          text={record?.action?.length > 0 && fillKeyValues('message', record.action)}
           key="list-vertical-message"
         />
       </Space>
