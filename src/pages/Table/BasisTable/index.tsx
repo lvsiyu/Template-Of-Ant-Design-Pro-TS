@@ -3,9 +3,9 @@ import { Space, Popconfirm, Tooltip, Card, Image, message } from 'antd';
 import { PageContainer } from '@ant-design/pro-layout';
 import type { ActionType, ProColumns } from '@ant-design/pro-table';
 import ProTable from '@ant-design/pro-table';
+import errorPic from '@/asserts/img/error.png';
 import { queryBasisTable, queryBasisTableInner } from './services';
 import type { BasisTableDataType, BasisTableInnerDataType } from './data';
-import errorPic from '@/asserts/img/error.png';
 
 const BasisTableList: React.FC = () => {
   const [basisInnerTableData, setBasisInnerTableData] = useState([]);
