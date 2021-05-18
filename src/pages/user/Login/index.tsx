@@ -1,8 +1,8 @@
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { message } from 'antd';
 import React, { useState } from 'react';
-import ProForm, { ProFormText } from '@ant-design/pro-form';
+import { message } from 'antd';
 import { useIntl, Link, history, /* SelectLang, */ useModel } from 'umi';
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import ProForm, { ProFormText } from '@ant-design/pro-form';
 import Footer from '@/components/Footer';
 import { login } from '@/services/ant-design-pro/api';
 import styles from './index.less';
