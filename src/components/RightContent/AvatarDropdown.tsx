@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react';
-import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
 import { Avatar, Menu, Spin } from 'antd';
 import { history, useModel } from 'umi';
 import { stringify } from 'querystring';
+import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
+import { outLogin } from '@/services/ant-design-pro/api';
 import HeaderDropdown from '../HeaderDropdown';
 import styles from './index.less';
-import { outLogin } from '@/services/ant-design-pro/api';
 
 export type GlobalHeaderRightProps = {
   menu?: boolean;
