@@ -52,7 +52,7 @@ tyarn
 tyarn install
 ```
 
-或者
+或者(此处不推荐使用yarn，因为tyarn具有更快的网络速度和更全面的功能)
 
 ```bash
 yarn
