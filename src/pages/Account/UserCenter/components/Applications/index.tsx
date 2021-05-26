@@ -1,11 +1,11 @@
+import React from 'react';
+import { Avatar, Card, Dropdown, List, Menu, Tooltip } from 'antd';
 import {
   DownloadOutlined,
   EditOutlined,
   EllipsisOutlined,
   ShareAltOutlined,
 } from '@ant-design/icons';
-import { Avatar, Card, Dropdown, List, Menu, Tooltip } from 'antd';
-import React from 'react';
 
 import { connect } from 'umi';
 import numeral from 'numeral';
