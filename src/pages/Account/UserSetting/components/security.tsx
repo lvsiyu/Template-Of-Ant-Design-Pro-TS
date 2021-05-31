@@ -1,5 +1,5 @@
+import { Component } from 'react';
 import { FormattedMessage, formatMessage } from 'umi';
-import React, { Component } from 'react';
 
 import { List } from 'antd';
 
