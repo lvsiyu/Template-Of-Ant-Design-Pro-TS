@@ -1,5 +1,5 @@
+import { Component, Fragment } from 'react';
 import { List, Switch } from 'antd';
-import React, { Component, Fragment } from 'react';
 
 import { formatMessage } from 'umi';
 
