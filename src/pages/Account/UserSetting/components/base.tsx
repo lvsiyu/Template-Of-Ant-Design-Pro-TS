@@ -1,7 +1,7 @@
-import { UploadOutlined } from '@ant-design/icons';
+import React, { Component } from 'react';
 import { Button, Input, Select, Upload, Form, message } from 'antd';
 import { connect, FormattedMessage, formatMessage } from 'umi';
-import React, { Component } from 'react';
+import { UploadOutlined } from '@ant-design/icons';
 
 import type { CurrentUser } from '../data';
 import GeographicView from './GeographicView';
