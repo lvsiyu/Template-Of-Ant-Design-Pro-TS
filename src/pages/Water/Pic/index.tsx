@@ -7,7 +7,7 @@ import logo from '@/asserts/img/cool.png';
 const PicWaterWave: React.FC = () => {
   return (
     <PageContainer>
-      <WaterMark width={50} height={50} image={logo}>
+      <WaterMark width={50} height={51} image={logo}>
         <ProCard style={{ height: '500px' }}></ProCard>
       </WaterMark>
     </PageContainer>
