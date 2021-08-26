@@ -1,4 +1,3 @@
-/* import { GithubOutlined } from '@ant-design/icons'; */
 import { DefaultFooter } from '@ant-design/pro-layout';
 import { companyText, removeDefaultFooterPage } from '@/utils/common';
 
@@ -7,10 +6,11 @@ export default () => {
   if (path && removeDefaultFooterPage && removeDefaultFooterPage.length > 0) {
     for (let i = 0; i < removeDefaultFooterPage.length; i += 1) {
       if (path === removeDefaultFooterPage[i]) {
-        return false;
+        return null;
       }
     }
   }
+
   return (
     <DefaultFooter
       copyright={false}
@@ -22,23 +22,17 @@ export default () => {
           blankTarget: true,
         },
         /* {
-        key: 'Ant Design Pro',
-        title: 'Ant Design Pro',
-        href: 'https://pro.ant.design',
-        blankTarget: true,
-      },
-      {
-        key: 'github',
-        title: <GithubOutlined />,
-        href: 'https://github.com/ant-design/ant-design-pro',
-        blankTarget: true,
-      },
-      {
-        key: 'Ant Design',
-        title: 'Ant Design',
-        href: 'https://ant.design',
-        blankTarget: true,
-      }, */
+          key: 'github',
+          title: <GithubOutlined />,
+          href: 'https://github.com/ant-design/ant-design-pro',
+          blankTarget: true,
+        },
+        {
+          key: 'Ant Design',
+          title: 'Ant Design',
+          href: 'https://ant.design',
+          blankTarget: true,
+        }, */
       ]}
     />
   );
